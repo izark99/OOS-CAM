@@ -48,6 +48,7 @@ fun CameraScreen(
     onWake: () -> Unit,
     onOpenSettings: () -> Unit,
     onPickSdFolder: () -> Unit,
+    onOpenLibrary: () -> Unit = {},
 ) {
     val recording = state.capture as? CaptureState.Recording
     val active = recording != null || state.capture is CaptureState.Stopping
@@ -74,6 +75,7 @@ fun CameraScreen(
                 OutlinedButton(onClick = onPickSdFolder) {
                     Text(stringResource(if (state.sdFolderSet) R.string.camera_storage_sd else R.string.camera_storage_pick_sd))
                 }
+                OutlinedButton(onClick = onOpenLibrary) { Text(stringResource(R.string.camera_open_library)) }
             }
             if (state.showNotificationBanner) {
                 Text(stringResource(R.string.camera_notification_banner), style = MaterialTheme.typography.bodySmall)
