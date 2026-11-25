@@ -26,7 +26,7 @@ STATUS: PHASE 2 IN PROGRESS
 
 - [x] T2.1 `CaptureService` (LifecycleService, foreground type camera|microphone), started only from a visible activity; notification channel, ongoing notification with elapsed time and Stop action.
 - [x] T2.2 Recorder controller driven by `planSegments` rules: new `Recording` at each segment boundary, finalize on stop.
-- [ ] T2.3 Free-space sampler every 5 s and low-storage stop; thermal status SEVERE stop; phone call stop (TelephonyCallback, no extra permission if not granted: skip).
+- [x] T2.3 Free-space sampler every 5 s and low-storage stop; thermal status SEVERE stop; phone call stop (TelephonyCallback, no extra permission if not granted: skip).
 - [ ] T2.4 Wake lock while recording; "Screen off" action dims to black then lets the system turn the screen off.
 - [ ] T2.5 Permission flow: camera, mic (optional), notifications; behaviour per `docs/SPEC.md` permissions matrix.
 - [ ] T2.6 Storage targets: MediaStore `Movies/OOS Cam`, SD card via SAF tree URI; segment names from `:core`.
@@ -109,3 +109,4 @@ None.
 - 2026-11-25: Phase 2 started (new session from merged main). Robolectric 4.18.1, androidx.test 1.7.0, Room 2.8.5, KSP 2.3.14 added; testLogging prints each test.
 - 2026-11-25: T2.1 CaptureService (LifecycleService, FGS camera|microphone with mic type only when granted), CaptureStateMachine (first stop reason wins), ongoing notification with chronometer and Stop action, CaptureLauncher refuses to start unless the activity is visible and CAMERA is granted; core StopReason gains error, thermal, permission_revoked, phone_call; 16 Capture tests.
 - 2026-11-25: T2.2 :core exposes segmentCapMs, segmentFileName, segmentBytesPerMs, isLowStorage and planSegments now calls them (acceptance core still 20/20, 9/9); RecorderController rolls to a new Recording when the open one reaches the core cap, names parts from core, finalizes on stop; CameraX engine (VideoCapture + Recorder, one Recording per segment) is the service default; 8 controller tests.
+- 2026-11-25: T2.3 FreeSpaceSampler (sample at start then every 5 s, first sample below 500 MB via core isLowStorage stops with low_storage), ThermalMonitor (SEVERE or worse, tolerates a missing thermal service), CallMonitor (audio mode in-call/communication, TelephonyCallback only if READ_PHONE_STATE is granted); service starts and stops them; 9 tests (33 Capture tests).

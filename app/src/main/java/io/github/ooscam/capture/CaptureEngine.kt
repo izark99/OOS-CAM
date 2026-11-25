@@ -1,6 +1,7 @@
 package io.github.ooscam.capture
 
 import android.content.Context
+import android.os.StatFs
 import androidx.lifecycle.LifecycleOwner
 import java.time.LocalDateTime
 
@@ -24,12 +25,17 @@ interface CaptureEngine {
 object CaptureDeps {
     private val defaultEngineFactory: (Context, LifecycleOwner) -> CaptureEngine = { c, o -> CameraXCaptureEngine(c, o) }
     private val defaultWallClock: () -> Long = { System.currentTimeMillis() }
+    private val defaultFreeBytes: (Context, CaptureConfig) -> Long = { c, _ ->
+        StatFs((c.getExternalFilesDir(null) ?: c.filesDir).path).availableBytes
+    }
 
     var engineFactory: (Context, LifecycleOwner) -> CaptureEngine = defaultEngineFactory
     var wallClockMs: () -> Long = defaultWallClock
+    var freeBytes: (Context, CaptureConfig) -> Long = defaultFreeBytes
 
     fun reset() {
         engineFactory = defaultEngineFactory
         wallClockMs = defaultWallClock
+        freeBytes = defaultFreeBytes
     }
 }

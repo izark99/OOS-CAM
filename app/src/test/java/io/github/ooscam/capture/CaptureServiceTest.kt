@@ -31,6 +31,7 @@ class CaptureServiceTest {
     fun setUp() {
         CaptureDeps.engineFactory = { _, _ -> engine }
         CaptureDeps.wallClockMs = { 1_700_000_000_000L }
+        CaptureDeps.freeBytes = { _, _ -> 50_000_000_000L }
         controller = Robolectric.buildService(CaptureService::class.java).create()
     }
 
@@ -88,6 +89,18 @@ class CaptureServiceTest {
         assertEquals(CaptureState.Stopped(StopReason.USER), CaptureService.state.value)
         assertTrue(shadowOf(controller.get()).isForegroundStopped)
         assertTrue(shadowOf(controller.get()).isStoppedBySelf)
+    }
+
+    @Test
+    fun lowFreeSpaceWhileRecording_stopsWithLowStorageReason() {
+        CaptureDeps.freeBytes = { _, _ -> 100_000_000L }
+        shadowOf(app).grantPermissions(Manifest.permission.CAMERA)
+        controller.withIntent(startIntent()).startCommand(0, 1)
+
+        assertEquals(CaptureState.Stopping(StopReason.LOW_STORAGE), CaptureService.state.value)
+        assertTrue(engine.stopRequested)
+        engine.listener!!.onStopped(error = false)
+        assertEquals(CaptureState.Stopped(StopReason.LOW_STORAGE), CaptureService.state.value)
     }
 
     @Test

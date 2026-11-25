@@ -32,6 +32,7 @@ fun captureForegroundType(micGranted: Boolean): Int {
 class CaptureService : LifecycleService(), CaptureEngine.Listener {
     private val machine = CaptureStateMachine()
     private var engine: CaptureEngine? = null
+    private var monitors: List<StopMonitor> = emptyList()
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         super.onStartCommand(intent, flags, startId)
@@ -63,6 +64,12 @@ class CaptureService : LifecycleService(), CaptureEngine.Listener {
         this.engine = engine
         val startLocal = LocalDateTime.ofInstant(Instant.ofEpochMilli(startedAt), ZoneId.systemDefault())
         engine.start(config.copy(micWanted = config.micWanted && micGranted), startLocal, this)
+        monitors = listOf(
+            FreeSpaceSampler(freeBytes = { CaptureDeps.freeBytes(this, config) }, onStop = ::requestStop),
+            ThermalMonitor(this, ::requestStop),
+            CallMonitor(this, ::requestStop),
+        )
+        monitors.forEach { if (machine.state is CaptureState.Recording) it.start() }
     }
 
     fun requestStop(reason: StopReason) {
@@ -81,6 +88,7 @@ class CaptureService : LifecycleService(), CaptureEngine.Listener {
     }
 
     override fun onStopped(error: Boolean) {
+        stopMonitors()
         machine.finished(error)
         publish()
         engine = null
@@ -88,7 +96,13 @@ class CaptureService : LifecycleService(), CaptureEngine.Listener {
         stopSelf()
     }
 
+    private fun stopMonitors() {
+        monitors.forEach { it.stop() }
+        monitors = emptyList()
+    }
+
     override fun onDestroy() {
+        stopMonitors()
         if (machine.isActive) {
             machine.requestStop(StopReason.ERROR)
             engine?.stop()
