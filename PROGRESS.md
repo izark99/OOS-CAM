@@ -18,7 +18,7 @@ STATUS: PHASE 1 IN PROGRESS
 - [x] T1.2 `planExport` tier 1: order, trim validation (E6), trimmed sum (E2), clip count (E1).
 - [x] T1.3 `planExport` tier 2: range clipping (W1), E3, E4, E7, part splitting, equal-speed merge, round half up with exact integer math.
 - [x] T1.4 `planExport` tier 3: E5, audio, export height (W2), error result shape (R11).
-- [ ] T1.5 `planSegments`: bitrate presets, time and SD size caps, low-storage stop, stop reason tie rule, file names (R12–R14).
+- [x] T1.5 `planSegments`: bitrate presets, time and SD size caps, low-storage stop, stop reason tie rule, file names (R12–R14).
 - [ ] T1.6 `runFixtures` writes real results; `python3 testcase/run_acceptance.py --suite core` passes for base and v2.
 - [ ] T1.7 Unit tests in `:core` for every rule R1–R14 written from `TEST_RULES.md`, independent of the fixture files.
 
@@ -101,3 +101,4 @@ None.
 - 2026-11-25: T1.2 planExport tier 1 (R1 order, R2/E6 trim validation, R3 trimmed sum, E1 clip count, R9 audio); 12 tests.
 - 2026-11-25: T1.3 planExport tier 2 (R4 range clipping and W1, E7, E4, E3, R5b part splitting and equal-speed merge before rounding, R7 exact half-up rounding with BigDecimal); 19 tests.
 - 2026-11-25: T1.4 planExport tier 3 (E2, E5 only without blocking errors, R9 audio, R10 export height and W2, R11 error shape); 12 tests.
+- 2026-11-25: T1.5 planSegments (R12 bitrate presets, time and SD byte caps with ceiling, R13 low-storage end and tie rule, R14 file names); 20 tests.
