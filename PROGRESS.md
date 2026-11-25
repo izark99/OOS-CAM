@@ -29,7 +29,7 @@ STATUS: PHASE 2 IN PROGRESS
 - [x] T2.3 Free-space sampler every 5 s and low-storage stop; thermal status SEVERE stop; phone call stop (TelephonyCallback, no extra permission if not granted: skip).
 - [x] T2.4 Wake lock while recording; "Screen off" action dims to black then lets the system turn the screen off.
 - [x] T2.5 Permission flow: camera, mic (optional), notifications; behaviour per `docs/SPEC.md` permissions matrix.
-- [ ] T2.6 Storage targets: MediaStore `Movies/OOS Cam`, SD card via SAF tree URI; segment names from `:core`.
+- [x] T2.6 Storage targets: MediaStore `Movies/OOS Cam`, SD card via SAF tree URI; segment names from `:core`.
 - [ ] T2.7 Room: `RecordingSession`, `Segment` tables, schema exported to `app/schemas/`, migration test scaffold.
 - [ ] T2.8 Robolectric tests named `*Capture*Test` for the service state machine, notification content, stop reasons and storage target choice (≥ 15 tests).
 
@@ -112,3 +112,4 @@ None.
 - 2026-11-25: T2.3 FreeSpaceSampler (sample at start then every 5 s, first sample below 500 MB via core isLowStorage stops with low_storage), ThermalMonitor (SEVERE or worse, tolerates a missing thermal service), CallMonitor (audio mode in-call/communication, TelephonyCallback only if READ_PHONE_STATE is granted); service starts and stops them; 9 tests (33 Capture tests).
 - 2026-11-25: T2.4 CaptureWakeLock (partial, bounded 24 h, released when the last segment finalizes or the service is destroyed); ScreenOffController sets window brightness to BRIGHTNESS_OVERRIDE_OFF and clears FLAG_KEEP_SCREEN_ON so the system timeout turns the screen off, exit restores both; ScreenOffOverlay (theme scrim, tap to wake); 4 tests (37 Capture tests). The camera screen wires the button in T2.5.
 - 2026-11-25: T2.5 CapturePermissionPolicy (first Record tap asks only missing camera, mic if wanted, notifications on 13+; camera denied blocks with the permission sheet; mic denied records with mic off and a toast once; notifications denied records with a banner); interim camera screen with Record/Stop, mic toggle, Screen off overlay, elapsed time and segment; 8 tests (45 Capture tests).
+- 2026-11-25: T2.6 storage targets: MediaStore Movies/OOS Cam (pending insert, file descriptor output, published after finalize even if damaged), SD folder via SAF tree URI with persisted grant (createDocument per segment), chooser falls back to device when no folder or no write grant, free space measured on the SD volume with fstatvfs; names from core; storage open failure ends the session with error; picker button on the interim camera screen; 9 tests (54 Capture tests).

@@ -34,6 +34,7 @@ data class CameraUiState(
     val showPermissionSheet: Boolean = false,
     val showNotificationBanner: Boolean = false,
     val dimmed: Boolean = false,
+    val sdFolderSet: Boolean = false,
 )
 
 /** Interim camera screen (Phase 2): Record/Stop, mic toggle, Screen off, permission sheet. Phase 4 restyles it. */
@@ -46,6 +47,7 @@ fun CameraScreen(
     onScreenOff: () -> Unit,
     onWake: () -> Unit,
     onOpenSettings: () -> Unit,
+    onPickSdFolder: () -> Unit,
 ) {
     val recording = state.capture as? CaptureState.Recording
     val active = recording != null || state.capture is CaptureState.Stopping
@@ -69,6 +71,9 @@ fun CameraScreen(
                 OutlinedButton(onClick = onScreenOff, enabled = recording != null) { Text(stringResource(R.string.camera_screen_off)) }
             } else {
                 Button(onClick = onRecord, enabled = !state.showPermissionSheet) { Text(stringResource(R.string.camera_record)) }
+                OutlinedButton(onClick = onPickSdFolder) {
+                    Text(stringResource(if (state.sdFolderSet) R.string.camera_storage_sd else R.string.camera_storage_pick_sd))
+                }
             }
             if (state.showNotificationBanner) {
                 Text(stringResource(R.string.camera_notification_banner), style = MaterialTheme.typography.bodySmall)

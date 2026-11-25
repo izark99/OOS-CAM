@@ -16,4 +16,6 @@
     <string name="permission_reason_mic">Microphone: records sound with the video. Optional.</string>
     <string name="permission_reason_notifications">Notifications: show the recording notification with its Stop button.</string>
     <string name="permission_open_settings">Open settings</string>
+    <string name="camera_storage_pick_sd">Save to an SD card folder</string>
+    <string name="camera_storage_sd">Saving to the SD card folder (change)</string>
 </resources>

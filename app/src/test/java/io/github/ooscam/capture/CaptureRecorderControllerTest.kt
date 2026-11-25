@@ -119,6 +119,17 @@ class CaptureRecorderControllerTest {
     }
 
     @Test
+    fun storageFailsToOpenNextPart_finishesWithErrorInsteadOfCrashing() {
+        controller(minutes = 5).start()
+        sink.failNext = true
+        recorder.emit(RecorderEvent.Progress(300_000L))
+        recorder.emit(RecorderEvent.Finalized(ok = true, recordedMs = 300_000L, bytes = 5L))
+
+        assertEquals(true, finishedError)
+        assertEquals(1, recorder.startCount)
+    }
+
+    @Test
     fun sdTarget_rollsAtCoreSizeCapBeforeTimeCap() {
         val cap = segmentCapMs(60, StorageTarget.SD, Quality.Q2160P30, audio = true)
         assertTrue(cap < 60 * 60_000L)
@@ -153,7 +164,10 @@ class FakeSegmentSink : SegmentSink {
     val opened = mutableListOf<String>()
     val committed = mutableListOf<Boolean>()
 
+    var failNext = false
+
     override fun open(fileName: String): SegmentOutput {
+        if (failNext) throw IllegalStateException("volume removed")
         opened += fileName
         return SegmentOutput(uri = "uri:${opened.size}", handle = null)
     }

@@ -4,7 +4,6 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.pm.PackageManager
-import android.os.Environment
 import androidx.camera.core.CameraSelector
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.video.FallbackStrategy
@@ -21,7 +20,6 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.LifecycleOwner
 import io.github.ooscam.core.Quality
 import io.github.ooscam.core.segmentCapMs
-import java.io.File
 import java.time.LocalDateTime
 import java.util.concurrent.Executor
 import androidx.camera.video.Quality as CxQuality
@@ -30,7 +28,9 @@ import androidx.camera.video.Quality as CxQuality
 class CameraXCaptureEngine(
     private val context: Context,
     private val owner: LifecycleOwner,
-    private val sinkFactory: (CaptureConfig) -> SegmentSink = { AppFilesSegmentSink(context) },
+    private val sinkFactory: (CaptureConfig) -> SegmentSink = {
+        CaptureStorage.sinkFor(context, CaptureStorageChooser.choose(context, it.target))
+    },
 ) : CaptureEngine {
     private val executor: Executor = ContextCompat.getMainExecutor(context)
     private var provider: ProcessCameraProvider? = null
@@ -138,15 +138,4 @@ class CameraXSegmentRecorder(
     private companion object {
         const val NS_PER_MS = 1_000_000L
     }
-}
-
-/** Interim sink (app-specific Movies folder) until the storage targets exist. */
-class AppFilesSegmentSink(private val context: Context) : SegmentSink {
-    override fun open(fileName: String): SegmentOutput {
-        val dir = context.getExternalFilesDir(Environment.DIRECTORY_MOVIES) ?: context.filesDir
-        val file = File(dir, fileName)
-        return SegmentOutput(file.toURI().toString(), FileOutputOptions.Builder(file).build())
-    }
-
-    override fun commit(output: SegmentOutput, ok: Boolean) = Unit
 }

@@ -25,6 +25,10 @@ import io.github.ooscam.capture.CaptureConfig
 import io.github.ooscam.capture.CaptureLauncher
 import io.github.ooscam.capture.CapturePermissionPolicy
 import io.github.ooscam.capture.CaptureService
+import io.github.ooscam.capture.CaptureStorageChooser
+import io.github.ooscam.capture.CaptureStoragePrefs
+import io.github.ooscam.capture.StorageChoice
+import io.github.ooscam.core.StorageTarget
 import io.github.ooscam.capture.CaptureState
 import io.github.ooscam.capture.PermissionSnapshot
 import io.github.ooscam.capture.RecordDecision
@@ -39,10 +43,18 @@ class MainActivity : ComponentActivity() {
         startIfAllowed()
     }
 
+    private val pickSdFolder = registerForActivityResult(ActivityResultContracts.OpenDocumentTree()) { tree ->
+        if (tree != null) {
+            CaptureStoragePrefs.rememberPicked(this, tree)
+            ui = ui.copy(sdFolderSet = true)
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         screenOff = ScreenOffController(window)
         screenOff.keepScreenOnWhileVisible()
+        ui = ui.copy(sdFolderSet = CaptureStorageChooser.choose(this, StorageTarget.SD) is StorageChoice.Sd)
         setContent {
             MaterialTheme(colorScheme = darkColorScheme()) {
                 val capture by CaptureService.state.collectAsState()
@@ -61,6 +73,7 @@ class MainActivity : ComponentActivity() {
                     },
                     onWake = ::wake,
                     onOpenSettings = ::openAppSettings,
+                    onPickSdFolder = { pickSdFolder.launch(null) },
                 )
             }
         }
@@ -97,7 +110,9 @@ class MainActivity : ComponentActivity() {
                     prefs.edit { putBoolean(KEY_MIC_TOAST, true) }
                 }
                 ui = ui.copy(showNotificationBanner = decision.notificationBanner, showPermissionSheet = false)
-                CaptureLauncher.start(this, CaptureConfig(micWanted = decision.micOn))
+                // Without a usable SD folder this falls back to device storage (SPEC permissions matrix).
+                val target = if (CaptureStorageChooser.choose(this, StorageTarget.SD) is StorageChoice.Sd) StorageTarget.SD else StorageTarget.DEVICE
+                CaptureLauncher.start(this, CaptureConfig(micWanted = decision.micOn, target = target))
             }
         }
     }

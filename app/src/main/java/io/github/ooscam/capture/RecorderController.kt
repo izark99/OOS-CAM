@@ -87,7 +87,11 @@ class RecorderController(
     private fun startNext() {
         index += 1
         val name = segmentFileName(sessionStartLocal, index)
-        val output = sink.open(name)
+        // A removed SD card or a full volume must end the session, not crash the service.
+        val output = runCatching { sink.open(name) }.getOrElse {
+            finish(error = true)
+            return
+        }
         open = name to output
         stopPending = false
         val segment = index
