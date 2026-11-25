@@ -14,7 +14,7 @@ STATUS: PHASE 1 IN PROGRESS
 
 ## Phase 1: Core logic (gate G1)
 
-- [ ] T1.1 `:core` models: `EditProject`, `ProjectClip`, `SpeedRange`, `ExportPlan`, `PlanPart`, `RecordingInput`, `SegmentPlan` with kotlinx-serialization matching `testcase/` JSON shapes.
+- [x] T1.1 `:core` models: `EditProject`, `ProjectClip`, `SpeedRange`, `ExportPlan`, `PlanPart`, `RecordingInput`, `SegmentPlan` with kotlinx-serialization matching `testcase/` JSON shapes.
 - [ ] T1.2 `planExport` tier 1: order, trim validation (E6), trimmed sum (E2), clip count (E1).
 - [ ] T1.3 `planExport` tier 2: range clipping (W1), E3, E4, E7, part splitting, equal-speed merge, round half up with exact integer math.
 - [ ] T1.4 `planExport` tier 3: E5, audio, export height (W2), error result shape (R11).
@@ -97,3 +97,4 @@ None.
 - 2026-11-25: T0.7 docs/SPIKE.md written: measured clean assembleDebug 29.7 s, clean :core:test 4.4 s, clean assembleDebug lint 25.2 s (no build cache), plus the owner phone checklist.
 - 2026-11-25: Phase 0 done; pull request https://github.com/izark99/OOS-CAM/pull/1 open into main.
 - 2026-11-25: Phase 0 PR #1 merged into main (efce24f). Phase 1 started in the same session at the owner's request (PROMPT.md normally wants a new session).
+- 2026-11-25: T1.1 :core models (EditProject, ProjectClip, SpeedRange, ExportPlan, PlanPart, RecordingInput, SegmentPlan) with strict kotlinx-serialization (speed read as exact decimal, nulls and defaults written); 6 tests.
