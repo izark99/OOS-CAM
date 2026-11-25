@@ -1,6 +1,6 @@
 # Progress
 
-STATUS: PHASE 0 IN PROGRESS
+STATUS: PHASE 0 DONE, PR OPEN
 
 ## Phase 0: Spike + scaffold (gate G0)
 
@@ -95,3 +95,4 @@ None.
 - 2026-11-25: T0.5 :core:runFixtures JavaExec (workingDir = repo root) reads both case files and writes empty export_actual.json / segment_actual.json; 4 JUnit 5 tests pass.
 - 2026-11-25: T0.6 debug-only spike: SpikeActivity, SpikeCaptureService (camera|microphone FGS, Stop action, partial wake lock, 2 x 20 s segments cut on recorded duration, gap log), SpikeTransformerJob (2 clips, trim, 2x on a range, removeAudio). Pure logic (gap math, SegmentLoop, job parts) has 13 JVM tests in app/src/testDebug; a mutation check made 2 of them fail. Log tag OOSCamSpike. Not run on a device: that is an owner step. lifecycle pinned to 2.10.0 (2.11.x needs compileSdk 37).
 - 2026-11-25: T0.7 docs/SPIKE.md written: measured clean assembleDebug 29.7 s, clean :core:test 4.4 s, clean assembleDebug lint 25.2 s (no build cache), plus the owner phone checklist.
+- 2026-11-25: Phase 0 done; pull request https://github.com/izark99/OOS-CAM/pull/1 open into main.
