@@ -13,6 +13,9 @@ import io.github.ooscam.core.StopReason
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import java.time.Instant
+import java.time.LocalDateTime
+import java.time.ZoneId
 
 /** Foreground service type for this session: microphone only when RECORD_AUDIO is granted now. */
 fun captureForegroundType(micGranted: Boolean): Int {
@@ -46,7 +49,8 @@ class CaptureService : LifecycleService(), CaptureEngine.Listener {
             return
         }
         val micGranted = isGranted(Manifest.permission.RECORD_AUDIO)
-        machine.start(CaptureDeps.wallClockMs())
+        val startedAt = CaptureDeps.wallClockMs()
+        machine.start(startedAt)
         publish()
         CaptureNotifications.ensureChannel(this)
         ServiceCompat.startForeground(
@@ -57,7 +61,8 @@ class CaptureService : LifecycleService(), CaptureEngine.Listener {
         )
         val engine = CaptureDeps.engineFactory(this, this)
         this.engine = engine
-        engine.start(config.copy(micWanted = config.micWanted && micGranted), this)
+        val startLocal = LocalDateTime.ofInstant(Instant.ofEpochMilli(startedAt), ZoneId.systemDefault())
+        engine.start(config.copy(micWanted = config.micWanted && micGranted), startLocal, this)
     }
 
     fun requestStop(reason: StopReason) {

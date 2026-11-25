@@ -105,7 +105,7 @@ class FakeCaptureEngine : CaptureEngine {
     var config: CaptureConfig? = null
     var listener: CaptureEngine.Listener? = null
 
-    override fun start(config: CaptureConfig, listener: CaptureEngine.Listener) {
+    override fun start(config: CaptureConfig, sessionStartLocal: java.time.LocalDateTime, listener: CaptureEngine.Listener) {
         started = true
         this.config = config
         this.listener = listener
