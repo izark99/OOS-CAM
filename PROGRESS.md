@@ -7,7 +7,7 @@ STATUS: PHASE 0 IN PROGRESS
 - [x] T0.1 Add `LICENSE` (Apache-2.0 full text from https://www.apache.org/licenses/LICENSE-2.0.txt) and `NOTICE`.
 - [x] T0.2 Make `scripts/check_env.sh` pass in the cloud VM (after `scripts/setup_cloud.sh`): JDK 21, Android SDK platform and build-tools, `ANDROID_HOME`, `local.properties` written by the script, never committed.
 - [x] T0.3 Gradle wrapper, version catalog, `settings.gradle.kts` with `:core` (JVM) and `:app` (Android, Compose). `gradle.properties`: `org.gradle.jvmargs=-Xmx4g`, `org.gradle.parallel=true`, `org.gradle.caching=true`.
-- [ ] T0.4 `:app` skeleton: package `io.github.ooscam`, minSdk 31, one Compose activity showing "OOS Cam", no INTERNET permission. `./gradlew assembleDebug lint` green.
+- [x] T0.4 `:app` skeleton: package `io.github.ooscam`, minSdk 31, one Compose activity showing "OOS Cam", no INTERNET permission. `./gradlew assembleDebug lint` green.
 - [ ] T0.5 `:core:runFixtures` JavaExec task that reads `<fixturesDir>` and writes empty `export_actual.json` / `segment_actual.json` arrays (wiring only; Phase 1 fills it).
 - [ ] T0.6 Spike screen `SpikeActivity` (debug build only): starts a camera|microphone foreground service that records 2 CameraX segments of 20 s back to back, logs the gap in ms, and a button that runs a Media3 Transformer job (2 clips, trim, 2x on a range, remove audio) and logs the time. Unit-test only the parts that run on the JVM.
 - [ ] T0.7 Write `docs/SPIKE.md`: build times measured in the cloud (clean `assembleDebug`, `:core:test`), plus a checklist the owner runs on the phone with the debug APK (see "Needs owner").
@@ -91,3 +91,4 @@ None.
 - 2026-11-25: T0.1 LICENSE (Apache-2.0, fetched from apache.org, 202 lines) and NOTICE added; .kotlin/ added to .gitignore.
 - 2026-11-25: T0.2 setup_cloud.sh ran (android-36, build-tools 36.0.0, 19 s); Gradle wrapper 9.9.2 generated; check_env.sh exit 0 when run with JAVA_TOOL_OPTIONS/_JAVA_OPTIONS unset (see DECISIONS).
 - 2026-11-25: T0.3 version catalog (AGP 9.5.2, Kotlin 2.4.21, Gradle 9.9.2, versions read from maven-metadata.xml), settings with :core and :app, gradle.properties; `./gradlew projects` lists both modules. Maven Central answered 429 under parallel load; added Gradle repository retry/backoff system properties.
+- 2026-11-25: T0.4 :app skeleton (MainActivity shows "OOS Cam", minSdk 31, compileSdk/targetSdk 36); assembleDebug lint testDebugUnitTest green; merged manifest and APK have no INTERNET. compose-bom pinned to 2026.06.01 and core-ktx to 1.18.0 because newer ones need compileSdk 37 and setup_cloud.sh installs android-36.

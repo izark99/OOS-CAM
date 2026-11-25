@@ -36,3 +36,7 @@ dependencies {
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.material3)
 }
+
+dependencies {
+    testImplementation(libs.junit4)
+}
