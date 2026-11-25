@@ -117,7 +117,19 @@ enum class Quality(val videoMbps: Int) {
 enum class StopReason {
     @SerialName("user") USER,
     @SerialName("low_storage") LOW_STORAGE,
+
+    // Live capture only; planSegments never returns these.
+    @SerialName("error") ERROR,
+    @SerialName("thermal") THERMAL,
+    @SerialName("permission_revoked") PERMISSION_REVOKED,
+    @SerialName("phone_call") PHONE_CALL,
 }
+
+/** The JSON / database name of a stop reason, for example "low_storage". */
+val StopReason.wireName: String get() = StopReason.serializer().descriptor.getElementName(ordinal)
+
+/** The JSON / database name of a storage target: "device" or "sd". */
+val StorageTarget.wireName: String get() = StorageTarget.serializer().descriptor.getElementName(ordinal)
 
 @Serializable
 data class FreeSpaceSample(val tMs: Long, val freeMb: Long)
