@@ -25,6 +25,7 @@ import io.github.ooscam.data.OOSCamDatabase
 import io.github.ooscam.editor.ClipSource
 import io.github.ooscam.editor.EditorScreen
 import io.github.ooscam.editor.EditorViewModel
+import io.github.ooscam.editor.VideoImport
 import java.util.UUID
 import io.github.ooscam.library.LibraryIntents
 import io.github.ooscam.library.LibraryRepository
@@ -64,6 +65,10 @@ class MainActivity : ComponentActivity() {
 
     private val permissionRequest = registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) {
         startIfAllowed()
+    }
+
+    private val pickVideos = registerForActivityResult(VideoImport.contract()) { uris ->
+        if (uris.isNotEmpty()) importPicked(uris)
     }
 
     private val pickSdFolder = registerForActivityResult(ActivityResultContracts.OpenDocumentTree()) { tree ->
@@ -125,7 +130,7 @@ class MainActivity : ComponentActivity() {
             onDelete = library::requestDeleteSelected,
             onDeleteDamaged = library::requestDeleteDamaged,
             onEditSelected = ::editSelected,
-            onImport = {},
+            onImport = { startImport(newProject = true) },
             onClearSelection = library::clearSelection,
             onConfirmDelete = library::confirmDelete,
             onCancelDelete = library::cancelDelete,
@@ -136,14 +141,41 @@ class MainActivity : ComponentActivity() {
     private fun Editor() {
         val vm = editor ?: return
         val state by vm.state.collectAsState()
-        EditorScreen(state = state, vm = vm, onBack = { screen = Screen.LIBRARY }, onImport = {}, onExport = {})
+        EditorScreen(state = state, vm = vm, onBack = { screen = Screen.LIBRARY }, onImport = { startImport(newProject = false) }, onExport = {})
     }
 
     private fun editSelected() {
         val clips = library.editSelection().map { ClipSource(it.uri, it.displayName, it.durationMs, it.height) }
-        editor = EditorViewModel(UUID.randomUUID().toString()).also { it.addClips(clips) }
+        openEditor(EditorViewModel(UUID.randomUUID().toString()).also { it.addClips(clips) })
         library.clearSelection()
+    }
+
+    private fun openEditor(vm: EditorViewModel) {
+        editor = vm
         screen = Screen.EDITOR
+    }
+
+    private var importIntoNewProject = true
+
+    private fun startImport(newProject: Boolean) {
+        importIntoNewProject = newProject
+        pickVideos.launch(VideoImport.request())
+    }
+
+    private fun importPicked(uris: List<Uri>) {
+        VideoImport.keepAccess(this, uris)
+        val media = MediaStoreMediaSource(this)
+        val newProject = importIntoNewProject
+        io.execute {
+            val result = VideoImport.toClips(uris.map(Uri::toString), media::describe)
+            ContextCompat.getMainExecutor(this).execute {
+                if (result.skipped > 0) Toast.makeText(this, R.string.editor_import_skipped, Toast.LENGTH_LONG).show()
+                if (result.clips.isEmpty()) return@execute
+                val target = editor.takeIf { !newProject } ?: EditorViewModel(UUID.randomUUID().toString())
+                target.addClips(result.clips)
+                openEditor(target)
+            }
+        }
     }
 
     private fun openLibrary() {

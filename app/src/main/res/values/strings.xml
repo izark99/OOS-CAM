@@ -66,4 +66,5 @@
     <string name="editor_msg_w1">A speed range outside the trimmed part is ignored.</string>
     <string name="editor_msg_w2">A clip is below 1080p, so the export is 720p.</string>
     <string name="editor_msg_unknown">This project cannot be exported.</string>
+    <string name="editor_import_skipped">Some videos could not be read and were skipped.</string>
 </resources>
