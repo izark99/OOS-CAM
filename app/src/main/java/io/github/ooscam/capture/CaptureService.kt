@@ -33,6 +33,7 @@ class CaptureService : LifecycleService(), CaptureEngine.Listener {
     private val machine = CaptureStateMachine()
     private var engine: CaptureEngine? = null
     private var monitors: List<StopMonitor> = emptyList()
+    private val wakeLock by lazy { CaptureWakeLock(this) }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         super.onStartCommand(intent, flags, startId)
@@ -60,6 +61,7 @@ class CaptureService : LifecycleService(), CaptureEngine.Listener {
             CaptureNotifications.build(this, machine.state as CaptureState.Recording),
             captureForegroundType(micGranted),
         )
+        wakeLock.acquire()
         val engine = CaptureDeps.engineFactory(this, this)
         this.engine = engine
         val startLocal = LocalDateTime.ofInstant(Instant.ofEpochMilli(startedAt), ZoneId.systemDefault())
@@ -92,6 +94,7 @@ class CaptureService : LifecycleService(), CaptureEngine.Listener {
         machine.finished(error)
         publish()
         engine = null
+        wakeLock.release()
         ServiceCompat.stopForeground(this, ServiceCompat.STOP_FOREGROUND_REMOVE)
         stopSelf()
     }
@@ -109,6 +112,7 @@ class CaptureService : LifecycleService(), CaptureEngine.Listener {
             machine.finished(error = true)
             publish()
         }
+        wakeLock.release()
         super.onDestroy()
     }
 
