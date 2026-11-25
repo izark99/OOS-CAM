@@ -41,4 +41,29 @@
         <item quantity="one">%1$d part</item>
         <item quantity="other">%1$d parts</item>
     </plurals>
+    <string name="editor_title">Editor</string>
+    <string name="editor_mute">Mute</string>
+    <string name="editor_height">%1$dp</string>
+    <string name="editor_clip">Clip %1$d (%2$s s)</string>
+    <string name="editor_move_up">Up</string>
+    <string name="editor_move_down">Down</string>
+    <string name="editor_remove">Remove</string>
+    <string name="editor_trim_in">Start %1$s s</string>
+    <string name="editor_trim_out">End %1$s s</string>
+    <string name="editor_range">Speed range %1$s–%2$s s at %3$sx</string>
+    <string name="editor_speed">%1$sx</string>
+    <string name="editor_add_range">Add speed range</string>
+    <string name="editor_remove_range">Remove range</string>
+    <string name="editor_output">Output %1$s</string>
+    <string name="editor_export">Export</string>
+    <string name="editor_msg_e1">Too many clips: 10 at most.</string>
+    <string name="editor_msg_e2">Trimmed clips are longer than 30 minutes.</string>
+    <string name="editor_msg_e3">Speed ranges on one clip overlap.</string>
+    <string name="editor_msg_e4">Speed must be 0.25x, 0.5x, 1x, 1.5x, 2x or 4x.</string>
+    <string name="editor_msg_e5">The export would be longer than 30 minutes.</string>
+    <string name="editor_msg_e6">Each clip needs at least 0.5 s inside its video.</string>
+    <string name="editor_msg_e7">A speed range is empty or belongs to no clip.</string>
+    <string name="editor_msg_w1">A speed range outside the trimmed part is ignored.</string>
+    <string name="editor_msg_w2">A clip is below 1080p, so the export is 720p.</string>
+    <string name="editor_msg_unknown">This project cannot be exported.</string>
 </resources>

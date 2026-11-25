@@ -22,6 +22,10 @@ import androidx.compose.runtime.setValue
 import androidx.core.content.ContextCompat
 import androidx.core.content.edit
 import io.github.ooscam.data.OOSCamDatabase
+import io.github.ooscam.editor.ClipSource
+import io.github.ooscam.editor.EditorScreen
+import io.github.ooscam.editor.EditorViewModel
+import java.util.UUID
 import io.github.ooscam.library.LibraryIntents
 import io.github.ooscam.library.LibraryRepository
 import io.github.ooscam.library.LibraryScreen
@@ -48,6 +52,7 @@ class MainActivity : ComponentActivity() {
     private var ui by mutableStateOf(CameraUiState())
     private val prefs by lazy { getSharedPreferences(PREFS, MODE_PRIVATE) }
     private var screen by mutableStateOf(Screen.CAMERA)
+    private var editor by mutableStateOf<EditorViewModel?>(null)
     private val io = Executors.newSingleThreadExecutor()
     private val library by lazy {
         LibraryViewModel(
@@ -80,10 +85,11 @@ class MainActivity : ComponentActivity() {
                     // Session ended (for example from the notification): leave the black screen.
                     if (capture !is CaptureState.Recording && ui.dimmed) wake()
                 }
-                BackHandler(enabled = screen != Screen.CAMERA) { screen = Screen.CAMERA }
+                BackHandler(enabled = screen != Screen.CAMERA) { screen = if (screen == Screen.EDITOR) Screen.LIBRARY else Screen.CAMERA }
                 when (screen) {
                     Screen.CAMERA -> Camera(capture)
                     Screen.LIBRARY -> Library()
+                    Screen.EDITOR -> Editor()
                 }
             }
         }
@@ -118,12 +124,26 @@ class MainActivity : ComponentActivity() {
             onShare = { startActivity(Intent.createChooser(LibraryIntents.share(library.selectedUris()), null)) },
             onDelete = library::requestDeleteSelected,
             onDeleteDamaged = library::requestDeleteDamaged,
-            onEditSelected = {},
+            onEditSelected = ::editSelected,
             onImport = {},
             onClearSelection = library::clearSelection,
             onConfirmDelete = library::confirmDelete,
             onCancelDelete = library::cancelDelete,
         )
+    }
+
+    @Composable
+    private fun Editor() {
+        val vm = editor ?: return
+        val state by vm.state.collectAsState()
+        EditorScreen(state = state, vm = vm, onBack = { screen = Screen.LIBRARY }, onImport = {}, onExport = {})
+    }
+
+    private fun editSelected() {
+        val clips = library.editSelection().map { ClipSource(it.uri, it.displayName, it.durationMs, it.height) }
+        editor = EditorViewModel(UUID.randomUUID().toString()).also { it.addClips(clips) }
+        library.clearSelection()
+        screen = Screen.EDITOR
     }
 
     private fun openLibrary() {
@@ -173,7 +193,7 @@ class MainActivity : ComponentActivity() {
         startActivity(Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.fromParts("package", packageName, null)))
     }
 
-    private enum class Screen { CAMERA, LIBRARY }
+    private enum class Screen { CAMERA, LIBRARY, EDITOR }
 
     private companion object {
         const val PREFS = "camera"

@@ -37,7 +37,7 @@ STATUS: PHASE 3 IN PROGRESS
 
 - [x] T3.1 Library data: sessions with grouped segments from Room + MediaStore, damaged detection (unfinalized MP4).
 - [x] T3.2 Library screen: grid, play (system player intent), share, delete with confirm, multi-select, "Edit selected".
-- [ ] T3.3 Editor view model holding an `EditProject`; reorder, trim (0.1 s steps), speed ranges, mute; validation messages from `planExport` errors and warnings.
+- [x] T3.3 Editor view model holding an `EditProject`; reorder, trim (0.1 s steps), speed ranges, mute; validation messages from `planExport` errors and warnings.
 - [ ] T3.4 Import from the system photo picker (READ_MEDIA_VIDEO only if the picker is unavailable).
 - [ ] T3.5 `ExportEngine`: build a Media3 `Composition` only from `ExportPlan`; progress, cancel, output name `OOSCam_edit_YYYYMMDD_HHMMSS.mp4`.
 - [ ] T3.6 `AcceptanceUseCaseTest`: build the X01 project through the editor view model (fake clips with X01 durations from the fixture file read at test time) and write `app/build/acceptance/X01_plan.json`.
@@ -119,3 +119,4 @@ None.
 - 2026-11-25: Phase 3 started (new session from merged main; setup_cloud.sh re-run, Maven Central 429s retried).
 - 2026-11-25: T3.1 LibraryRepository (Room sessions with segments in index order, newest first; files in Movies/OOS Cam not in Room as single groups; SD segments found by URI; missing files hidden), Mp4Probe (top-level box walk, largesize, size 0, truncated boxes; damaged = no complete moov), MediaStoreMediaSource, delete and delete-damaged with Room cleanup; 15 tests.
 - 2026-11-25: T3.2 LibraryViewModel (one tile per session with parts and total duration, long press starts selection in tap order, delete and delete-damaged behind a confirm, Edit selected gives non-damaged parts in selection then part order), LibraryIntents (system player ACTION_VIEW, ACTION_SEND / SEND_MULTIPLE with read grant), interim LibraryScreen (3-column grid, parts and Damaged labels, selection bar, confirm dialog), Library button on the camera screen; 12 tests, checked with a selection-order mutation (2 failed, restored).
+- 2026-11-25: T3.3 EditorViewModel holds a core EditProject (id from the caller); add clips with full trim, reorder and remove (speed ranges follow or go with their clip), trim and ranges snapped to 0.1 s with the exact source end reachable, speed ranges add/change/remove, mute, export height; every change re-runs planExport and shows its errors (block export) and warnings; interim EditorScreen with steppers, wired from Edit selected; 14 tests written first and seen failing against stubs.
