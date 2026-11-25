@@ -35,6 +35,14 @@ android {
     testOptions {
         unitTests.isIncludeAndroidResources = true
         unitTests.all { test ->
+            // AcceptanceUseCaseTest reads the base fixtures and writes X01_plan.json for run_acceptance.py.
+            // Declared as task input and output so a cached or up-to-date run still provides the file.
+            val fixtures = rootProject.layout.projectDirectory.dir("testcase/fixtures/base")
+            val acceptanceOut = layout.buildDirectory.dir(if (test.name == "testDebugUnitTest") "acceptance" else "acceptance-${test.name}")
+            test.inputs.dir(fixtures).withPathSensitivity(PathSensitivity.RELATIVE).withPropertyName("acceptanceFixtures")
+            test.outputs.dir(acceptanceOut).withPropertyName("acceptanceOut")
+            test.systemProperty("ooscam.fixturesDir", fixtures.asFile.absolutePath)
+            test.systemProperty("ooscam.acceptanceOut", acceptanceOut.get().asFile.absolutePath)
             test.testLogging {
                 events("passed", "failed", "skipped")
                 showStandardStreams = false
@@ -80,4 +88,5 @@ dependencies {
     testImplementation(libs.androidx.test.core)
     testImplementation(libs.androidx.test.ext.junit)
     testImplementation(libs.androidx.room.testing)
+    testImplementation(libs.kotlinx.serialization.json)
 }
