@@ -31,10 +31,12 @@ object CaptureDeps {
     var engineFactory: (Context, LifecycleOwner) -> CaptureEngine = defaultEngineFactory
     var wallClockMs: () -> Long = defaultWallClock
     var freeBytes: (Context, CaptureConfig) -> Long = defaultFreeBytes
+    var sessionStore: (Context) -> CaptureSessionStore = { RoomCaptureSessionStore(it) }
 
     fun reset() {
         engineFactory = defaultEngineFactory
         wallClockMs = defaultWallClock
         freeBytes = defaultFreeBytes
+        sessionStore = { RoomCaptureSessionStore(it) }
     }
 }

@@ -30,7 +30,7 @@ STATUS: PHASE 2 IN PROGRESS
 - [x] T2.4 Wake lock while recording; "Screen off" action dims to black then lets the system turn the screen off.
 - [x] T2.5 Permission flow: camera, mic (optional), notifications; behaviour per `docs/SPEC.md` permissions matrix.
 - [x] T2.6 Storage targets: MediaStore `Movies/OOS Cam`, SD card via SAF tree URI; segment names from `:core`.
-- [ ] T2.7 Room: `RecordingSession`, `Segment` tables, schema exported to `app/schemas/`, migration test scaffold.
+- [x] T2.7 Room: `RecordingSession`, `Segment` tables, schema exported to `app/schemas/`, migration test scaffold.
 - [ ] T2.8 Robolectric tests named `*Capture*Test` for the service state machine, notification content, stop reasons and storage target choice (≥ 15 tests).
 
 ## Phase 3: Library + editor (gate G3)
@@ -113,3 +113,4 @@ None.
 - 2026-11-25: T2.4 CaptureWakeLock (partial, bounded 24 h, released when the last segment finalizes or the service is destroyed); ScreenOffController sets window brightness to BRIGHTNESS_OVERRIDE_OFF and clears FLAG_KEEP_SCREEN_ON so the system timeout turns the screen off, exit restores both; ScreenOffOverlay (theme scrim, tap to wake); 4 tests (37 Capture tests). The camera screen wires the button in T2.5.
 - 2026-11-25: T2.5 CapturePermissionPolicy (first Record tap asks only missing camera, mic if wanted, notifications on 13+; camera denied blocks with the permission sheet; mic denied records with mic off and a toast once; notifications denied records with a banner); interim camera screen with Record/Stop, mic toggle, Screen off overlay, elapsed time and segment; 8 tests (45 Capture tests).
 - 2026-11-25: T2.6 storage targets: MediaStore Movies/OOS Cam (pending insert, file descriptor output, published after finalize even if damaged), SD folder via SAF tree URI with persisted grant (createDocument per segment), chooser falls back to device when no folder or no write grant, free space measured on the SD volume with fstatvfs; names from core; storage open failure ends the session with error; picker button on the interim camera screen; 9 tests (54 Capture tests).
+- 2026-11-25: T2.7 Room v1 (recording_session, segment with cascade delete; SPEC fields only, EditProject tables wait for T3.7), schema exported to app/schemas/io.github.ooscam.data.OOSCamDatabase/1.json, MigrationTestHelper scaffold under Robolectric; the service writes the session at start, each finalized segment, and the stop reason (core wireName); 6 tests (60 Capture tests).

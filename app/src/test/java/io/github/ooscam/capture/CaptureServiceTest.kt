@@ -32,6 +32,7 @@ class CaptureServiceTest {
         CaptureDeps.engineFactory = { _, _ -> engine }
         CaptureDeps.wallClockMs = { 1_700_000_000_000L }
         CaptureDeps.freeBytes = { _, _ -> 50_000_000_000L }
+        CaptureDeps.sessionStore = { FakeSessionStore() }
         controller = Robolectric.buildService(CaptureService::class.java).create()
     }
 
@@ -104,6 +105,26 @@ class CaptureServiceTest {
     }
 
     @Test
+    fun session_isStoredWithSegmentsAndStopReasonInRoomStore() {
+        val store = FakeSessionStore()
+        CaptureDeps.sessionStore = { store }
+        shadowOf(app).grantPermissions(Manifest.permission.CAMERA)
+        controller.withIntent(CaptureService.startIntent(app, CaptureConfig(segmentMinutes = 10))).startCommand(0, 1)
+        engine.listener!!.onSegmentFinalized(SegmentRecord(1, "OOSCam_x_part01.mp4", "content://v/1", 0L, 600_000L, 42L, ok = true))
+        controller.withIntent(Intent(app, CaptureService::class.java).setAction(CaptureService.ACTION_STOP)).startCommand(0, 2)
+        engine.listener!!.onStopped(error = false)
+
+        val s = store.sessions.single()
+        assertEquals(1_700_000_000_000L, s.startedAt)
+        assertEquals(1080, s.height)
+        assertEquals(10, s.segmentMinutes)
+        assertEquals("device", s.target)
+        assertEquals("content://v/1", store.segments.single().uri)
+        assertEquals(s.id, store.segments.single().sessionId)
+        assertEquals(listOf(s.id to "user"), store.finished)
+    }
+
+    @Test
     fun foregroundType_includesMicrophoneOnlyWhenMicGranted() {
         val cam = ServiceInfo.FOREGROUND_SERVICE_TYPE_CAMERA
         val mic = ServiceInfo.FOREGROUND_SERVICE_TYPE_MICROPHONE
@@ -127,4 +148,14 @@ class FakeCaptureEngine : CaptureEngine {
     override fun stop() {
         stopRequested = true
     }
+}
+
+class FakeSessionStore : CaptureSessionStore {
+    val sessions = mutableListOf<io.github.ooscam.data.RecordingSessionEntity>()
+    val segments = mutableListOf<io.github.ooscam.data.SegmentEntity>()
+    val finished = mutableListOf<Pair<String, String>>()
+
+    override fun begin(session: io.github.ooscam.data.RecordingSessionEntity) { sessions += session }
+    override fun addSegment(segment: io.github.ooscam.data.SegmentEntity) { segments += segment }
+    override fun finish(sessionId: String, stopReason: String) { finished += sessionId to stopReason }
 }

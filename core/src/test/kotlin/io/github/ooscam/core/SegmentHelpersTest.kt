@@ -32,4 +32,12 @@ class SegmentHelpersTest {
         assertTrue(isLowStorage(499))
         assertFalse(isLowStorage(500))
     }
+
+    @Test
+    fun wireNames_matchTheSerialNames() {
+        assertEquals("low_storage", StopReason.LOW_STORAGE.wireName)
+        assertEquals("phone_call", StopReason.PHONE_CALL.wireName)
+        assertEquals("permission_revoked", StopReason.PERMISSION_REVOKED.wireName)
+        assertEquals("sd", StorageTarget.SD.wireName)
+    }
 }

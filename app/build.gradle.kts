@@ -27,8 +27,9 @@ android {
     }
 
     sourceSets {
-        // Exported Room schemas are read by MigrationTestHelper in Robolectric unit tests.
-        getByName("test").assets.directories.add("$projectDir/schemas")
+        // MigrationTestHelper reads exported Room schemas from assets. Under Robolectric that is the
+        // merged debug assets (unit-test assets are not merged), so debug builds carry them; release does not.
+        getByName("debug").assets.directories.add("$projectDir/schemas")
     }
 
     testOptions {

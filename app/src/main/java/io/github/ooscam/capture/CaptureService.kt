@@ -16,6 +16,10 @@ import kotlinx.coroutines.flow.asStateFlow
 import java.time.Instant
 import java.time.LocalDateTime
 import java.time.ZoneId
+import java.util.UUID
+import io.github.ooscam.core.wireName
+import io.github.ooscam.data.RecordingSessionEntity
+import io.github.ooscam.data.SegmentEntity
 
 /** Foreground service type for this session: microphone only when RECORD_AUDIO is granted now. */
 fun captureForegroundType(micGranted: Boolean): Int {
@@ -34,6 +38,8 @@ class CaptureService : LifecycleService(), CaptureEngine.Listener {
     private var engine: CaptureEngine? = null
     private var monitors: List<StopMonitor> = emptyList()
     private val wakeLock by lazy { CaptureWakeLock(this) }
+    private var store: CaptureSessionStore? = null
+    private var sessionId: String? = null
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         super.onStartCommand(intent, flags, startId)
@@ -64,8 +70,21 @@ class CaptureService : LifecycleService(), CaptureEngine.Listener {
         wakeLock.acquire()
         val engine = CaptureDeps.engineFactory(this, this)
         this.engine = engine
+        val effective = config.copy(micWanted = config.micWanted && micGranted)
+        val id = UUID.randomUUID().toString()
+        val (width, height) = effective.quality.frameSize()
+        store = CaptureDeps.sessionStore(this).also {
+            it.begin(
+                RecordingSessionEntity(
+                    id = id, startedAt = startedAt, lens = effective.lens.name.lowercase(), width = width, height = height,
+                    fps = FPS, audioOn = effective.micWanted, segmentMinutes = effective.segmentMinutes,
+                    target = effective.target.wireName, stopReason = null,
+                ),
+            )
+        }
+        sessionId = id
         val startLocal = LocalDateTime.ofInstant(Instant.ofEpochMilli(startedAt), ZoneId.systemDefault())
-        engine.start(config.copy(micWanted = config.micWanted && micGranted), startLocal, this)
+        engine.start(effective, startLocal, this)
         monitors = listOf(
             FreeSpaceSampler(freeBytes = { CaptureDeps.freeBytes(this, config) }, onStop = ::requestStop),
             ThermalMonitor(this, ::requestStop),
@@ -89,10 +108,21 @@ class CaptureService : LifecycleService(), CaptureEngine.Listener {
             .notify(CaptureNotifications.NOTIFICATION_ID, CaptureNotifications.build(this, recording))
     }
 
+    override fun onSegmentFinalized(record: SegmentRecord) {
+        val id = sessionId ?: return
+        store?.addSegment(
+            SegmentEntity(
+                sessionId = id, index = record.index, uri = record.uri, startOffsetMs = record.startOffsetMs,
+                durationMs = record.durationMs, bytes = record.bytes,
+            ),
+        )
+    }
+
     override fun onStopped(error: Boolean) {
         stopMonitors()
         machine.finished(error)
         publish()
+        recordStopReason()
         engine = null
         wakeLock.release()
         ServiceCompat.stopForeground(this, ServiceCompat.STOP_FOREGROUND_REMOVE)
@@ -111,9 +141,17 @@ class CaptureService : LifecycleService(), CaptureEngine.Listener {
             engine?.stop()
             machine.finished(error = true)
             publish()
+            recordStopReason()
         }
         wakeLock.release()
         super.onDestroy()
+    }
+
+    private fun recordStopReason() {
+        val stopped = machine.state as? CaptureState.Stopped ?: return
+        val id = sessionId ?: return
+        store?.finish(id, stopped.reason.wireName)
+        sessionId = null
     }
 
     private fun publish() {
@@ -126,6 +164,7 @@ class CaptureService : LifecycleService(), CaptureEngine.Listener {
     companion object {
         const val ACTION_START = "io.github.ooscam.capture.START"
         const val ACTION_STOP = "io.github.ooscam.capture.STOP"
+        private const val FPS = 30
 
         private val mutableState = MutableStateFlow<CaptureState>(CaptureState.Idle)
 
