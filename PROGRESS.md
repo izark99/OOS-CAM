@@ -1,10 +1,10 @@
 # Progress
 
-STATUS: READY, PHASE 0 NOT STARTED
+STATUS: PHASE 0 IN PROGRESS
 
 ## Phase 0: Spike + scaffold (gate G0)
 
-- [ ] T0.1 Add `LICENSE` (Apache-2.0 full text from https://www.apache.org/licenses/LICENSE-2.0.txt) and `NOTICE`.
+- [x] T0.1 Add `LICENSE` (Apache-2.0 full text from https://www.apache.org/licenses/LICENSE-2.0.txt) and `NOTICE`.
 - [ ] T0.2 Make `scripts/check_env.sh` pass in the cloud VM (after `scripts/setup_cloud.sh`): JDK 21, Android SDK platform and build-tools, `ANDROID_HOME`, `local.properties` written by the script, never committed.
 - [ ] T0.3 Gradle wrapper, version catalog, `settings.gradle.kts` with `:core` (JVM) and `:app` (Android, Compose). `gradle.properties`: `org.gradle.jvmargs=-Xmx4g`, `org.gradle.parallel=true`, `org.gradle.caching=true`.
 - [ ] T0.4 `:app` skeleton: package `io.github.ooscam`, minSdk 31, one Compose activity showing "OOS Cam", no INTERNET permission. `./gradlew assembleDebug lint` green.
@@ -88,3 +88,4 @@ None.
 ## Log
 
 - 2026-11-25: Build kit created (spec, tests, design, loop files).
+- 2026-11-25: T0.1 LICENSE (Apache-2.0, fetched from apache.org, 202 lines) and NOTICE added; .kotlin/ added to .gitignore.

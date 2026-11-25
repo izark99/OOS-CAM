@@ -6,3 +6,4 @@ One line per decision made during the build: date, phase, decision, reason.
 - 2026-11-25, kit: rounding half up on ms; equal-speed parts merge; tie between user stop and low storage = user.
 - 2026-11-25, kit: no red-dot overlay; the foreground notification is the only recording indicator.
 - 2026-11-25, kit: dark theme only for the MVP; new OOS Cam design system (Liquid Glass style).
+- 2026-11-25, phase 0: gradle wrapper is created in T0.2 (check_env.sh requires gradlew); gate G0 is first fully green at T0.4, so T0.1-T0.3 are ticked on their own checks. Gates were not edited.
