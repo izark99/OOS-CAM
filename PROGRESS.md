@@ -1,6 +1,6 @@
 # Progress
 
-STATUS: PHASE 3 IN PROGRESS
+STATUS: PHASE 3 DONE, PR OPEN
 
 ## Phase 0: Spike + scaffold (gate G0)
 
@@ -126,3 +126,4 @@ None.
 - 2026-11-25: T3.6 AcceptanceUseCaseTest reads testcase/fixtures/base/export_cases.json at test time and builds X01 through EditorViewModel (add clips, trim, speed range, mute, height), checks the export mapper accepts the plan, writes app/build/acceptance/X01_plan.json; the unit test tasks declare the fixtures as input and the acceptance dir as output so a cached run restores the file; after `./gradlew clean`, `scripts/check.sh 3` passed (base/app-acceptance 1/1). Test seen failing first (no Gradle properties).
 - 2026-11-25: T3.7 Room v2: edit_project, project_clip (primary key projectId + clip_order), speed_range (speed stored as exact decimal TEXT), cascade delete; 1 to 2 is a Room auto-migration (only new tables), schema 2.json exported; ProjectDao save (one transaction, createdAt kept) and load back to the core EditProject; the editor saves its project when leaving and on export; migration test inserts v1 session and segment rows and checks they survive and the new tables accept rows; 6 tests seen failing first (no v2 API).
 - 2026-11-25: T3.8 extra view model and mapping tests: unknown targets change nothing, orders stay contiguous, trim follows a reordered clip, every offered speed passes planExport, a saved and restored project gives the same plan, snapping (now to the nearest of the 0.1 s grid and the exact source end), every core plan part boundary is a Composition item boundary, all six speed texts map exactly, mute maps to removeAudio and track types, an ok plan without parts is refused, library selection drops files deleted elsewhere; 12 tests. Written after the code, so checked with three mutations (removeAudio fixed false, clip end +1 ms, ranges not following reorder): 7 tests failed, code restored.
+- 2026-11-25: Phase 3 done; pull request https://github.com/izark99/OOS-CAM/pull/4 open into main.
