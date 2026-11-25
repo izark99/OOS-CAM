@@ -5,6 +5,10 @@ import java.math.RoundingMode
 
 private const val MAX_CLIPS = 10
 private const val MIN_CLIP_MS = 500L
+private const val MAX_TRIMMED_MS = 1_800_000L
+private const val MAX_OUTPUT_MS = 1_800_000L
+private const val FULL_HD = 1080
+private const val HD = 720
 
 private val ALLOWED_SPEEDS = listOf("0.25", "0.5", "1", "1.5", "2", "4").map { BigDecimal(it) }
 
@@ -30,10 +34,18 @@ fun planExport(project: EditProject): ExportPlan {
         trimmed += maxOf(0L, clip.outMs - clip.inMs)
     }
 
+    if (trimmed > MAX_TRIMMED_MS) errors.add("E2")
+
     val kept = keepRanges(clips, project.speedRanges, errors, warnings)
     for (ranges in kept.values) {
         val sorted = ranges.sortedWith(compareBy({ it.startMs }, { it.endMs }))
         if (sorted.zipWithNext().any { (a, b) -> b.startMs < a.endMs }) errors.add("E3")
+    }
+
+    var height = project.exportHeight
+    if (height == FULL_HD && clips.any { it.sourceHeight < FULL_HD }) {
+        height = HD
+        warnings.add("W2")
     }
 
     val parts = mutableListOf<PlanPart>()
@@ -47,6 +59,7 @@ fun planExport(project: EditProject): ExportPlan {
                 total += length
             }
         }
+        if (total > MAX_OUTPUT_MS) errors.add("E5")
     }
 
     val ok = errors.isEmpty()
@@ -59,7 +72,7 @@ fun planExport(project: EditProject): ExportPlan {
         outputDurationMs = if (ok) total else null,
         parts = if (ok) parts else emptyList(),
         audio = !project.muted,
-        exportHeight = project.exportHeight,
+        exportHeight = height,
     )
 }
 
