@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="spike_app_label">OOS Spike</string>
+    <string name="spike_channel_name">Spike recording</string>
+    <string name="spike_notification_title">OOS Cam spike is recording</string>
+    <string name="spike_notification_stop">Stop</string>
+    <string name="spike_button_record">Record 2 x 20 s</string>
+    <string name="spike_button_stop">Stop</string>
+    <string name="spike_button_transform">Run Transformer job</string>
+    <string name="spike_log_title">Log (tag OOSCamSpike)</string>
+</resources>
