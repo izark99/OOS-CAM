@@ -117,6 +117,12 @@ enum class Quality(val videoMbps: Int) {
 enum class StopReason {
     @SerialName("user") USER,
     @SerialName("low_storage") LOW_STORAGE,
+
+    // Live capture only; planSegments never returns these.
+    @SerialName("error") ERROR,
+    @SerialName("thermal") THERMAL,
+    @SerialName("permission_revoked") PERMISSION_REVOKED,
+    @SerialName("phone_call") PHONE_CALL,
 }
 
 @Serializable

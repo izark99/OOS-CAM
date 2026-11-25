@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">OOS Cam</string>
+    <string name="capture_channel_name">Recording</string>
+    <string name="capture_notification_title">Recording</string>
+    <string name="capture_notification_segment">Segment %1$d</string>
+    <string name="capture_notification_stop">Stop</string>
 </resources>

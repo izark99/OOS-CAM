@@ -1,6 +1,6 @@
 # Progress
 
-STATUS: PHASE 1 DONE, PR OPEN
+STATUS: PHASE 2 IN PROGRESS
 
 ## Phase 0: Spike + scaffold (gate G0)
 
@@ -24,7 +24,7 @@ STATUS: PHASE 1 DONE, PR OPEN
 
 ## Phase 2: Capture (gate G2)
 
-- [ ] T2.1 `CaptureService` (LifecycleService, foreground type camera|microphone), started only from a visible activity; notification channel, ongoing notification with elapsed time and Stop action.
+- [x] T2.1 `CaptureService` (LifecycleService, foreground type camera|microphone), started only from a visible activity; notification channel, ongoing notification with elapsed time and Stop action.
 - [ ] T2.2 Recorder controller driven by `planSegments` rules: new `Recording` at each segment boundary, finalize on stop.
 - [ ] T2.3 Free-space sampler every 5 s and low-storage stop; thermal status SEVERE stop; phone call stop (TelephonyCallback, no extra permission if not granted: skip).
 - [ ] T2.4 Wake lock while recording; "Screen off" action dims to black then lets the system turn the screen off.
@@ -73,6 +73,7 @@ STATUS: PHASE 1 DONE, PR OPEN
 | Cloud setup script | `bash scripts/setup_cloud.sh` | Before Phase 0 |
 | Device for checks | Owner's Android 12+ phone | End of Phases 0, 2, 3, 4 |
 | Phase 0 device checklist | Install debug APK; record 2 segments with screen off; report gap ms and Transformer time from `adb logcat -s OOSCamSpike` or the on-screen log | End of Phase 0 |
+| Phase 2 device checklist | Install debug APK; (1) record 60 min at 1080p30 with the screen off, no crash, note battery drop; (2) stop from the notification Stop action; (3) with 5-min segments, check the gap between parts is at most 1 s; (4) fill storage below 500 MB and check the stop reason low_storage; (5) receive a phone call while recording and check it stops and the file plays; (6) pick an SD card folder and check files land there; (7) deny the mic: recording works without audio and a toast shows once; deny the camera: Record stays disabled; (8) deny notifications: recording still works and the banner shows | End of Phase 2 |
 | Release signing | Owner creates a keystore and adds 4 GitHub secrets | Phase 5 |
 | Package name | `io.github.ooscam` | Fixed |
 | Red dot overlay | No (notification only) | Fixed |
@@ -105,3 +106,5 @@ None.
 - 2026-11-25: T1.6 runFixtures runs the real planners (strict fixture decoding); acceptance --suite core: base 20/20 and 9/9, v2 20/20 and 9/9. The T0.5 wiring tests that expected empty arrays were replaced by tests of the real output (the task said Phase 1 fills it); no test was loosened.
 - 2026-11-25: T1.7 rule-level tests (all six speeds accepted, neighbours rejected, E5 skipped with E3/E6/E7, seeded export and segment invariants, part-number padding). Written after the code, so checked with three mutations (no merge, tie to low storage, round down): each made at least one test fail; code restored. 85 tests in :core.
 - 2026-11-25: Phase 1 done; pull request https://github.com/izark99/OOS-CAM/pull/2 open into main.
+- 2026-11-25: Phase 2 started (new session from merged main). Robolectric 4.18.1, androidx.test 1.7.0, Room 2.8.5, KSP 2.3.14 added; testLogging prints each test.
+- 2026-11-25: T2.1 CaptureService (LifecycleService, FGS camera|microphone with mic type only when granted), CaptureStateMachine (first stop reason wins), ongoing notification with chronometer and Stop action, CaptureLauncher refuses to start unless the activity is visible and CAMERA is granted; core StopReason gains error, thermal, permission_revoked, phone_call; 16 Capture tests.
