@@ -1,6 +1,6 @@
 # Progress
 
-STATUS: PHASE 1 IN PROGRESS
+STATUS: PHASE 1 DONE, PR OPEN
 
 ## Phase 0: Spike + scaffold (gate G0)
 
@@ -20,7 +20,7 @@ STATUS: PHASE 1 IN PROGRESS
 - [x] T1.4 `planExport` tier 3: E5, audio, export height (W2), error result shape (R11).
 - [x] T1.5 `planSegments`: bitrate presets, time and SD size caps, low-storage stop, stop reason tie rule, file names (R12–R14).
 - [x] T1.6 `runFixtures` writes real results; `python3 testcase/run_acceptance.py --suite core` passes for base and v2.
-- [ ] T1.7 Unit tests in `:core` for every rule R1–R14 written from `TEST_RULES.md`, independent of the fixture files.
+- [x] T1.7 Unit tests in `:core` for every rule R1–R14 written from `TEST_RULES.md`, independent of the fixture files.
 
 ## Phase 2: Capture (gate G2)
 
@@ -103,3 +103,4 @@ None.
 - 2026-11-25: T1.4 planExport tier 3 (E2, E5 only without blocking errors, R9 audio, R10 export height and W2, R11 error shape); 12 tests.
 - 2026-11-25: T1.5 planSegments (R12 bitrate presets, time and SD byte caps with ceiling, R13 low-storage end and tie rule, R14 file names); 20 tests.
 - 2026-11-25: T1.6 runFixtures runs the real planners (strict fixture decoding); acceptance --suite core: base 20/20 and 9/9, v2 20/20 and 9/9. The T0.5 wiring tests that expected empty arrays were replaced by tests of the real output (the task said Phase 1 fills it); no test was loosened.
+- 2026-11-25: T1.7 rule-level tests (all six speeds accepted, neighbours rejected, E5 skipped with E3/E6/E7, seeded export and segment invariants, part-number padding). Written after the code, so checked with three mutations (no merge, tie to low storage, round down): each made at least one test fail; code restored. 85 tests in :core.
