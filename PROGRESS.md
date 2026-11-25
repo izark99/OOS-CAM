@@ -1,6 +1,6 @@
 # Progress
 
-STATUS: PHASE 0 DONE, PR OPEN
+STATUS: PHASE 1 DONE, PR OPEN
 
 ## Phase 0: Spike + scaffold (gate G0)
 
@@ -14,13 +14,13 @@ STATUS: PHASE 0 DONE, PR OPEN
 
 ## Phase 1: Core logic (gate G1)
 
-- [ ] T1.1 `:core` models: `EditProject`, `ProjectClip`, `SpeedRange`, `ExportPlan`, `PlanPart`, `RecordingInput`, `SegmentPlan` with kotlinx-serialization matching `testcase/` JSON shapes.
-- [ ] T1.2 `planExport` tier 1: order, trim validation (E6), trimmed sum (E2), clip count (E1).
-- [ ] T1.3 `planExport` tier 2: range clipping (W1), E3, E4, E7, part splitting, equal-speed merge, round half up with exact integer math.
-- [ ] T1.4 `planExport` tier 3: E5, audio, export height (W2), error result shape (R11).
-- [ ] T1.5 `planSegments`: bitrate presets, time and SD size caps, low-storage stop, stop reason tie rule, file names (R12–R14).
-- [ ] T1.6 `runFixtures` writes real results; `python3 testcase/run_acceptance.py --suite core` passes for base and v2.
-- [ ] T1.7 Unit tests in `:core` for every rule R1–R14 written from `TEST_RULES.md`, independent of the fixture files.
+- [x] T1.1 `:core` models: `EditProject`, `ProjectClip`, `SpeedRange`, `ExportPlan`, `PlanPart`, `RecordingInput`, `SegmentPlan` with kotlinx-serialization matching `testcase/` JSON shapes.
+- [x] T1.2 `planExport` tier 1: order, trim validation (E6), trimmed sum (E2), clip count (E1).
+- [x] T1.3 `planExport` tier 2: range clipping (W1), E3, E4, E7, part splitting, equal-speed merge, round half up with exact integer math.
+- [x] T1.4 `planExport` tier 3: E5, audio, export height (W2), error result shape (R11).
+- [x] T1.5 `planSegments`: bitrate presets, time and SD size caps, low-storage stop, stop reason tie rule, file names (R12–R14).
+- [x] T1.6 `runFixtures` writes real results; `python3 testcase/run_acceptance.py --suite core` passes for base and v2.
+- [x] T1.7 Unit tests in `:core` for every rule R1–R14 written from `TEST_RULES.md`, independent of the fixture files.
 
 ## Phase 2: Capture (gate G2)
 
@@ -96,3 +96,12 @@ None.
 - 2026-11-25: T0.6 debug-only spike: SpikeActivity, SpikeCaptureService (camera|microphone FGS, Stop action, partial wake lock, 2 x 20 s segments cut on recorded duration, gap log), SpikeTransformerJob (2 clips, trim, 2x on a range, removeAudio). Pure logic (gap math, SegmentLoop, job parts) has 13 JVM tests in app/src/testDebug; a mutation check made 2 of them fail. Log tag OOSCamSpike. Not run on a device: that is an owner step. lifecycle pinned to 2.10.0 (2.11.x needs compileSdk 37).
 - 2026-11-25: T0.7 docs/SPIKE.md written: measured clean assembleDebug 29.7 s, clean :core:test 4.4 s, clean assembleDebug lint 25.2 s (no build cache), plus the owner phone checklist.
 - 2026-11-25: Phase 0 done; pull request https://github.com/izark99/OOS-CAM/pull/1 open into main.
+- 2026-11-25: Phase 0 PR #1 merged into main (efce24f). Phase 1 started in the same session at the owner's request (PROMPT.md normally wants a new session).
+- 2026-11-25: T1.1 :core models (EditProject, ProjectClip, SpeedRange, ExportPlan, PlanPart, RecordingInput, SegmentPlan) with strict kotlinx-serialization (speed read as exact decimal, nulls and defaults written); 6 tests.
+- 2026-11-25: T1.2 planExport tier 1 (R1 order, R2/E6 trim validation, R3 trimmed sum, E1 clip count, R9 audio); 12 tests.
+- 2026-11-25: T1.3 planExport tier 2 (R4 range clipping and W1, E7, E4, E3, R5b part splitting and equal-speed merge before rounding, R7 exact half-up rounding with BigDecimal); 19 tests.
+- 2026-11-25: T1.4 planExport tier 3 (E2, E5 only without blocking errors, R9 audio, R10 export height and W2, R11 error shape); 12 tests.
+- 2026-11-25: T1.5 planSegments (R12 bitrate presets, time and SD byte caps with ceiling, R13 low-storage end and tie rule, R14 file names); 20 tests.
+- 2026-11-25: T1.6 runFixtures runs the real planners (strict fixture decoding); acceptance --suite core: base 20/20 and 9/9, v2 20/20 and 9/9. The T0.5 wiring tests that expected empty arrays were replaced by tests of the real output (the task said Phase 1 fills it); no test was loosened.
+- 2026-11-25: T1.7 rule-level tests (all six speeds accepted, neighbours rejected, E5 skipped with E3/E6/E7, seeded export and segment invariants, part-number padding). Written after the code, so checked with three mutations (no merge, tie to low storage, round down): each made at least one test fail; code restored. 85 tests in :core.
+- 2026-11-25: Phase 1 done; pull request https://github.com/izark99/OOS-CAM/pull/2 open into main.
