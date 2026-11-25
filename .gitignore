@@ -19,3 +19,4 @@ __pycache__/
 design/canvas/
 # OS
 .DS_Store
+.kotlin/
