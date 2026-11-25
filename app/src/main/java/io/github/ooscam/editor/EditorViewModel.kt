@@ -109,11 +109,12 @@ class EditorViewModel(initial: EditProject) {
         const val STEP_MS = 100L
         const val DEFAULT_HEIGHT = 1080
 
-        /** Nearest 0.1 s (half up), kept inside [0, duration]; at or past the end gives the exact end. */
+        /** Nearest 0.1 s (half up) or the exact source end, whichever is closer; kept inside [0, duration]. */
         fun snap(ms: Long, durationMs: Long): Long {
             if (ms >= durationMs) return durationMs
             if (ms <= 0) return 0
-            return minOf(durationMs, (ms + STEP_MS / 2) / STEP_MS * STEP_MS)
+            val grid = minOf(durationMs, (ms + STEP_MS / 2) / STEP_MS * STEP_MS)
+            return if (durationMs - ms < kotlin.math.abs(grid - ms)) durationMs else grid
         }
 
         private fun stateFor(project: EditProject): EditorUiState {

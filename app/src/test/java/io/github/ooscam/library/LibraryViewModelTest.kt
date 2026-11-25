@@ -167,3 +167,36 @@ class LibraryViewModelTest {
         assertEquals(listOf("content://m/a1", "content://m/a2"), vm.selectedUris())
     }
 }
+
+@RunWith(RobolectricTestRunner::class)
+class LibraryViewModelRefreshTest {
+    private val app: Application = ApplicationProvider.getApplicationContext()
+    private val db = Room.inMemoryDatabaseBuilder(app, OOSCamDatabase::class.java).allowMainThreadQueries().build()
+    private val media = FakeMediaSource()
+    private val vm = LibraryViewModel(LibraryRepository(db.captureDao(), media), io = Runnable::run, main = Runnable::run)
+
+    @After
+    fun tearDown() = db.close()
+
+    @Test
+    fun refresh_dropsSelectionOfFilesDeletedElsewhere_andKeepsTheRest() {
+        media.add("content://m/x", addedAt = 1)
+        media.add("content://m/y", addedAt = 2)
+        vm.refresh()
+        vm.toggle("content://m/x")
+        vm.toggle("content://m/y")
+        media.files.remove("content://m/x")
+        vm.refresh()
+        assertEquals(listOf("content://m/y"), vm.state.value.selected)
+    }
+
+    @Test
+    fun singleFileTile_usesItsUriAsKey_andIsPlayable() {
+        media.add("content://m/edit", name = "OOSCam_edit_20261125_101010.mp4", durationMs = 7_000)
+        vm.refresh()
+        val tile = vm.state.value.tiles.single()
+        assertEquals("content://m/edit", tile.key)
+        assertEquals(7_000, tile.durationMs)
+        assertEquals("content://m/edit", LibraryIntents.play(tile.items.first().uri).data.toString())
+    }
+}
