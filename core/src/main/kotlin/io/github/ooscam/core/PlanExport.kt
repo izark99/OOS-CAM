@@ -73,6 +73,7 @@ fun planExport(project: EditProject): ExportPlan {
         parts = if (ok) parts else emptyList(),
         audio = !project.muted,
         exportHeight = height,
+        sourceUris = clips.associate { it.order to it.sourceUri },
     )
 }
 

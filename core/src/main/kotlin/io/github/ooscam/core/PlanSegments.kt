@@ -69,3 +69,6 @@ fun planSegments(recording: RecordingInput): SegmentPlan {
 }
 
 private fun ceilDiv(a: Long, b: Long): Long = (a + b - 1) / b
+
+/** SPEC file rule 2: `OOSCam_edit_YYYYMMDD_HHMMSS.mp4`, time = export start in local time. */
+fun exportFileName(exportStartLocal: LocalDateTime): String = "OOSCam_edit_${exportStartLocal.format(STAMP_FORMAT)}.mp4"

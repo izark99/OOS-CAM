@@ -1,6 +1,6 @@
 # Progress
 
-STATUS: PHASE 2 DONE, PR OPEN
+STATUS: PHASE 3 DONE, PR OPEN
 
 ## Phase 0: Spike + scaffold (gate G0)
 
@@ -35,14 +35,14 @@ STATUS: PHASE 2 DONE, PR OPEN
 
 ## Phase 3: Library + editor (gate G3)
 
-- [ ] T3.1 Library data: sessions with grouped segments from Room + MediaStore, damaged detection (unfinalized MP4).
-- [ ] T3.2 Library screen: grid, play (system player intent), share, delete with confirm, multi-select, "Edit selected".
-- [ ] T3.3 Editor view model holding an `EditProject`; reorder, trim (0.1 s steps), speed ranges, mute; validation messages from `planExport` errors and warnings.
-- [ ] T3.4 Import from the system photo picker (READ_MEDIA_VIDEO only if the picker is unavailable).
-- [ ] T3.5 `ExportEngine`: build a Media3 `Composition` only from `ExportPlan`; progress, cancel, output name `OOSCam_edit_YYYYMMDD_HHMMSS.mp4`.
-- [ ] T3.6 `AcceptanceUseCaseTest`: build the X01 project through the editor view model (fake clips with X01 durations from the fixture file read at test time) and write `app/build/acceptance/X01_plan.json`.
-- [ ] T3.7 Room: `EditProject`, `ProjectClip`, `SpeedRange` tables + migration test from version 1.
-- [ ] T3.8 Unit tests for view models and export plan-to-composition mapping.
+- [x] T3.1 Library data: sessions with grouped segments from Room + MediaStore, damaged detection (unfinalized MP4).
+- [x] T3.2 Library screen: grid, play (system player intent), share, delete with confirm, multi-select, "Edit selected".
+- [x] T3.3 Editor view model holding an `EditProject`; reorder, trim (0.1 s steps), speed ranges, mute; validation messages from `planExport` errors and warnings.
+- [x] T3.4 Import from the system photo picker (READ_MEDIA_VIDEO only if the picker is unavailable).
+- [x] T3.5 `ExportEngine`: build a Media3 `Composition` only from `ExportPlan`; progress, cancel, output name `OOSCam_edit_YYYYMMDD_HHMMSS.mp4`.
+- [x] T3.6 `AcceptanceUseCaseTest`: build the X01 project through the editor view model (fake clips with X01 durations from the fixture file read at test time) and write `app/build/acceptance/X01_plan.json`.
+- [x] T3.7 Room: `EditProject`, `ProjectClip`, `SpeedRange` tables + migration test from version 1.
+- [x] T3.8 Unit tests for view models and export plan-to-composition mapping.
 
 ## Phase 4: Glass UI + i18n (gate G4)
 
@@ -74,6 +74,7 @@ STATUS: PHASE 2 DONE, PR OPEN
 | Device for checks | Owner's Android 12+ phone | End of Phases 0, 2, 3, 4 |
 | Phase 0 device checklist | Install debug APK; record 2 segments with screen off; report gap ms and Transformer time from `adb logcat -s OOSCamSpike` or the on-screen log | End of Phase 0 |
 | Phase 2 device checklist | Install debug APK; (1) record 60 min at 1080p30 with the screen off, no crash, note battery drop; (2) stop from the notification Stop action; (3) with 5-min segments, check the gap between parts is at most 1 s; (4) fill storage below 500 MB and check the stop reason low_storage; (5) receive a phone call while recording and check it stops and the file plays; (6) pick an SD card folder and check files land there; (7) deny the mic: recording works without audio and a toast shows once; deny the camera: Record stays disabled; (8) deny notifications: recording still works and the banner shows | End of Phase 2 |
+| Phase 3 device checklist | Install debug APK; SPEC acceptance use case: record A (≥ 93 s, screen off, stop from the notification) and B (≥ 62 s); Library: long-press A first, then tap B, Edit selected; Clip 1 Start 2.0 s / End 92.0 s, Clip 2 Start 1.5 s / End 61.5 s; Clip 1 Add speed range, set 30.0–60.0 s at 2x; Mute on, 1080p, screen shows Output 0:02:15; Export, wait for Saved, Open: 135 s ± 0.1 s, no audio track, `OOSCam_edit_*.mp4` in Movies/OOS Cam. Also: Damaged tile and Delete damaged after killing the app mid-recording; share and delete with confirm; Import from the photo picker; unmuted export of a clip recorded with the mic denied (expect silence, not an error) | End of Phase 3 |
 | Release signing | Owner creates a keystore and adds 4 GitHub secrets | Phase 5 |
 | Package name | `io.github.ooscam` | Fixed |
 | Red dot overlay | No (notification only) | Fixed |
@@ -116,3 +117,14 @@ None.
 - 2026-11-25: T2.7 Room v1 (recording_session, segment with cascade delete; SPEC fields only, EditProject tables wait for T3.7), schema exported to app/schemas/io.github.ooscam.data.OOSCamDatabase/1.json, MigrationTestHelper scaffold under Robolectric; the service writes the session at start, each finalized segment, and the stop reason (core wireName); 6 tests (60 Capture tests).
 - 2026-11-25: T2.8 CaptureServiceStopReasonsTest (notification segment number after rollover, Stop action PendingIntent targets the service, engine error stops with error and removes the notification, first stop reason kept at service level, phone call active at start, stop without session, duplicate start); written after the code, so checked with a mutation (notification fixed to segment 1): the test failed, code restored. 67 Capture tests in 10 classes.
 - 2026-11-25: Phase 2 done; pull request https://github.com/izark99/OOS-CAM/pull/3 open into main.
+- 2026-11-25: Phase 3 started (new session from merged main; setup_cloud.sh re-run, Maven Central 429s retried).
+- 2026-11-25: T3.1 LibraryRepository (Room sessions with segments in index order, newest first; files in Movies/OOS Cam not in Room as single groups; SD segments found by URI; missing files hidden), Mp4Probe (top-level box walk, largesize, size 0, truncated boxes; damaged = no complete moov), MediaStoreMediaSource, delete and delete-damaged with Room cleanup; 15 tests.
+- 2026-11-25: T3.2 LibraryViewModel (one tile per session with parts and total duration, long press starts selection in tap order, delete and delete-damaged behind a confirm, Edit selected gives non-damaged parts in selection then part order), LibraryIntents (system player ACTION_VIEW, ACTION_SEND / SEND_MULTIPLE with read grant), interim LibraryScreen (3-column grid, parts and Damaged labels, selection bar, confirm dialog), Library button on the camera screen; 12 tests, checked with a selection-order mutation (2 failed, restored).
+- 2026-11-25: T3.3 EditorViewModel holds a core EditProject (id from the caller); add clips with full trim, reorder and remove (speed ranges follow or go with their clip), trim and ranges snapped to 0.1 s with the exact source end reachable, speed ranges add/change/remove, mute, export height; every change re-runs planExport and shows its errors (block export) and warnings; interim EditorScreen with steppers, wired from Edit selected; 14 tests written first and seen failing against stubs.
+- 2026-11-25: T3.4 import through the system photo picker (PickMultipleVisualMedia, video only, up to 10); picked URIs become clips in pick order, unreadable or empty videos are skipped with a toast; Import on the library starts a new project, Import in the editor adds to it; no storage permission declared (test checks the manifest); 4 tests written first and seen failing against stubs.
+- 2026-11-25: T3.5 core exportFileName (OOSCam_edit_YYYYMMDD_HHMMSS.mp4); CompositionMapper builds the Media3 Composition only from the core ExportPlan (one clipped EditedMediaItem per part, part speed through setSpeed(SpeedProvider) for audio and video, removeAudio and video-only sequence when muted, Presentation.createForHeight(plan.exportHeight)), refuses a plan with errors; ExportEngine runs it into a cache file, reports progress, cancels, publishes to MediaStore Movies/OOS Cam and removes the temp file; Transformer runner (H.264/AAC) and export panel in the editor; Media3 moved from debug-only to implementation; 17 tests written first and seen failing against stubs.
+- 2026-11-25: T3.6 AcceptanceUseCaseTest reads testcase/fixtures/base/export_cases.json at test time and builds X01 through EditorViewModel (add clips, trim, speed range, mute, height), checks the export mapper accepts the plan, writes app/build/acceptance/X01_plan.json; the unit test tasks declare the fixtures as input and the acceptance dir as output so a cached run restores the file; after `./gradlew clean`, `scripts/check.sh 3` passed (base/app-acceptance 1/1). Test seen failing first (no Gradle properties).
+- 2026-11-25: T3.7 Room v2: edit_project, project_clip (primary key projectId + clip_order), speed_range (speed stored as exact decimal TEXT), cascade delete; 1 to 2 is a Room auto-migration (only new tables), schema 2.json exported; ProjectDao save (one transaction, createdAt kept) and load back to the core EditProject; the editor saves its project when leaving and on export; migration test inserts v1 session and segment rows and checks they survive and the new tables accept rows; 6 tests seen failing first (no v2 API).
+- 2026-11-25: T3.8 extra view model and mapping tests: unknown targets change nothing, orders stay contiguous, trim follows a reordered clip, every offered speed passes planExport, a saved and restored project gives the same plan, snapping (now to the nearest of the 0.1 s grid and the exact source end), every core plan part boundary is a Composition item boundary, all six speed texts map exactly, mute maps to removeAudio and track types, an ok plan without parts is refused, library selection drops files deleted elsewhere; 12 tests. Written after the code, so checked with three mutations (removeAudio fixed false, clip end +1 ms, ranges not following reorder): 7 tests failed, code restored.
+- 2026-11-25: Phase 3 done; pull request https://github.com/izark99/OOS-CAM/pull/4 open into main.
+- 2026-11-25: Phase 3 follow-up: ExportPlan carries each clip's source URI (@Transient sourceUris, not in the JSON contract), so CompositionMapper.map(plan) and ExportEngine.start(plan, now) take nothing but the core plan; the project-derived URI lookup is gone; core test checks the JSON keys are unchanged; check.sh 3 passed after clean.

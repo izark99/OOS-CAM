@@ -6,6 +6,7 @@ import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.Transient
 import kotlinx.serialization.descriptors.PrimitiveKind
 import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
 import kotlinx.serialization.descriptors.SerialDescriptor
@@ -96,6 +97,11 @@ data class ExportPlan(
     val parts: List<PlanPart>,
     val audio: Boolean,
     val exportHeight: Int,
+    /**
+     * Source URI of each clip by clip order, so an exporter needs nothing but the plan.
+     * Not part of the JSON contract (TEST_RULES shapes), hence @Transient.
+     */
+    @Transient val sourceUris: Map<Int, String> = emptyMap(),
 )
 
 // ---------------------------------------------------------------- segments
