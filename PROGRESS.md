@@ -104,3 +104,4 @@ None.
 - 2026-11-25: T1.5 planSegments (R12 bitrate presets, time and SD byte caps with ceiling, R13 low-storage end and tie rule, R14 file names); 20 tests.
 - 2026-11-25: T1.6 runFixtures runs the real planners (strict fixture decoding); acceptance --suite core: base 20/20 and 9/9, v2 20/20 and 9/9. The T0.5 wiring tests that expected empty arrays were replaced by tests of the real output (the task said Phase 1 fills it); no test was loosened.
 - 2026-11-25: T1.7 rule-level tests (all six speeds accepted, neighbours rejected, E5 skipped with E3/E6/E7, seeded export and segment invariants, part-number padding). Written after the code, so checked with three mutations (no merge, tie to low storage, round down): each made at least one test fail; code restored. 85 tests in :core.
+- 2026-11-25: Phase 1 done; pull request https://github.com/izark99/OOS-CAM/pull/2 open into main.
