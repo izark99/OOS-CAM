@@ -1,0 +1,697 @@
+[
+  {
+    "id": "X01",
+    "rule": "R1,R2,R7,R9",
+    "muted": true,
+    "exportHeight": 1080,
+    "clips": [
+      {
+        "order": 0,
+        "sourceUri": "fixture://clip0.mp4",
+        "sourceDurationMs": 140250,
+        "sourceHeight": 1080,
+        "inMs": 3250,
+        "outMs": 131750
+      },
+      {
+        "order": 1,
+        "sourceUri": "fixture://clip1.mp4",
+        "sourceDurationMs": 88000,
+        "sourceHeight": 1080,
+        "inMs": 4000,
+        "outMs": 80000
+      }
+    ],
+    "speedRanges": [
+      {
+        "clipOrder": 0,
+        "startMs": 40000,
+        "endMs": 101500,
+        "speed": 2
+      }
+    ]
+  },
+  {
+    "id": "X02",
+    "rule": "R2 boundary",
+    "muted": false,
+    "exportHeight": 1080,
+    "clips": [
+      {
+        "order": 0,
+        "sourceUri": "fixture://clip0.mp4",
+        "sourceDurationMs": 30000,
+        "sourceHeight": 1080,
+        "inMs": 3000,
+        "outMs": 3500
+      }
+    ],
+    "speedRanges": []
+  },
+  {
+    "id": "X03",
+    "rule": "R2 E6",
+    "muted": false,
+    "exportHeight": 1080,
+    "clips": [
+      {
+        "order": 0,
+        "sourceUri": "fixture://clip0.mp4",
+        "sourceDurationMs": 30000,
+        "sourceHeight": 1080,
+        "inMs": 3000,
+        "outMs": 3499
+      }
+    ],
+    "speedRanges": []
+  },
+  {
+    "id": "X04",
+    "rule": "R8 boundary E1",
+    "muted": false,
+    "exportHeight": 1080,
+    "clips": [
+      {
+        "order": 0,
+        "sourceUri": "fixture://clip0.mp4",
+        "sourceDurationMs": 20000,
+        "sourceHeight": 1080,
+        "inMs": 0,
+        "outMs": 10000
+      },
+      {
+        "order": 1,
+        "sourceUri": "fixture://clip1.mp4",
+        "sourceDurationMs": 23000,
+        "sourceHeight": 1080,
+        "inMs": 0,
+        "outMs": 11500
+      },
+      {
+        "order": 2,
+        "sourceUri": "fixture://clip2.mp4",
+        "sourceDurationMs": 26000,
+        "sourceHeight": 1080,
+        "inMs": 0,
+        "outMs": 13000
+      },
+      {
+        "order": 3,
+        "sourceUri": "fixture://clip3.mp4",
+        "sourceDurationMs": 29000,
+        "sourceHeight": 1080,
+        "inMs": 0,
+        "outMs": 14500
+      },
+      {
+        "order": 4,
+        "sourceUri": "fixture://clip4.mp4",
+        "sourceDurationMs": 32000,
+        "sourceHeight": 1080,
+        "inMs": 0,
+        "outMs": 16000
+      },
+      {
+        "order": 5,
+        "sourceUri": "fixture://clip5.mp4",
+        "sourceDurationMs": 35000,
+        "sourceHeight": 1080,
+        "inMs": 0,
+        "outMs": 17500
+      },
+      {
+        "order": 6,
+        "sourceUri": "fixture://clip6.mp4",
+        "sourceDurationMs": 38000,
+        "sourceHeight": 1080,
+        "inMs": 0,
+        "outMs": 19000
+      },
+      {
+        "order": 7,
+        "sourceUri": "fixture://clip7.mp4",
+        "sourceDurationMs": 41000,
+        "sourceHeight": 1080,
+        "inMs": 0,
+        "outMs": 20500
+      },
+      {
+        "order": 8,
+        "sourceUri": "fixture://clip8.mp4",
+        "sourceDurationMs": 44000,
+        "sourceHeight": 1080,
+        "inMs": 0,
+        "outMs": 22000
+      },
+      {
+        "order": 9,
+        "sourceUri": "fixture://clip9.mp4",
+        "sourceDurationMs": 47000,
+        "sourceHeight": 1080,
+        "inMs": 0,
+        "outMs": 23500
+      }
+    ],
+    "speedRanges": []
+  },
+  {
+    "id": "X05",
+    "rule": "R8 E1",
+    "muted": false,
+    "exportHeight": 1080,
+    "clips": [
+      {
+        "order": 0,
+        "sourceUri": "fixture://clip0.mp4",
+        "sourceDurationMs": 20000,
+        "sourceHeight": 1080,
+        "inMs": 0,
+        "outMs": 10000
+      },
+      {
+        "order": 1,
+        "sourceUri": "fixture://clip1.mp4",
+        "sourceDurationMs": 20000,
+        "sourceHeight": 1080,
+        "inMs": 0,
+        "outMs": 10000
+      },
+      {
+        "order": 2,
+        "sourceUri": "fixture://clip2.mp4",
+        "sourceDurationMs": 20000,
+        "sourceHeight": 1080,
+        "inMs": 0,
+        "outMs": 10000
+      },
+      {
+        "order": 3,
+        "sourceUri": "fixture://clip3.mp4",
+        "sourceDurationMs": 20000,
+        "sourceHeight": 1080,
+        "inMs": 0,
+        "outMs": 10000
+      },
+      {
+        "order": 4,
+        "sourceUri": "fixture://clip4.mp4",
+        "sourceDurationMs": 20000,
+        "sourceHeight": 1080,
+        "inMs": 0,
+        "outMs": 10000
+      },
+      {
+        "order": 5,
+        "sourceUri": "fixture://clip5.mp4",
+        "sourceDurationMs": 20000,
+        "sourceHeight": 1080,
+        "inMs": 0,
+        "outMs": 10000
+      },
+      {
+        "order": 6,
+        "sourceUri": "fixture://clip6.mp4",
+        "sourceDurationMs": 20000,
+        "sourceHeight": 1080,
+        "inMs": 0,
+        "outMs": 10000
+      },
+      {
+        "order": 7,
+        "sourceUri": "fixture://clip7.mp4",
+        "sourceDurationMs": 20000,
+        "sourceHeight": 1080,
+        "inMs": 0,
+        "outMs": 10000
+      },
+      {
+        "order": 8,
+        "sourceUri": "fixture://clip8.mp4",
+        "sourceDurationMs": 20000,
+        "sourceHeight": 1080,
+        "inMs": 0,
+        "outMs": 10000
+      },
+      {
+        "order": 9,
+        "sourceUri": "fixture://clip9.mp4",
+        "sourceDurationMs": 20000,
+        "sourceHeight": 1080,
+        "inMs": 0,
+        "outMs": 10000
+      },
+      {
+        "order": 10,
+        "sourceUri": "fixture://clip10.mp4",
+        "sourceDurationMs": 20000,
+        "sourceHeight": 1080,
+        "inMs": 0,
+        "outMs": 10000
+      }
+    ],
+    "speedRanges": []
+  },
+  {
+    "id": "X06",
+    "rule": "R8 boundary E2",
+    "muted": false,
+    "exportHeight": 1080,
+    "clips": [
+      {
+        "order": 0,
+        "sourceUri": "fixture://clip0.mp4",
+        "sourceDurationMs": 700000,
+        "sourceHeight": 1080,
+        "inMs": 100000,
+        "outMs": 700000
+      },
+      {
+        "order": 1,
+        "sourceUri": "fixture://clip1.mp4",
+        "sourceDurationMs": 900000,
+        "sourceHeight": 1080,
+        "inMs": 0,
+        "outMs": 900000
+      },
+      {
+        "order": 2,
+        "sourceUri": "fixture://clip2.mp4",
+        "sourceDurationMs": 400003,
+        "sourceHeight": 1080,
+        "inMs": 3,
+        "outMs": 300003
+      }
+    ],
+    "speedRanges": []
+  },
+  {
+    "id": "X07",
+    "rule": "R8 E2",
+    "muted": false,
+    "exportHeight": 1080,
+    "clips": [
+      {
+        "order": 0,
+        "sourceUri": "fixture://clip0.mp4",
+        "sourceDurationMs": 700000,
+        "sourceHeight": 1080,
+        "inMs": 100000,
+        "outMs": 700000
+      },
+      {
+        "order": 1,
+        "sourceUri": "fixture://clip1.mp4",
+        "sourceDurationMs": 900000,
+        "sourceHeight": 1080,
+        "inMs": 0,
+        "outMs": 900000
+      },
+      {
+        "order": 2,
+        "sourceUri": "fixture://clip2.mp4",
+        "sourceDurationMs": 400003,
+        "sourceHeight": 1080,
+        "inMs": 3,
+        "outMs": 300004
+      }
+    ],
+    "speedRanges": []
+  },
+  {
+    "id": "X08",
+    "rule": "R8 E5",
+    "muted": false,
+    "exportHeight": 1080,
+    "clips": [
+      {
+        "order": 0,
+        "sourceUri": "fixture://clip0.mp4",
+        "sourceDurationMs": 500000,
+        "sourceHeight": 1080,
+        "inMs": 10000,
+        "outMs": 460001
+      }
+    ],
+    "speedRanges": [
+      {
+        "clipOrder": 0,
+        "startMs": 10000,
+        "endMs": 460001,
+        "speed": 0.25
+      }
+    ]
+  },
+  {
+    "id": "X09",
+    "rule": "R8 boundary E5",
+    "muted": false,
+    "exportHeight": 1080,
+    "clips": [
+      {
+        "order": 0,
+        "sourceUri": "fixture://clip0.mp4",
+        "sourceDurationMs": 500000,
+        "sourceHeight": 1080,
+        "inMs": 10000,
+        "outMs": 460000
+      }
+    ],
+    "speedRanges": [
+      {
+        "clipOrder": 0,
+        "startMs": 10000,
+        "endMs": 460000,
+        "speed": 0.25
+      }
+    ]
+  },
+  {
+    "id": "X10",
+    "rule": "R7",
+    "muted": false,
+    "exportHeight": 1080,
+    "clips": [
+      {
+        "order": 0,
+        "sourceUri": "fixture://clip0.mp4",
+        "sourceDurationMs": 60000,
+        "sourceHeight": 1080,
+        "inMs": 0,
+        "outMs": 50000
+      }
+    ],
+    "speedRanges": [
+      {
+        "clipOrder": 0,
+        "startMs": 1000,
+        "endMs": 2000,
+        "speed": 1.5
+      },
+      {
+        "clipOrder": 0,
+        "startMs": 3000,
+        "endMs": 4001,
+        "speed": 1.5
+      },
+      {
+        "clipOrder": 0,
+        "startMs": 5000,
+        "endMs": 5003,
+        "speed": 2
+      },
+      {
+        "clipOrder": 0,
+        "startMs": 6000,
+        "endMs": 9003,
+        "speed": 4
+      },
+      {
+        "clipOrder": 0,
+        "startMs": 30000,
+        "endMs": 30999,
+        "speed": 0.5
+      }
+    ]
+  },
+  {
+    "id": "X11",
+    "rule": "R4",
+    "muted": false,
+    "exportHeight": 1080,
+    "clips": [
+      {
+        "order": 0,
+        "sourceUri": "fixture://clip0.mp4",
+        "sourceDurationMs": 30000,
+        "sourceHeight": 1080,
+        "inMs": 15000,
+        "outMs": 25000
+      }
+    ],
+    "speedRanges": [
+      {
+        "clipOrder": 0,
+        "startMs": 0,
+        "endMs": 30000,
+        "speed": 2
+      }
+    ]
+  },
+  {
+    "id": "X12",
+    "rule": "R4 W1",
+    "muted": false,
+    "exportHeight": 1080,
+    "clips": [
+      {
+        "order": 0,
+        "sourceUri": "fixture://clip0.mp4",
+        "sourceDurationMs": 30000,
+        "sourceHeight": 1080,
+        "inMs": 5000,
+        "outMs": 25000
+      }
+    ],
+    "speedRanges": [
+      {
+        "clipOrder": 0,
+        "startMs": 1000,
+        "endMs": 5000,
+        "speed": 2
+      },
+      {
+        "clipOrder": 0,
+        "startMs": 25000,
+        "endMs": 29000,
+        "speed": 4
+      }
+    ]
+  },
+  {
+    "id": "X13",
+    "rule": "R5 E3",
+    "muted": false,
+    "exportHeight": 1080,
+    "clips": [
+      {
+        "order": 0,
+        "sourceUri": "fixture://clip0.mp4",
+        "sourceDurationMs": 30000,
+        "sourceHeight": 1080,
+        "inMs": 0,
+        "outMs": 30000
+      }
+    ],
+    "speedRanges": [
+      {
+        "clipOrder": 0,
+        "startMs": 1000,
+        "endMs": 6000,
+        "speed": 2
+      },
+      {
+        "clipOrder": 0,
+        "startMs": 5999,
+        "endMs": 9000,
+        "speed": 0.5
+      }
+    ]
+  },
+  {
+    "id": "X14",
+    "rule": "R6 E4",
+    "muted": false,
+    "exportHeight": 1080,
+    "clips": [
+      {
+        "order": 0,
+        "sourceUri": "fixture://clip0.mp4",
+        "sourceDurationMs": 30000,
+        "sourceHeight": 1080,
+        "inMs": 0,
+        "outMs": 30000
+      }
+    ],
+    "speedRanges": [
+      {
+        "clipOrder": 0,
+        "startMs": 1000,
+        "endMs": 6000,
+        "speed": 3
+      }
+    ]
+  },
+  {
+    "id": "X15",
+    "rule": "R10 W2",
+    "muted": false,
+    "exportHeight": 1080,
+    "clips": [
+      {
+        "order": 0,
+        "sourceUri": "fixture://clip0.mp4",
+        "sourceDurationMs": 30000,
+        "sourceHeight": 1080,
+        "inMs": 0,
+        "outMs": 20000
+      },
+      {
+        "order": 1,
+        "sourceUri": "fixture://clip1.mp4",
+        "sourceDurationMs": 30000,
+        "sourceHeight": 720,
+        "inMs": 0,
+        "outMs": 30000
+      }
+    ],
+    "speedRanges": []
+  },
+  {
+    "id": "X16",
+    "rule": "R5b",
+    "muted": false,
+    "exportHeight": 1080,
+    "clips": [
+      {
+        "order": 0,
+        "sourceUri": "fixture://clip0.mp4",
+        "sourceDurationMs": 40000,
+        "sourceHeight": 1080,
+        "inMs": 0,
+        "outMs": 40000
+      }
+    ],
+    "speedRanges": [
+      {
+        "clipOrder": 0,
+        "startMs": 2000,
+        "endMs": 4000,
+        "speed": 1
+      },
+      {
+        "clipOrder": 0,
+        "startMs": 10000,
+        "endMs": 15000,
+        "speed": 2
+      },
+      {
+        "clipOrder": 0,
+        "startMs": 15000,
+        "endMs": 20003,
+        "speed": 2
+      }
+    ]
+  },
+  {
+    "id": "X17",
+    "rule": "R2 E6",
+    "muted": false,
+    "exportHeight": 1080,
+    "clips": [
+      {
+        "order": 0,
+        "sourceUri": "fixture://clip0.mp4",
+        "sourceDurationMs": 30000,
+        "sourceHeight": 1080,
+        "inMs": 0,
+        "outMs": 30001
+      }
+    ],
+    "speedRanges": []
+  },
+  {
+    "id": "X18",
+    "rule": "R4 E7",
+    "muted": false,
+    "exportHeight": 1080,
+    "clips": [
+      {
+        "order": 0,
+        "sourceUri": "fixture://clip0.mp4",
+        "sourceDurationMs": 30000,
+        "sourceHeight": 1080,
+        "inMs": 0,
+        "outMs": 30000
+      }
+    ],
+    "speedRanges": [
+      {
+        "clipOrder": 0,
+        "startMs": 8000,
+        "endMs": 8000,
+        "speed": 2
+      }
+    ]
+  },
+  {
+    "id": "X19",
+    "rule": "R1 R9",
+    "muted": false,
+    "exportHeight": 1080,
+    "clips": [
+      {
+        "order": 2,
+        "sourceUri": "fixture://clip2.mp4",
+        "sourceDurationMs": 20000,
+        "sourceHeight": 1080,
+        "inMs": 0,
+        "outMs": 9000
+      },
+      {
+        "order": 0,
+        "sourceUri": "fixture://clip0.mp4",
+        "sourceDurationMs": 20000,
+        "sourceHeight": 1080,
+        "inMs": 1000,
+        "outMs": 2003
+      },
+      {
+        "order": 1,
+        "sourceUri": "fixture://clip1.mp4",
+        "sourceDurationMs": 20000,
+        "sourceHeight": 1080,
+        "inMs": 500,
+        "outMs": 1500
+      }
+    ],
+    "speedRanges": []
+  },
+  {
+    "id": "X20",
+    "rule": "R10 R4",
+    "muted": false,
+    "exportHeight": 1080,
+    "clips": [
+      {
+        "order": 0,
+        "sourceUri": "fixture://clip0.mp4",
+        "sourceDurationMs": 50000,
+        "sourceHeight": 2160,
+        "inMs": 0,
+        "outMs": 40000
+      },
+      {
+        "order": 1,
+        "sourceUri": "fixture://clip1.mp4",
+        "sourceDurationMs": 50000,
+        "sourceHeight": 2160,
+        "inMs": 10000,
+        "outMs": 30003
+      }
+    ],
+    "speedRanges": [
+      {
+        "clipOrder": 1,
+        "startMs": 12000,
+        "endMs": 18000,
+        "speed": 0.5
+      },
+      {
+        "clipOrder": 0,
+        "startMs": 0,
+        "endMs": 8000,
+        "speed": 4
+      }
+    ]
+  }
+]

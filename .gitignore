@@ -1,0 +1,21 @@
+# Gradle / Android
+.gradle/
+build/
+*/build/
+local.properties
+.idea/
+*.iml
+captures/
+.externalNativeBuild/
+.cxx/
+# Signing
+*.jks
+*.keystore
+keystore.properties
+# Python
+__pycache__/
+*.pyc
+# Design scratch
+design/canvas/
+# OS
+.DS_Store

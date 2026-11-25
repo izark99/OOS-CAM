@@ -1,0 +1,200 @@
+[
+  {
+    "id": "S01",
+    "rule": "R12 time cut",
+    "startLocal": "2026-11-25T08:00:00",
+    "segmentMinutes": 30,
+    "target": "device",
+    "quality": "1080p30",
+    "audio": true,
+    "stopAtMs": 3900000,
+    "freeSpaceSamples": []
+  },
+  {
+    "id": "S02",
+    "rule": "R12 end on boundary",
+    "startLocal": "2026-11-25T08:00:00",
+    "segmentMinutes": 30,
+    "target": "device",
+    "quality": "1080p30",
+    "audio": true,
+    "stopAtMs": 3600000,
+    "freeSpaceSamples": []
+  },
+  {
+    "id": "S03",
+    "rule": "R13 boundary",
+    "startLocal": "2026-11-25T08:00:00",
+    "segmentMinutes": 10,
+    "target": "device",
+    "quality": "720p30",
+    "audio": true,
+    "stopAtMs": null,
+    "freeSpaceSamples": [
+      {
+        "tMs": 0,
+        "freeMb": 520
+      },
+      {
+        "tMs": 5000,
+        "freeMb": 516
+      },
+      {
+        "tMs": 10000,
+        "freeMb": 512
+      },
+      {
+        "tMs": 15000,
+        "freeMb": 508
+      },
+      {
+        "tMs": 20000,
+        "freeMb": 504
+      },
+      {
+        "tMs": 25000,
+        "freeMb": 500
+      },
+      {
+        "tMs": 30000,
+        "freeMb": 496
+      },
+      {
+        "tMs": 35000,
+        "freeMb": 492
+      },
+      {
+        "tMs": 40000,
+        "freeMb": 488
+      }
+    ]
+  },
+  {
+    "id": "S04",
+    "rule": "R12 SD size cut",
+    "startLocal": "2026-11-25T08:00:00",
+    "segmentMinutes": 30,
+    "target": "sd",
+    "quality": "2160p30",
+    "audio": true,
+    "stopAtMs": 2460000,
+    "freeSpaceSamples": []
+  },
+  {
+    "id": "S05",
+    "rule": "R13 at start",
+    "startLocal": "2026-11-25T08:00:00",
+    "segmentMinutes": 30,
+    "target": "device",
+    "quality": "1080p30",
+    "audio": true,
+    "stopAtMs": null,
+    "freeSpaceSamples": [
+      {
+        "tMs": 0,
+        "freeMb": 499
+      },
+      {
+        "tMs": 5000,
+        "freeMb": 498
+      }
+    ]
+  },
+  {
+    "id": "S06",
+    "rule": "R12 short segments",
+    "startLocal": "2026-11-25T08:00:00",
+    "segmentMinutes": 5,
+    "target": "device",
+    "quality": "1080p30",
+    "audio": true,
+    "stopAtMs": 3601234,
+    "freeSpaceSamples": []
+  },
+  {
+    "id": "S07",
+    "rule": "R12 no audio bitrate, SD under cap",
+    "startLocal": "2026-11-25T08:00:00",
+    "segmentMinutes": 60,
+    "target": "sd",
+    "quality": "1080p30",
+    "audio": false,
+    "stopAtMs": 1560000,
+    "freeSpaceSamples": []
+  },
+  {
+    "id": "S08",
+    "rule": "R14 3-digit part",
+    "startLocal": "2026-11-25T08:00:00",
+    "segmentMinutes": 5,
+    "target": "device",
+    "quality": "720p30",
+    "audio": false,
+    "stopAtMs": 30060000,
+    "freeSpaceSamples": []
+  },
+  {
+    "id": "S09",
+    "rule": "R13 earliest wins",
+    "startLocal": "2026-11-25T08:00:00",
+    "segmentMinutes": 10,
+    "target": "device",
+    "quality": "1080p30",
+    "audio": true,
+    "stopAtMs": 12345,
+    "freeSpaceSamples": [
+      {
+        "tMs": 0,
+        "freeMb": 900
+      },
+      {
+        "tMs": 5000,
+        "freeMb": 899
+      },
+      {
+        "tMs": 10000,
+        "freeMb": 898
+      },
+      {
+        "tMs": 15000,
+        "freeMb": 897
+      },
+      {
+        "tMs": 20000,
+        "freeMb": 896
+      },
+      {
+        "tMs": 25000,
+        "freeMb": 895
+      },
+      {
+        "tMs": 30000,
+        "freeMb": 894
+      },
+      {
+        "tMs": 35000,
+        "freeMb": 893
+      },
+      {
+        "tMs": 40000,
+        "freeMb": 892
+      },
+      {
+        "tMs": 45000,
+        "freeMb": 891
+      },
+      {
+        "tMs": 50000,
+        "freeMb": 890
+      },
+      {
+        "tMs": 55000,
+        "freeMb": 889
+      },
+      {
+        "tMs": 60000,
+        "freeMb": 888
+      }
+    ]
+  }
+]

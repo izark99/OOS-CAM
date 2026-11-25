@@ -1,0 +1,8 @@
+# Decisions
+
+One line per decision made during the build: date, phase, decision, reason.
+
+- 2026-11-25, kit: clean-room feature list from the public store listing only; no decompiling.
+- 2026-11-25, kit: rounding half up on ms; equal-speed parts merge; tie between user stop and low storage = user.
+- 2026-11-25, kit: no red-dot overlay; the foreground notification is the only recording indicator.
+- 2026-11-25, kit: dark theme only for the MVP; new OOS Cam design system (Liquid Glass style).

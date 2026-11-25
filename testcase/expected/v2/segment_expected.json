@@ -1,0 +1,955 @@
+[
+  {
+    "id": "S01",
+    "stopReason": "user",
+    "endMs": 4620000,
+    "bytesPerMs": 2016,
+    "segments": [
+      {
+        "index": 1,
+        "fileName": "OOSCam_20270203_211509_part01.mp4",
+        "startOffsetMs": 0,
+        "durationMs": 1800000,
+        "estimatedBytes": 3628800000
+      },
+      {
+        "index": 2,
+        "fileName": "OOSCam_20270203_211509_part02.mp4",
+        "startOffsetMs": 1800000,
+        "durationMs": 1800000,
+        "estimatedBytes": 3628800000
+      },
+      {
+        "index": 3,
+        "fileName": "OOSCam_20270203_211509_part03.mp4",
+        "startOffsetMs": 3600000,
+        "durationMs": 1020000,
+        "estimatedBytes": 2056320000
+      }
+    ]
+  },
+  {
+    "id": "S02",
+    "stopReason": "user",
+    "endMs": 3600000,
+    "bytesPerMs": 2016,
+    "segments": [
+      {
+        "index": 1,
+        "fileName": "OOSCam_20270203_211509_part01.mp4",
+        "startOffsetMs": 0,
+        "durationMs": 1800000,
+        "estimatedBytes": 3628800000
+      },
+      {
+        "index": 2,
+        "fileName": "OOSCam_20270203_211509_part02.mp4",
+        "startOffsetMs": 1800000,
+        "durationMs": 1800000,
+        "estimatedBytes": 3628800000
+      }
+    ]
+  },
+  {
+    "id": "S03",
+    "stopReason": "low_storage",
+    "endMs": 30000,
+    "bytesPerMs": 1016,
+    "segments": [
+      {
+        "index": 1,
+        "fileName": "OOSCam_20270203_211509_part01.mp4",
+        "startOffsetMs": 0,
+        "durationMs": 30000,
+        "estimatedBytes": 30480000
+      }
+    ]
+  },
+  {
+    "id": "S04",
+    "stopReason": "user",
+    "endMs": 2580000,
+    "bytesPerMs": 5641,
+    "segments": [
+      {
+        "index": 1,
+        "fileName": "OOSCam_20270203_211509_part01.mp4",
+        "startOffsetMs": 0,
+        "durationMs": 691367,
+        "estimatedBytes": 3900001247
+      },
+      {
+        "index": 2,
+        "fileName": "OOSCam_20270203_211509_part02.mp4",
+        "startOffsetMs": 691367,
+        "durationMs": 691367,
+        "estimatedBytes": 3900001247
+      },
+      {
+        "index": 3,
+        "fileName": "OOSCam_20270203_211509_part03.mp4",
+        "startOffsetMs": 1382734,
+        "durationMs": 691367,
+        "estimatedBytes": 3900001247
+      },
+      {
+        "index": 4,
+        "fileName": "OOSCam_20270203_211509_part04.mp4",
+        "startOffsetMs": 2074101,
+        "durationMs": 505899,
+        "estimatedBytes": 2853776259
+      }
+    ]
+  },
+  {
+    "id": "S05",
+    "stopReason": "low_storage",
+    "endMs": 0,
+    "bytesPerMs": 2016,
+    "segments": []
+  },
+  {
+    "id": "S06",
+    "stopReason": "user",
+    "endMs": 3603702,
+    "bytesPerMs": 2016,
+    "segments": [
+      {
+        "index": 1,
+        "fileName": "OOSCam_20270203_211509_part01.mp4",
+        "startOffsetMs": 0,
+        "durationMs": 300000,
+        "estimatedBytes": 604800000
+      },
+      {
+        "index": 2,
+        "fileName": "OOSCam_20270203_211509_part02.mp4",
+        "startOffsetMs": 300000,
+        "durationMs": 300000,
+        "estimatedBytes": 604800000
+      },
+      {
+        "index": 3,
+        "fileName": "OOSCam_20270203_211509_part03.mp4",
+        "startOffsetMs": 600000,
+        "durationMs": 300000,
+        "estimatedBytes": 604800000
+      },
+      {
+        "index": 4,
+        "fileName": "OOSCam_20270203_211509_part04.mp4",
+        "startOffsetMs": 900000,
+        "durationMs": 300000,
+        "estimatedBytes": 604800000
+      },
+      {
+        "index": 5,
+        "fileName": "OOSCam_20270203_211509_part05.mp4",
+        "startOffsetMs": 1200000,
+        "durationMs": 300000,
+        "estimatedBytes": 604800000
+      },
+      {
+        "index": 6,
+        "fileName": "OOSCam_20270203_211509_part06.mp4",
+        "startOffsetMs": 1500000,
+        "durationMs": 300000,
+        "estimatedBytes": 604800000
+      },
+      {
+        "index": 7,
+        "fileName": "OOSCam_20270203_211509_part07.mp4",
+        "startOffsetMs": 1800000,
+        "durationMs": 300000,
+        "estimatedBytes": 604800000
+      },
+      {
+        "index": 8,
+        "fileName": "OOSCam_20270203_211509_part08.mp4",
+        "startOffsetMs": 2100000,
+        "durationMs": 300000,
+        "estimatedBytes": 604800000
+      },
+      {
+        "index": 9,
+        "fileName": "OOSCam_20270203_211509_part09.mp4",
+        "startOffsetMs": 2400000,
+        "durationMs": 300000,
+        "estimatedBytes": 604800000
+      },
+      {
+        "index": 10,
+        "fileName": "OOSCam_20270203_211509_part10.mp4",
+        "startOffsetMs": 2700000,
+        "durationMs": 300000,
+        "estimatedBytes": 604800000
+      },
+      {
+        "index": 11,
+        "fileName": "OOSCam_20270203_211509_part11.mp4",
+        "startOffsetMs": 3000000,
+        "durationMs": 300000,
+        "estimatedBytes": 604800000
+      },
+      {
+        "index": 12,
+        "fileName": "OOSCam_20270203_211509_part12.mp4",
+        "startOffsetMs": 3300000,
+        "durationMs": 300000,
+        "estimatedBytes": 604800000
+      },
+      {
+        "index": 13,
+        "fileName": "OOSCam_20270203_211509_part13.mp4",
+        "startOffsetMs": 3600000,
+        "durationMs": 3702,
+        "estimatedBytes": 7463232
+      }
+    ]
+  },
+  {
+    "id": "S07",
+    "stopReason": "user",
+    "endMs": 1680000,
+    "bytesPerMs": 2000,
+    "segments": [
+      {
+        "index": 1,
+        "fileName": "OOSCam_20270203_211509_part01.mp4",
+        "startOffsetMs": 0,
+        "durationMs": 1680000,
+        "estimatedBytes": 3360000000
+      }
+    ]
+  },
+  {
+    "id": "S08",
+    "stopReason": "user",
+    "endMs": 30180000,
+    "bytesPerMs": 1000,
+    "segments": [
+      {
+        "index": 1,
+        "fileName": "OOSCam_20270203_211509_part01.mp4",
+        "startOffsetMs": 0,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 2,
+        "fileName": "OOSCam_20270203_211509_part02.mp4",
+        "startOffsetMs": 300000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 3,
+        "fileName": "OOSCam_20270203_211509_part03.mp4",
+        "startOffsetMs": 600000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 4,
+        "fileName": "OOSCam_20270203_211509_part04.mp4",
+        "startOffsetMs": 900000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 5,
+        "fileName": "OOSCam_20270203_211509_part05.mp4",
+        "startOffsetMs": 1200000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 6,
+        "fileName": "OOSCam_20270203_211509_part06.mp4",
+        "startOffsetMs": 1500000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 7,
+        "fileName": "OOSCam_20270203_211509_part07.mp4",
+        "startOffsetMs": 1800000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 8,
+        "fileName": "OOSCam_20270203_211509_part08.mp4",
+        "startOffsetMs": 2100000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 9,
+        "fileName": "OOSCam_20270203_211509_part09.mp4",
+        "startOffsetMs": 2400000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 10,
+        "fileName": "OOSCam_20270203_211509_part10.mp4",
+        "startOffsetMs": 2700000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 11,
+        "fileName": "OOSCam_20270203_211509_part11.mp4",
+        "startOffsetMs": 3000000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 12,
+        "fileName": "OOSCam_20270203_211509_part12.mp4",
+        "startOffsetMs": 3300000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 13,
+        "fileName": "OOSCam_20270203_211509_part13.mp4",
+        "startOffsetMs": 3600000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 14,
+        "fileName": "OOSCam_20270203_211509_part14.mp4",
+        "startOffsetMs": 3900000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 15,
+        "fileName": "OOSCam_20270203_211509_part15.mp4",
+        "startOffsetMs": 4200000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 16,
+        "fileName": "OOSCam_20270203_211509_part16.mp4",
+        "startOffsetMs": 4500000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 17,
+        "fileName": "OOSCam_20270203_211509_part17.mp4",
+        "startOffsetMs": 4800000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 18,
+        "fileName": "OOSCam_20270203_211509_part18.mp4",
+        "startOffsetMs": 5100000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 19,
+        "fileName": "OOSCam_20270203_211509_part19.mp4",
+        "startOffsetMs": 5400000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 20,
+        "fileName": "OOSCam_20270203_211509_part20.mp4",
+        "startOffsetMs": 5700000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 21,
+        "fileName": "OOSCam_20270203_211509_part21.mp4",
+        "startOffsetMs": 6000000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 22,
+        "fileName": "OOSCam_20270203_211509_part22.mp4",
+        "startOffsetMs": 6300000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 23,
+        "fileName": "OOSCam_20270203_211509_part23.mp4",
+        "startOffsetMs": 6600000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 24,
+        "fileName": "OOSCam_20270203_211509_part24.mp4",
+        "startOffsetMs": 6900000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 25,
+        "fileName": "OOSCam_20270203_211509_part25.mp4",
+        "startOffsetMs": 7200000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 26,
+        "fileName": "OOSCam_20270203_211509_part26.mp4",
+        "startOffsetMs": 7500000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 27,
+        "fileName": "OOSCam_20270203_211509_part27.mp4",
+        "startOffsetMs": 7800000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 28,
+        "fileName": "OOSCam_20270203_211509_part28.mp4",
+        "startOffsetMs": 8100000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 29,
+        "fileName": "OOSCam_20270203_211509_part29.mp4",
+        "startOffsetMs": 8400000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 30,
+        "fileName": "OOSCam_20270203_211509_part30.mp4",
+        "startOffsetMs": 8700000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 31,
+        "fileName": "OOSCam_20270203_211509_part31.mp4",
+        "startOffsetMs": 9000000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 32,
+        "fileName": "OOSCam_20270203_211509_part32.mp4",
+        "startOffsetMs": 9300000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 33,
+        "fileName": "OOSCam_20270203_211509_part33.mp4",
+        "startOffsetMs": 9600000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 34,
+        "fileName": "OOSCam_20270203_211509_part34.mp4",
+        "startOffsetMs": 9900000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 35,
+        "fileName": "OOSCam_20270203_211509_part35.mp4",
+        "startOffsetMs": 10200000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 36,
+        "fileName": "OOSCam_20270203_211509_part36.mp4",
+        "startOffsetMs": 10500000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 37,
+        "fileName": "OOSCam_20270203_211509_part37.mp4",
+        "startOffsetMs": 10800000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 38,
+        "fileName": "OOSCam_20270203_211509_part38.mp4",
+        "startOffsetMs": 11100000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 39,
+        "fileName": "OOSCam_20270203_211509_part39.mp4",
+        "startOffsetMs": 11400000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 40,
+        "fileName": "OOSCam_20270203_211509_part40.mp4",
+        "startOffsetMs": 11700000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 41,
+        "fileName": "OOSCam_20270203_211509_part41.mp4",
+        "startOffsetMs": 12000000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 42,
+        "fileName": "OOSCam_20270203_211509_part42.mp4",
+        "startOffsetMs": 12300000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 43,
+        "fileName": "OOSCam_20270203_211509_part43.mp4",
+        "startOffsetMs": 12600000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 44,
+        "fileName": "OOSCam_20270203_211509_part44.mp4",
+        "startOffsetMs": 12900000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 45,
+        "fileName": "OOSCam_20270203_211509_part45.mp4",
+        "startOffsetMs": 13200000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 46,
+        "fileName": "OOSCam_20270203_211509_part46.mp4",
+        "startOffsetMs": 13500000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 47,
+        "fileName": "OOSCam_20270203_211509_part47.mp4",
+        "startOffsetMs": 13800000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 48,
+        "fileName": "OOSCam_20270203_211509_part48.mp4",
+        "startOffsetMs": 14100000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 49,
+        "fileName": "OOSCam_20270203_211509_part49.mp4",
+        "startOffsetMs": 14400000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 50,
+        "fileName": "OOSCam_20270203_211509_part50.mp4",
+        "startOffsetMs": 14700000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 51,
+        "fileName": "OOSCam_20270203_211509_part51.mp4",
+        "startOffsetMs": 15000000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 52,
+        "fileName": "OOSCam_20270203_211509_part52.mp4",
+        "startOffsetMs": 15300000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 53,
+        "fileName": "OOSCam_20270203_211509_part53.mp4",
+        "startOffsetMs": 15600000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 54,
+        "fileName": "OOSCam_20270203_211509_part54.mp4",
+        "startOffsetMs": 15900000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 55,
+        "fileName": "OOSCam_20270203_211509_part55.mp4",
+        "startOffsetMs": 16200000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 56,
+        "fileName": "OOSCam_20270203_211509_part56.mp4",
+        "startOffsetMs": 16500000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 57,
+        "fileName": "OOSCam_20270203_211509_part57.mp4",
+        "startOffsetMs": 16800000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 58,
+        "fileName": "OOSCam_20270203_211509_part58.mp4",
+        "startOffsetMs": 17100000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 59,
+        "fileName": "OOSCam_20270203_211509_part59.mp4",
+        "startOffsetMs": 17400000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 60,
+        "fileName": "OOSCam_20270203_211509_part60.mp4",
+        "startOffsetMs": 17700000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 61,
+        "fileName": "OOSCam_20270203_211509_part61.mp4",
+        "startOffsetMs": 18000000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 62,
+        "fileName": "OOSCam_20270203_211509_part62.mp4",
+        "startOffsetMs": 18300000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 63,
+        "fileName": "OOSCam_20270203_211509_part63.mp4",
+        "startOffsetMs": 18600000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 64,
+        "fileName": "OOSCam_20270203_211509_part64.mp4",
+        "startOffsetMs": 18900000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 65,
+        "fileName": "OOSCam_20270203_211509_part65.mp4",
+        "startOffsetMs": 19200000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 66,
+        "fileName": "OOSCam_20270203_211509_part66.mp4",
+        "startOffsetMs": 19500000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 67,
+        "fileName": "OOSCam_20270203_211509_part67.mp4",
+        "startOffsetMs": 19800000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 68,
+        "fileName": "OOSCam_20270203_211509_part68.mp4",
+        "startOffsetMs": 20100000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 69,
+        "fileName": "OOSCam_20270203_211509_part69.mp4",
+        "startOffsetMs": 20400000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 70,
+        "fileName": "OOSCam_20270203_211509_part70.mp4",
+        "startOffsetMs": 20700000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 71,
+        "fileName": "OOSCam_20270203_211509_part71.mp4",
+        "startOffsetMs": 21000000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 72,
+        "fileName": "OOSCam_20270203_211509_part72.mp4",
+        "startOffsetMs": 21300000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 73,
+        "fileName": "OOSCam_20270203_211509_part73.mp4",
+        "startOffsetMs": 21600000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 74,
+        "fileName": "OOSCam_20270203_211509_part74.mp4",
+        "startOffsetMs": 21900000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 75,
+        "fileName": "OOSCam_20270203_211509_part75.mp4",
+        "startOffsetMs": 22200000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 76,
+        "fileName": "OOSCam_20270203_211509_part76.mp4",
+        "startOffsetMs": 22500000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 77,
+        "fileName": "OOSCam_20270203_211509_part77.mp4",
+        "startOffsetMs": 22800000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 78,
+        "fileName": "OOSCam_20270203_211509_part78.mp4",
+        "startOffsetMs": 23100000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 79,
+        "fileName": "OOSCam_20270203_211509_part79.mp4",
+        "startOffsetMs": 23400000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 80,
+        "fileName": "OOSCam_20270203_211509_part80.mp4",
+        "startOffsetMs": 23700000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 81,
+        "fileName": "OOSCam_20270203_211509_part81.mp4",
+        "startOffsetMs": 24000000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 82,
+        "fileName": "OOSCam_20270203_211509_part82.mp4",
+        "startOffsetMs": 24300000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 83,
+        "fileName": "OOSCam_20270203_211509_part83.mp4",
+        "startOffsetMs": 24600000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 84,
+        "fileName": "OOSCam_20270203_211509_part84.mp4",
+        "startOffsetMs": 24900000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 85,
+        "fileName": "OOSCam_20270203_211509_part85.mp4",
+        "startOffsetMs": 25200000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 86,
+        "fileName": "OOSCam_20270203_211509_part86.mp4",
+        "startOffsetMs": 25500000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 87,
+        "fileName": "OOSCam_20270203_211509_part87.mp4",
+        "startOffsetMs": 25800000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 88,
+        "fileName": "OOSCam_20270203_211509_part88.mp4",
+        "startOffsetMs": 26100000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 89,
+        "fileName": "OOSCam_20270203_211509_part89.mp4",
+        "startOffsetMs": 26400000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 90,
+        "fileName": "OOSCam_20270203_211509_part90.mp4",
+        "startOffsetMs": 26700000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 91,
+        "fileName": "OOSCam_20270203_211509_part91.mp4",
+        "startOffsetMs": 27000000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 92,
+        "fileName": "OOSCam_20270203_211509_part92.mp4",
+        "startOffsetMs": 27300000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 93,
+        "fileName": "OOSCam_20270203_211509_part93.mp4",
+        "startOffsetMs": 27600000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 94,
+        "fileName": "OOSCam_20270203_211509_part94.mp4",
+        "startOffsetMs": 27900000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 95,
+        "fileName": "OOSCam_20270203_211509_part95.mp4",
+        "startOffsetMs": 28200000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 96,
+        "fileName": "OOSCam_20270203_211509_part96.mp4",
+        "startOffsetMs": 28500000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 97,
+        "fileName": "OOSCam_20270203_211509_part97.mp4",
+        "startOffsetMs": 28800000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 98,
+        "fileName": "OOSCam_20270203_211509_part98.mp4",
+        "startOffsetMs": 29100000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 99,
+        "fileName": "OOSCam_20270203_211509_part99.mp4",
+        "startOffsetMs": 29400000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 100,
+        "fileName": "OOSCam_20270203_211509_part100.mp4",
+        "startOffsetMs": 29700000,
+        "durationMs": 300000,
+        "estimatedBytes": 300000000
+      },
+      {
+        "index": 101,
+        "fileName": "OOSCam_20270203_211509_part101.mp4",
+        "startOffsetMs": 30000000,
+        "durationMs": 180000,
+        "estimatedBytes": 180000000
+      }
+    ]
+  },
+  {
+    "id": "S09",
+    "stopReason": "user",
+    "endMs": 37035,
+    "bytesPerMs": 2016,
+    "segments": [
+      {
+        "index": 1,
+        "fileName": "OOSCam_20270203_211509_part01.mp4",
+        "startOffsetMs": 0,
+        "durationMs": 37035,
+        "estimatedBytes": 74662560
+      }
+    ]
+  }
+]

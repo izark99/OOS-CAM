@@ -1,0 +1,623 @@
+[
+  {
+    "id": "X01",
+    "ok": true,
+    "errors": [],
+    "warnings": [],
+    "trimmedSourceMs": 150000,
+    "outputDurationMs": 135000,
+    "parts": [
+      {
+        "clipOrder": 0,
+        "srcStartMs": 2000,
+        "srcEndMs": 30000,
+        "speed": "1",
+        "outStartMs": 0,
+        "outDurationMs": 28000
+      },
+      {
+        "clipOrder": 0,
+        "srcStartMs": 30000,
+        "srcEndMs": 60000,
+        "speed": "2",
+        "outStartMs": 28000,
+        "outDurationMs": 15000
+      },
+      {
+        "clipOrder": 0,
+        "srcStartMs": 60000,
+        "srcEndMs": 92000,
+        "speed": "1",
+        "outStartMs": 43000,
+        "outDurationMs": 32000
+      },
+      {
+        "clipOrder": 1,
+        "srcStartMs": 1500,
+        "srcEndMs": 61500,
+        "speed": "1",
+        "outStartMs": 75000,
+        "outDurationMs": 60000
+      }
+    ],
+    "audio": false,
+    "exportHeight": 1080
+  },
+  {
+    "id": "X02",
+    "ok": true,
+    "errors": [],
+    "warnings": [],
+    "trimmedSourceMs": 500,
+    "outputDurationMs": 500,
+    "parts": [
+      {
+        "clipOrder": 0,
+        "srcStartMs": 1000,
+        "srcEndMs": 1500,
+        "speed": "1",
+        "outStartMs": 0,
+        "outDurationMs": 500
+      }
+    ],
+    "audio": true,
+    "exportHeight": 1080
+  },
+  {
+    "id": "X03",
+    "ok": false,
+    "errors": [
+      "E6"
+    ],
+    "warnings": [],
+    "trimmedSourceMs": 499,
+    "outputDurationMs": null,
+    "parts": [],
+    "audio": true,
+    "exportHeight": 1080
+  },
+  {
+    "id": "X04",
+    "ok": true,
+    "errors": [],
+    "warnings": [],
+    "trimmedSourceMs": 122500,
+    "outputDurationMs": 122500,
+    "parts": [
+      {
+        "clipOrder": 0,
+        "srcStartMs": 0,
+        "srcEndMs": 10000,
+        "speed": "1",
+        "outStartMs": 0,
+        "outDurationMs": 10000
+      },
+      {
+        "clipOrder": 1,
+        "srcStartMs": 0,
+        "srcEndMs": 10500,
+        "speed": "1",
+        "outStartMs": 10000,
+        "outDurationMs": 10500
+      },
+      {
+        "clipOrder": 2,
+        "srcStartMs": 0,
+        "srcEndMs": 11000,
+        "speed": "1",
+        "outStartMs": 20500,
+        "outDurationMs": 11000
+      },
+      {
+        "clipOrder": 3,
+        "srcStartMs": 0,
+        "srcEndMs": 11500,
+        "speed": "1",
+        "outStartMs": 31500,
+        "outDurationMs": 11500
+      },
+      {
+        "clipOrder": 4,
+        "srcStartMs": 0,
+        "srcEndMs": 12000,
+        "speed": "1",
+        "outStartMs": 43000,
+        "outDurationMs": 12000
+      },
+      {
+        "clipOrder": 5,
+        "srcStartMs": 0,
+        "srcEndMs": 12500,
+        "speed": "1",
+        "outStartMs": 55000,
+        "outDurationMs": 12500
+      },
+      {
+        "clipOrder": 6,
+        "srcStartMs": 0,
+        "srcEndMs": 13000,
+        "speed": "1",
+        "outStartMs": 67500,
+        "outDurationMs": 13000
+      },
+      {
+        "clipOrder": 7,
+        "srcStartMs": 0,
+        "srcEndMs": 13500,
+        "speed": "1",
+        "outStartMs": 80500,
+        "outDurationMs": 13500
+      },
+      {
+        "clipOrder": 8,
+        "srcStartMs": 0,
+        "srcEndMs": 14000,
+        "speed": "1",
+        "outStartMs": 94000,
+        "outDurationMs": 14000
+      },
+      {
+        "clipOrder": 9,
+        "srcStartMs": 0,
+        "srcEndMs": 14500,
+        "speed": "1",
+        "outStartMs": 108000,
+        "outDurationMs": 14500
+      }
+    ],
+    "audio": true,
+    "exportHeight": 1080
+  },
+  {
+    "id": "X05",
+    "ok": false,
+    "errors": [
+      "E1"
+    ],
+    "warnings": [],
+    "trimmedSourceMs": 110000,
+    "outputDurationMs": null,
+    "parts": [],
+    "audio": true,
+    "exportHeight": 1080
+  },
+  {
+    "id": "X06",
+    "ok": true,
+    "errors": [],
+    "warnings": [],
+    "trimmedSourceMs": 1800000,
+    "outputDurationMs": 1800000,
+    "parts": [
+      {
+        "clipOrder": 0,
+        "srcStartMs": 100000,
+        "srcEndMs": 700000,
+        "speed": "1",
+        "outStartMs": 0,
+        "outDurationMs": 600000
+      },
+      {
+        "clipOrder": 1,
+        "srcStartMs": 0,
+        "srcEndMs": 900000,
+        "speed": "1",
+        "outStartMs": 600000,
+        "outDurationMs": 900000
+      },
+      {
+        "clipOrder": 2,
+        "srcStartMs": 1,
+        "srcEndMs": 300001,
+        "speed": "1",
+        "outStartMs": 1500000,
+        "outDurationMs": 300000
+      }
+    ],
+    "audio": true,
+    "exportHeight": 1080
+  },
+  {
+    "id": "X07",
+    "ok": false,
+    "errors": [
+      "E2",
+      "E5"
+    ],
+    "warnings": [],
+    "trimmedSourceMs": 1800001,
+    "outputDurationMs": null,
+    "parts": [],
+    "audio": true,
+    "exportHeight": 1080
+  },
+  {
+    "id": "X08",
+    "ok": false,
+    "errors": [
+      "E5"
+    ],
+    "warnings": [],
+    "trimmedSourceMs": 450001,
+    "outputDurationMs": null,
+    "parts": [],
+    "audio": true,
+    "exportHeight": 1080
+  },
+  {
+    "id": "X09",
+    "ok": true,
+    "errors": [],
+    "warnings": [],
+    "trimmedSourceMs": 450000,
+    "outputDurationMs": 1800000,
+    "parts": [
+      {
+        "clipOrder": 0,
+        "srcStartMs": 10000,
+        "srcEndMs": 460000,
+        "speed": "0.25",
+        "outStartMs": 0,
+        "outDurationMs": 1800000
+      }
+    ],
+    "audio": true,
+    "exportHeight": 1080
+  },
+  {
+    "id": "X10",
+    "ok": true,
+    "errors": [],
+    "warnings": [],
+    "trimmedSourceMs": 50000,
+    "outputDurationMs": 48914,
+    "parts": [
+      {
+        "clipOrder": 0,
+        "srcStartMs": 0,
+        "srcEndMs": 1000,
+        "speed": "1",
+        "outStartMs": 0,
+        "outDurationMs": 1000
+      },
+      {
+        "clipOrder": 0,
+        "srcStartMs": 1000,
+        "srcEndMs": 2000,
+        "speed": "1.5",
+        "outStartMs": 1000,
+        "outDurationMs": 667
+      },
+      {
+        "clipOrder": 0,
+        "srcStartMs": 2000,
+        "srcEndMs": 3000,
+        "speed": "1",
+        "outStartMs": 1667,
+        "outDurationMs": 1000
+      },
+      {
+        "clipOrder": 0,
+        "srcStartMs": 3000,
+        "srcEndMs": 4001,
+        "speed": "1.5",
+        "outStartMs": 2667,
+        "outDurationMs": 667
+      },
+      {
+        "clipOrder": 0,
+        "srcStartMs": 4001,
+        "srcEndMs": 5000,
+        "speed": "1",
+        "outStartMs": 3334,
+        "outDurationMs": 999
+      },
+      {
+        "clipOrder": 0,
+        "srcStartMs": 5000,
+        "srcEndMs": 5003,
+        "speed": "2",
+        "outStartMs": 4333,
+        "outDurationMs": 2
+      },
+      {
+        "clipOrder": 0,
+        "srcStartMs": 5003,
+        "srcEndMs": 6000,
+        "speed": "1",
+        "outStartMs": 4335,
+        "outDurationMs": 997
+      },
+      {
+        "clipOrder": 0,
+        "srcStartMs": 6000,
+        "srcEndMs": 7001,
+        "speed": "4",
+        "outStartMs": 5332,
+        "outDurationMs": 250
+      },
+      {
+        "clipOrder": 0,
+        "srcStartMs": 7001,
+        "srcEndMs": 10000,
+        "speed": "1",
+        "outStartMs": 5582,
+        "outDurationMs": 2999
+      },
+      {
+        "clipOrder": 0,
+        "srcStartMs": 10000,
+        "srcEndMs": 10333,
+        "speed": "0.5",
+        "outStartMs": 8581,
+        "outDurationMs": 666
+      },
+      {
+        "clipOrder": 0,
+        "srcStartMs": 10333,
+        "srcEndMs": 50000,
+        "speed": "1",
+        "outStartMs": 9247,
+        "outDurationMs": 39667
+      }
+    ],
+    "audio": true,
+    "exportHeight": 1080
+  },
+  {
+    "id": "X11",
+    "ok": true,
+    "errors": [],
+    "warnings": [],
+    "trimmedSourceMs": 20000,
+    "outputDurationMs": 17500,
+    "parts": [
+      {
+        "clipOrder": 0,
+        "srcStartMs": 5000,
+        "srcEndMs": 10000,
+        "speed": "2",
+        "outStartMs": 0,
+        "outDurationMs": 2500
+      },
+      {
+        "clipOrder": 0,
+        "srcStartMs": 10000,
+        "srcEndMs": 25000,
+        "speed": "1",
+        "outStartMs": 2500,
+        "outDurationMs": 15000
+      }
+    ],
+    "audio": true,
+    "exportHeight": 1080
+  },
+  {
+    "id": "X12",
+    "ok": true,
+    "errors": [],
+    "warnings": [
+      "W1"
+    ],
+    "trimmedSourceMs": 20000,
+    "outputDurationMs": 20000,
+    "parts": [
+      {
+        "clipOrder": 0,
+        "srcStartMs": 5000,
+        "srcEndMs": 25000,
+        "speed": "1",
+        "outStartMs": 0,
+        "outDurationMs": 20000
+      }
+    ],
+    "audio": true,
+    "exportHeight": 1080
+  },
+  {
+    "id": "X13",
+    "ok": false,
+    "errors": [
+      "E3"
+    ],
+    "warnings": [],
+    "trimmedSourceMs": 30000,
+    "outputDurationMs": null,
+    "parts": [],
+    "audio": true,
+    "exportHeight": 1080
+  },
+  {
+    "id": "X14",
+    "ok": false,
+    "errors": [
+      "E4"
+    ],
+    "warnings": [],
+    "trimmedSourceMs": 30000,
+    "outputDurationMs": null,
+    "parts": [],
+    "audio": true,
+    "exportHeight": 1080
+  },
+  {
+    "id": "X15",
+    "ok": true,
+    "errors": [],
+    "warnings": [
+      "W2"
+    ],
+    "trimmedSourceMs": 30000,
+    "outputDurationMs": 30000,
+    "parts": [
+      {
+        "clipOrder": 0,
+        "srcStartMs": 0,
+        "srcEndMs": 20000,
+        "speed": "1",
+        "outStartMs": 0,
+        "outDurationMs": 20000
+      },
+      {
+        "clipOrder": 1,
+        "srcStartMs": 0,
+        "srcEndMs": 10000,
+        "speed": "1",
+        "outStartMs": 20000,
+        "outDurationMs": 10000
+      }
+    ],
+    "audio": true,
+    "exportHeight": 720
+  },
+  {
+    "id": "X16",
+    "ok": true,
+    "errors": [],
+    "warnings": [],
+    "trimmedSourceMs": 40000,
+    "outputDurationMs": 35000,
+    "parts": [
+      {
+        "clipOrder": 0,
+        "srcStartMs": 0,
+        "srcEndMs": 10000,
+        "speed": "1",
+        "outStartMs": 0,
+        "outDurationMs": 10000
+      },
+      {
+        "clipOrder": 0,
+        "srcStartMs": 10000,
+        "srcEndMs": 20001,
+        "speed": "2",
+        "outStartMs": 10000,
+        "outDurationMs": 5001
+      },
+      {
+        "clipOrder": 0,
+        "srcStartMs": 20001,
+        "srcEndMs": 40000,
+        "speed": "1",
+        "outStartMs": 15001,
+        "outDurationMs": 19999
+      }
+    ],
+    "audio": true,
+    "exportHeight": 1080
+  },
+  {
+    "id": "X17",
+    "ok": false,
+    "errors": [
+      "E6"
+    ],
+    "warnings": [],
+    "trimmedSourceMs": 30001,
+    "outputDurationMs": null,
+    "parts": [],
+    "audio": true,
+    "exportHeight": 1080
+  },
+  {
+    "id": "X18",
+    "ok": false,
+    "errors": [
+      "E7"
+    ],
+    "warnings": [],
+    "trimmedSourceMs": 30000,
+    "outputDurationMs": null,
+    "parts": [],
+    "audio": true,
+    "exportHeight": 1080
+  },
+  {
+    "id": "X19",
+    "ok": true,
+    "errors": [],
+    "warnings": [],
+    "trimmedSourceMs": 5001,
+    "outputDurationMs": 5001,
+    "parts": [
+      {
+        "clipOrder": 0,
+        "srcStartMs": 1000,
+        "srcEndMs": 2001,
+        "speed": "1",
+        "outStartMs": 0,
+        "outDurationMs": 1001
+      },
+      {
+        "clipOrder": 1,
+        "srcStartMs": 500,
+        "srcEndMs": 1500,
+        "speed": "1",
+        "outStartMs": 1001,
+        "outDurationMs": 1000
+      },
+      {
+        "clipOrder": 2,
+        "srcStartMs": 0,
+        "srcEndMs": 3000,
+        "speed": "1",
+        "outStartMs": 2001,
+        "outDurationMs": 3000
+      }
+    ],
+    "audio": true,
+    "exportHeight": 1080
+  },
+  {
+    "id": "X20",
+    "ok": true,
+    "errors": [],
+    "warnings": [],
+    "trimmedSourceMs": 60001,
+    "outputDurationMs": 60001,
+    "parts": [
+      {
+        "clipOrder": 0,
+        "srcStartMs": 0,
+        "srcEndMs": 8000,
+        "speed": "4",
+        "outStartMs": 0,
+        "outDurationMs": 2000
+      },
+      {
+        "clipOrder": 0,
+        "srcStartMs": 8000,
+        "srcEndMs": 40000,
+        "speed": "1",
+        "outStartMs": 2000,
+        "outDurationMs": 32000
+      },
+      {
+        "clipOrder": 1,
+        "srcStartMs": 10000,
+        "srcEndMs": 12000,
+        "speed": "1",
+        "outStartMs": 34000,
+        "outDurationMs": 2000
+      },
+      {
+        "clipOrder": 1,
+        "srcStartMs": 12000,
+        "srcEndMs": 18000,
+        "speed": "0.5",
+        "outStartMs": 36000,
+        "outDurationMs": 12000
+      },
+      {
+        "clipOrder": 1,
+        "srcStartMs": 18000,
+        "srcEndMs": 30001,
+        "speed": "1",
+        "outStartMs": 48000,
+        "outDurationMs": 12001
+      }
+    ],
+    "audio": true,
+    "exportHeight": 1080
+  }
+]
