@@ -5,4 +5,15 @@
     <string name="capture_notification_title">Recording</string>
     <string name="capture_notification_segment">Segment %1$d</string>
     <string name="capture_notification_stop">Stop</string>
+    <string name="camera_record">Record</string>
+    <string name="camera_screen_off">Screen off</string>
+    <string name="camera_mic">Microphone</string>
+    <string name="camera_elapsed">Elapsed %1$s</string>
+    <string name="camera_mic_off_toast">Microphone permission denied. Recording without sound.</string>
+    <string name="camera_notification_banner">Notifications are off. Recording works, but the recording notification may be hidden.</string>
+    <string name="permission_sheet_title">Camera access needed</string>
+    <string name="permission_reason_camera">Camera: needed to record video.</string>
+    <string name="permission_reason_mic">Microphone: records sound with the video. Optional.</string>
+    <string name="permission_reason_notifications">Notifications: show the recording notification with its Stop button.</string>
+    <string name="permission_open_settings">Open settings</string>
 </resources>
