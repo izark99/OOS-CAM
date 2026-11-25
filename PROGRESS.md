@@ -16,7 +16,7 @@ STATUS: PHASE 1 IN PROGRESS
 
 - [x] T1.1 `:core` models: `EditProject`, `ProjectClip`, `SpeedRange`, `ExportPlan`, `PlanPart`, `RecordingInput`, `SegmentPlan` with kotlinx-serialization matching `testcase/` JSON shapes.
 - [x] T1.2 `planExport` tier 1: order, trim validation (E6), trimmed sum (E2), clip count (E1).
-- [ ] T1.3 `planExport` tier 2: range clipping (W1), E3, E4, E7, part splitting, equal-speed merge, round half up with exact integer math.
+- [x] T1.3 `planExport` tier 2: range clipping (W1), E3, E4, E7, part splitting, equal-speed merge, round half up with exact integer math.
 - [ ] T1.4 `planExport` tier 3: E5, audio, export height (W2), error result shape (R11).
 - [ ] T1.5 `planSegments`: bitrate presets, time and SD size caps, low-storage stop, stop reason tie rule, file names (R12–R14).
 - [ ] T1.6 `runFixtures` writes real results; `python3 testcase/run_acceptance.py --suite core` passes for base and v2.
@@ -99,3 +99,4 @@ None.
 - 2026-11-25: Phase 0 PR #1 merged into main (efce24f). Phase 1 started in the same session at the owner's request (PROMPT.md normally wants a new session).
 - 2026-11-25: T1.1 :core models (EditProject, ProjectClip, SpeedRange, ExportPlan, PlanPart, RecordingInput, SegmentPlan) with strict kotlinx-serialization (speed read as exact decimal, nulls and defaults written); 6 tests.
 - 2026-11-25: T1.2 planExport tier 1 (R1 order, R2/E6 trim validation, R3 trimmed sum, E1 clip count, R9 audio); 12 tests.
+- 2026-11-25: T1.3 planExport tier 2 (R4 range clipping and W1, E7, E4, E3, R5b part splitting and equal-speed merge before rounding, R7 exact half-up rounding with BigDecimal); 19 tests.
