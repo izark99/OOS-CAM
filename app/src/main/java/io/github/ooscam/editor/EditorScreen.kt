@@ -10,6 +10,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
+import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Switch
@@ -24,6 +25,7 @@ import io.github.ooscam.R
 import io.github.ooscam.camera.formatElapsed
 import io.github.ooscam.core.ProjectClip
 import io.github.ooscam.core.SpeedRange
+import io.github.ooscam.export.ExportState
 import java.math.BigDecimal
 
 /** Speeds offered in the editor (SPEC E3); planExport rejects anything else with E4. */
@@ -55,6 +57,10 @@ fun EditorScreen(
     onBack: () -> Unit,
     onImport: () -> Unit,
     onExport: () -> Unit,
+    exportState: ExportState = ExportState.Idle,
+    onCancelExport: () -> Unit = {},
+    onOpenResult: (String) -> Unit = {},
+    onDismissExport: () -> Unit = {},
 ) {
     val project = state.project
     val clips = project.clips.sortedBy { it.order }
@@ -86,7 +92,45 @@ fun EditorScreen(
         item {
             Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 state.plan.outputDurationMs?.let { Text(stringResource(R.string.editor_output, formatElapsed(it))) }
-                Button(onClick = onExport, enabled = state.canExport) { Text(stringResource(R.string.editor_export)) }
+                Button(onClick = onExport, enabled = state.canExport && exportState !is ExportState.Running) {
+                    Text(stringResource(R.string.editor_export))
+                }
+            }
+        }
+        if (exportState != ExportState.Idle) item { ExportPanel(exportState, onExport, onCancelExport, onOpenResult, onDismissExport) }
+    }
+}
+
+/** Interim export sheet (SPEC E5): progress with cancel, open the result, retry after an error. */
+@Composable
+private fun ExportPanel(state: ExportState, onRetry: () -> Unit, onCancel: () -> Unit, onOpen: (String) -> Unit, onDismiss: () -> Unit) {
+    Card {
+        Column(Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            when (state) {
+                is ExportState.Running -> {
+                    Text(stringResource(R.string.export_progress, state.percent))
+                    LinearProgressIndicator(progress = { state.percent / 100f })
+                    OutlinedButton(onClick = onCancel) { Text(stringResource(R.string.export_cancel)) }
+                }
+                is ExportState.Done -> {
+                    Text(stringResource(R.string.export_done))
+                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        Button(onClick = { onOpen(state.uri) }) { Text(stringResource(R.string.export_open)) }
+                        TextButton(onClick = onDismiss) { Text(stringResource(R.string.export_close)) }
+                    }
+                }
+                is ExportState.Failed -> {
+                    Text(stringResource(R.string.export_failed, state.code), color = MaterialTheme.colorScheme.error)
+                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        Button(onClick = onRetry) { Text(stringResource(R.string.export_retry)) }
+                        TextButton(onClick = onDismiss) { Text(stringResource(R.string.export_close)) }
+                    }
+                }
+                ExportState.Cancelled -> {
+                    Text(stringResource(R.string.export_cancelled))
+                    TextButton(onClick = onDismiss) { Text(stringResource(R.string.export_close)) }
+                }
+                ExportState.Idle -> Unit
             }
         }
     }

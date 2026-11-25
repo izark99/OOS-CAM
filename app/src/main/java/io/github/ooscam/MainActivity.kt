@@ -26,6 +26,14 @@ import io.github.ooscam.editor.ClipSource
 import io.github.ooscam.editor.EditorScreen
 import io.github.ooscam.editor.EditorViewModel
 import io.github.ooscam.editor.VideoImport
+import io.github.ooscam.export.CompositionMapper
+import io.github.ooscam.export.ExportEngine
+import io.github.ooscam.export.ExportState
+import io.github.ooscam.export.MediaStoreExportPublisher
+import io.github.ooscam.export.TransformerExportRunner
+import java.io.File
+import java.time.LocalDateTime
+import kotlinx.coroutines.delay
 import java.util.UUID
 import io.github.ooscam.library.LibraryIntents
 import io.github.ooscam.library.LibraryRepository
@@ -54,6 +62,9 @@ class MainActivity : ComponentActivity() {
     private val prefs by lazy { getSharedPreferences(PREFS, MODE_PRIVATE) }
     private var screen by mutableStateOf(Screen.CAMERA)
     private var editor by mutableStateOf<EditorViewModel?>(null)
+    private val export by lazy {
+        ExportEngine(TransformerExportRunner(this, io), MediaStoreExportPublisher(this), File(cacheDir, "export"))
+    }
     private val io = Executors.newSingleThreadExecutor()
     private val library by lazy {
         LibraryViewModel(
@@ -141,7 +152,25 @@ class MainActivity : ComponentActivity() {
     private fun Editor() {
         val vm = editor ?: return
         val state by vm.state.collectAsState()
-        EditorScreen(state = state, vm = vm, onBack = { screen = Screen.LIBRARY }, onImport = { startImport(newProject = false) }, onExport = {})
+        val exportState by export.state.collectAsState()
+        LaunchedEffect(exportState is ExportState.Running) {
+            while (export.state.value is ExportState.Running) {
+                export.pollProgress()
+                delay(PROGRESS_POLL_MS)
+            }
+        }
+        EditorScreen(
+            state = state,
+            vm = vm,
+            onBack = { screen = Screen.LIBRARY },
+            onImport = { startImport(newProject = false) },
+            // The plan is the one :core computed for this exact project; the map only resolves clip order to a URI.
+            onExport = { export.start(state.plan, CompositionMapper.sourceUris(state.project), LocalDateTime.now()) },
+            exportState = exportState,
+            onCancelExport = export::cancel,
+            onOpenResult = { startActivity(LibraryIntents.play(it)) },
+            onDismissExport = export::reset,
+        )
     }
 
     private fun editSelected() {
@@ -229,6 +258,7 @@ class MainActivity : ComponentActivity() {
 
     private companion object {
         const val PREFS = "camera"
+        const val PROGRESS_POLL_MS = 250L
         const val KEY_MIC_TOAST = "mic_off_toast_shown"
     }
 }

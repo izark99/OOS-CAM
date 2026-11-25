@@ -67,4 +67,12 @@
     <string name="editor_msg_w2">A clip is below 1080p, so the export is 720p.</string>
     <string name="editor_msg_unknown">This project cannot be exported.</string>
     <string name="editor_import_skipped">Some videos could not be read and were skipped.</string>
+    <string name="export_progress">Exporting… %1$d%%</string>
+    <string name="export_cancel">Cancel</string>
+    <string name="export_done">Saved to Movies/OOS Cam.</string>
+    <string name="export_open">Open</string>
+    <string name="export_close">Close</string>
+    <string name="export_failed">Export failed (%1$s).</string>
+    <string name="export_retry">Retry</string>
+    <string name="export_cancelled">Export cancelled.</string>
 </resources>

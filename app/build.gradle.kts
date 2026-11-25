@@ -68,10 +68,10 @@ dependencies {
     implementation(libs.androidx.room.ktx)
     ksp(libs.androidx.room.compiler)
 
-    // Spike only (Phase 0): debug builds, thrown away after the spike.
-    debugImplementation(libs.androidx.media3.common)
-    debugImplementation(libs.androidx.media3.effect)
-    debugImplementation(libs.androidx.media3.transformer)
+    // Export (Phase 3); the Phase 0 spike uses it too.
+    implementation(libs.androidx.media3.common)
+    implementation(libs.androidx.media3.effect)
+    implementation(libs.androidx.media3.transformer)
 }
 
 dependencies {
