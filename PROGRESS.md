@@ -31,7 +31,7 @@ STATUS: PHASE 2 IN PROGRESS
 - [x] T2.5 Permission flow: camera, mic (optional), notifications; behaviour per `docs/SPEC.md` permissions matrix.
 - [x] T2.6 Storage targets: MediaStore `Movies/OOS Cam`, SD card via SAF tree URI; segment names from `:core`.
 - [x] T2.7 Room: `RecordingSession`, `Segment` tables, schema exported to `app/schemas/`, migration test scaffold.
-- [ ] T2.8 Robolectric tests named `*Capture*Test` for the service state machine, notification content, stop reasons and storage target choice (≥ 15 tests).
+- [x] T2.8 Robolectric tests named `*Capture*Test` for the service state machine, notification content, stop reasons and storage target choice (≥ 15 tests).
 
 ## Phase 3: Library + editor (gate G3)
 
@@ -114,3 +114,4 @@ None.
 - 2026-11-25: T2.5 CapturePermissionPolicy (first Record tap asks only missing camera, mic if wanted, notifications on 13+; camera denied blocks with the permission sheet; mic denied records with mic off and a toast once; notifications denied records with a banner); interim camera screen with Record/Stop, mic toggle, Screen off overlay, elapsed time and segment; 8 tests (45 Capture tests).
 - 2026-11-25: T2.6 storage targets: MediaStore Movies/OOS Cam (pending insert, file descriptor output, published after finalize even if damaged), SD folder via SAF tree URI with persisted grant (createDocument per segment), chooser falls back to device when no folder or no write grant, free space measured on the SD volume with fstatvfs; names from core; storage open failure ends the session with error; picker button on the interim camera screen; 9 tests (54 Capture tests).
 - 2026-11-25: T2.7 Room v1 (recording_session, segment with cascade delete; SPEC fields only, EditProject tables wait for T3.7), schema exported to app/schemas/io.github.ooscam.data.OOSCamDatabase/1.json, MigrationTestHelper scaffold under Robolectric; the service writes the session at start, each finalized segment, and the stop reason (core wireName); 6 tests (60 Capture tests).
+- 2026-11-25: T2.8 CaptureServiceStopReasonsTest (notification segment number after rollover, Stop action PendingIntent targets the service, engine error stops with error and removes the notification, first stop reason kept at service level, phone call active at start, stop without session, duplicate start); written after the code, so checked with a mutation (notification fixed to segment 1): the test failed, code restored. 67 Capture tests in 10 classes.
