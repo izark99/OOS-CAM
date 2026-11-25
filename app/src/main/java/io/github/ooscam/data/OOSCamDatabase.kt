@@ -1,6 +1,7 @@
 package io.github.ooscam.data
 
 import android.content.Context
+import androidx.room.AutoMigration
 import androidx.room.ColumnInfo
 import androidx.room.Dao
 import androidx.room.Database
@@ -13,6 +14,7 @@ import androidx.room.PrimaryKey
 import androidx.room.Query
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.migration.Migration
 
 /** One recording session (docs/SPEC.md data model). stopReason is null while recording. */
 @Entity(tableName = "recording_session")
@@ -83,16 +85,36 @@ interface CaptureDao {
     fun deleteFinishedSessionsWithoutSegments()
 }
 
-/** Version 1: capture tables only. Every schema change needs a migration and a migration test. */
-@Database(entities = [RecordingSessionEntity::class, SegmentEntity::class], version = 1, exportSchema = true)
+/**
+ * Version 1: capture tables. Version 2 adds the editor tables (edit_project, project_clip, speed_range);
+ * 1 to 2 only creates tables, so it is a Room auto-migration. Every schema change needs a migration test.
+ */
+@Database(
+    entities = [
+        RecordingSessionEntity::class,
+        SegmentEntity::class,
+        EditProjectEntity::class,
+        ProjectClipEntity::class,
+        SpeedRangeEntity::class,
+    ],
+    version = 2,
+    exportSchema = true,
+    autoMigrations = [AutoMigration(from = 1, to = 2)],
+)
 abstract class OOSCamDatabase : RoomDatabase() {
     abstract fun captureDao(): CaptureDao
 
+    abstract fun projectDao(): ProjectDao
+
     companion object {
+        /** Hand-written migrations (none yet; 1 to 2 is automatic). */
+        val MIGRATIONS: Array<Migration> = emptyArray()
+
         @Volatile private var instance: OOSCamDatabase? = null
 
         fun get(context: Context): OOSCamDatabase = instance ?: synchronized(this) {
             instance ?: Room.databaseBuilder(context.applicationContext, OOSCamDatabase::class.java, "ooscam.db")
+                .addMigrations(*MIGRATIONS)
                 .build()
                 .also { instance = it }
         }

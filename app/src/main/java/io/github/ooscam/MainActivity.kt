@@ -21,6 +21,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.core.content.ContextCompat
 import androidx.core.content.edit
+import io.github.ooscam.core.EditProject
+import io.github.ooscam.core.exportFileName
 import io.github.ooscam.data.OOSCamDatabase
 import io.github.ooscam.editor.ClipSource
 import io.github.ooscam.editor.EditorScreen
@@ -101,7 +103,10 @@ class MainActivity : ComponentActivity() {
                     // Session ended (for example from the notification): leave the black screen.
                     if (capture !is CaptureState.Recording && ui.dimmed) wake()
                 }
-                BackHandler(enabled = screen != Screen.CAMERA) { screen = if (screen == Screen.EDITOR) Screen.LIBRARY else Screen.CAMERA }
+                BackHandler(enabled = screen != Screen.CAMERA) {
+                    if (screen == Screen.EDITOR) editor?.let { saveProject(it.state.value.project) }
+                    screen = if (screen == Screen.EDITOR) Screen.LIBRARY else Screen.CAMERA
+                }
                 when (screen) {
                     Screen.CAMERA -> Camera(capture)
                     Screen.LIBRARY -> Library()
@@ -162,15 +167,29 @@ class MainActivity : ComponentActivity() {
         EditorScreen(
             state = state,
             vm = vm,
-            onBack = { screen = Screen.LIBRARY },
+            onBack = {
+                saveProject(state.project)
+                screen = Screen.LIBRARY
+            },
             onImport = { startImport(newProject = false) },
             // The plan is the one :core computed for this exact project; the map only resolves clip order to a URI.
-            onExport = { export.start(state.plan, CompositionMapper.sourceUris(state.project), LocalDateTime.now()) },
+            onExport = {
+                saveProject(state.project)
+                export.start(state.plan, CompositionMapper.sourceUris(state.project), LocalDateTime.now())
+            },
             exportState = exportState,
             onCancelExport = export::cancel,
             onOpenResult = { startActivity(LibraryIntents.play(it)) },
             onDismissExport = export::reset,
         )
+    }
+
+    /** Room keeps the project (metadata only); the name is the save time until projects can be renamed. */
+    private fun saveProject(project: EditProject) {
+        if (project.clips.isEmpty()) return
+        val dao = OOSCamDatabase.get(this).projectDao()
+        val now = System.currentTimeMillis()
+        io.execute { dao.save(project, name = exportFileName(LocalDateTime.now()).removeSuffix(".mp4"), now = now) }
     }
 
     private fun editSelected() {
