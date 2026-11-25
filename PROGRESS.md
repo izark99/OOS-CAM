@@ -1,6 +1,6 @@
 # Progress
 
-STATUS: PHASE 2 IN PROGRESS
+STATUS: PHASE 2 DONE, PR OPEN
 
 ## Phase 0: Spike + scaffold (gate G0)
 
@@ -115,3 +115,4 @@ None.
 - 2026-11-25: T2.6 storage targets: MediaStore Movies/OOS Cam (pending insert, file descriptor output, published after finalize even if damaged), SD folder via SAF tree URI with persisted grant (createDocument per segment), chooser falls back to device when no folder or no write grant, free space measured on the SD volume with fstatvfs; names from core; storage open failure ends the session with error; picker button on the interim camera screen; 9 tests (54 Capture tests).
 - 2026-11-25: T2.7 Room v1 (recording_session, segment with cascade delete; SPEC fields only, EditProject tables wait for T3.7), schema exported to app/schemas/io.github.ooscam.data.OOSCamDatabase/1.json, MigrationTestHelper scaffold under Robolectric; the service writes the session at start, each finalized segment, and the stop reason (core wireName); 6 tests (60 Capture tests).
 - 2026-11-25: T2.8 CaptureServiceStopReasonsTest (notification segment number after rollover, Stop action PendingIntent targets the service, engine error stops with error and removes the notification, first stop reason kept at service level, phone call active at start, stop without session, duplicate start); written after the code, so checked with a mutation (notification fixed to segment 1): the test failed, code restored. 67 Capture tests in 10 classes.
+- 2026-11-25: Phase 2 done; pull request https://github.com/izark99/OOS-CAM/pull/3 open into main.
