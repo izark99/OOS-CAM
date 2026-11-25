@@ -71,6 +71,16 @@ interface CaptureDao {
 
     @Query("DELETE FROM recording_session WHERE id = :id")
     fun deleteSession(id: String)
+
+    @Query("SELECT * FROM recording_session ORDER BY startedAt DESC")
+    fun allSessions(): List<RecordingSessionEntity>
+
+    @Query("DELETE FROM segment WHERE uri = :uri")
+    fun deleteSegmentByUri(uri: String)
+
+    /** A session still recording (stopReason null) is never removed. */
+    @Query("DELETE FROM recording_session WHERE stopReason IS NOT NULL AND id NOT IN (SELECT sessionId FROM segment)")
+    fun deleteFinishedSessionsWithoutSegments()
 }
 
 /** Version 1: capture tables only. Every schema change needs a migration and a migration test. */

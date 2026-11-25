@@ -1,6 +1,6 @@
 # Progress
 
-STATUS: PHASE 2 DONE, PR OPEN
+STATUS: PHASE 3 IN PROGRESS
 
 ## Phase 0: Spike + scaffold (gate G0)
 
@@ -35,7 +35,7 @@ STATUS: PHASE 2 DONE, PR OPEN
 
 ## Phase 3: Library + editor (gate G3)
 
-- [ ] T3.1 Library data: sessions with grouped segments from Room + MediaStore, damaged detection (unfinalized MP4).
+- [x] T3.1 Library data: sessions with grouped segments from Room + MediaStore, damaged detection (unfinalized MP4).
 - [ ] T3.2 Library screen: grid, play (system player intent), share, delete with confirm, multi-select, "Edit selected".
 - [ ] T3.3 Editor view model holding an `EditProject`; reorder, trim (0.1 s steps), speed ranges, mute; validation messages from `planExport` errors and warnings.
 - [ ] T3.4 Import from the system photo picker (READ_MEDIA_VIDEO only if the picker is unavailable).
@@ -116,3 +116,5 @@ None.
 - 2026-11-25: T2.7 Room v1 (recording_session, segment with cascade delete; SPEC fields only, EditProject tables wait for T3.7), schema exported to app/schemas/io.github.ooscam.data.OOSCamDatabase/1.json, MigrationTestHelper scaffold under Robolectric; the service writes the session at start, each finalized segment, and the stop reason (core wireName); 6 tests (60 Capture tests).
 - 2026-11-25: T2.8 CaptureServiceStopReasonsTest (notification segment number after rollover, Stop action PendingIntent targets the service, engine error stops with error and removes the notification, first stop reason kept at service level, phone call active at start, stop without session, duplicate start); written after the code, so checked with a mutation (notification fixed to segment 1): the test failed, code restored. 67 Capture tests in 10 classes.
 - 2026-11-25: Phase 2 done; pull request https://github.com/izark99/OOS-CAM/pull/3 open into main.
+- 2026-11-25: Phase 3 started (new session from merged main; setup_cloud.sh re-run, Maven Central 429s retried).
+- 2026-11-25: T3.1 LibraryRepository (Room sessions with segments in index order, newest first; files in Movies/OOS Cam not in Room as single groups; SD segments found by URI; missing files hidden), Mp4Probe (top-level box walk, largesize, size 0, truncated boxes; damaged = no complete moov), MediaStoreMediaSource, delete and delete-damaged with Room cleanup; 15 tests.
