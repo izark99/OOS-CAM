@@ -51,8 +51,8 @@ class ExportEngine(private val runner: ExportRunner, private val publisher: Expo
     val state: StateFlow<ExportState> = _state
     private var temp: File? = null
 
-    /** [plan] must be the ExportPlan :core returned; [uriByOrder] only resolves clip order to a source. */
-    fun start(plan: ExportPlan, uriByOrder: Map<Int, String>, now: LocalDateTime) {
+    /** [plan] is the ExportPlan :core returned; the export is built from it alone. */
+    fun start(plan: ExportPlan, now: LocalDateTime) {
         if (_state.value is ExportState.Running) return
         if (!plan.ok) {
             _state.value = ExportState.Failed(plan.errors.joinToString(","))
@@ -60,7 +60,7 @@ class ExportEngine(private val runner: ExportRunner, private val publisher: Expo
         }
         val name = exportFileName(now)
         val file = File(workDir, name).also { it.parentFile?.mkdirs(); it.delete() }
-        val composition = CompositionMapper.map(plan, uriByOrder)
+        val composition = CompositionMapper.map(plan)
         temp = file
         _state.value = ExportState.Running(0)
         runner.start(

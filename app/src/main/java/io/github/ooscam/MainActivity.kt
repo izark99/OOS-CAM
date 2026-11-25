@@ -28,7 +28,6 @@ import io.github.ooscam.editor.ClipSource
 import io.github.ooscam.editor.EditorScreen
 import io.github.ooscam.editor.EditorViewModel
 import io.github.ooscam.editor.VideoImport
-import io.github.ooscam.export.CompositionMapper
 import io.github.ooscam.export.ExportEngine
 import io.github.ooscam.export.ExportState
 import io.github.ooscam.export.MediaStoreExportPublisher
@@ -172,10 +171,10 @@ class MainActivity : ComponentActivity() {
                 screen = Screen.LIBRARY
             },
             onImport = { startImport(newProject = false) },
-            // The plan is the one :core computed for this exact project; the map only resolves clip order to a URI.
+            // The plan is the one :core computed for this project; the export is built from it alone.
             onExport = {
                 saveProject(state.project)
-                export.start(state.plan, CompositionMapper.sourceUris(state.project), LocalDateTime.now())
+                export.start(state.plan, LocalDateTime.now())
             },
             exportState = exportState,
             onCancelExport = export::cancel,

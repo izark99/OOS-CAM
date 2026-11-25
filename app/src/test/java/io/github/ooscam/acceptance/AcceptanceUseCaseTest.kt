@@ -67,7 +67,7 @@ class AcceptanceUseCaseTest {
         assertTrue("editor allows export: ${state.messages}", state.canExport)
 
         // The export path accepts exactly this plan: one Composition item per plan part.
-        val composition = CompositionMapper.map(plan, CompositionMapper.sourceUris(state.project))
+        val composition = CompositionMapper.map(plan)
         assertEquals(plan.parts.size, composition.sequences.single().editedMediaItems.size)
 
         val out = dir("ooscam.acceptanceOut").also { it.mkdirs() }

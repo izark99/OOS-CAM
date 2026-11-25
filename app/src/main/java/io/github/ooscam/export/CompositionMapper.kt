@@ -11,24 +11,19 @@ import androidx.media3.transformer.Composition
 import androidx.media3.transformer.EditedMediaItem
 import androidx.media3.transformer.EditedMediaItemSequence
 import androidx.media3.transformer.Effects
-import io.github.ooscam.core.EditProject
 import io.github.ooscam.core.ExportPlan
 
 /**
  * Builds the Media3 Composition from an ExportPlan computed by :core, and from nothing else:
- * order, trim, speed, audio and height all come from the plan. The plan's parts name clips by
- * order only, so the source URI is looked up by clip order.
+ * sources, order, trim, speed, audio and height all come from the plan.
  */
 @OptIn(UnstableApi::class)
 object CompositionMapper {
-    /** Clip order to source URI, the only thing the plan does not carry. */
-    fun sourceUris(project: EditProject): Map<Int, String> = project.clips.associate { it.order to it.sourceUri }
-
-    fun map(plan: ExportPlan, uriByOrder: Map<Int, String>): Composition {
+    fun map(plan: ExportPlan): Composition {
         require(plan.ok) { "plan has errors ${plan.errors}" }
         require(plan.parts.isNotEmpty()) { "plan has no parts" }
         val items = plan.parts.map { part ->
-            val uri = requireNotNull(uriByOrder[part.clipOrder]) { "no source for clip ${part.clipOrder}" }
+            val uri = requireNotNull(plan.sourceUris[part.clipOrder]) { "no source for clip ${part.clipOrder}" }
             val clipping = MediaItem.ClippingConfiguration.Builder()
                 .setStartPositionMs(part.srcStartMs)
                 .setEndPositionMs(part.srcEndMs)
