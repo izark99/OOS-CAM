@@ -30,6 +30,7 @@ class CaptureScreenOffTest {
         val engine = FakeCaptureEngine()
         CaptureDeps.engineFactory = { _, _ -> engine }
         CaptureDeps.freeBytes = { _, _ -> 50_000_000_000L }
+        CaptureDeps.sessionStore = { FakeSessionStore() }
         shadowOf(app).grantPermissions(Manifest.permission.CAMERA)
         val controller = Robolectric.buildService(CaptureService::class.java).create()
         assertNull(ShadowPowerManager.getLatestWakeLock())
@@ -48,6 +49,7 @@ class CaptureScreenOffTest {
     fun service_destroyedWhileRecording_releasesWakeLock() {
         CaptureDeps.engineFactory = { _, _ -> FakeCaptureEngine() }
         CaptureDeps.freeBytes = { _, _ -> 50_000_000_000L }
+        CaptureDeps.sessionStore = { FakeSessionStore() }
         shadowOf(app).grantPermissions(Manifest.permission.CAMERA)
         val controller = Robolectric.buildService(CaptureService::class.java).create()
         controller.withIntent(CaptureService.startIntent(app, CaptureConfig())).startCommand(0, 1)
