@@ -1,61 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">OOS Cam</string>
+
+    <!-- Recording notification -->
     <string name="capture_channel_name">Recording</string>
     <string name="capture_notification_title">Recording</string>
     <string name="capture_notification_segment">Segment %1$d</string>
     <string name="capture_notification_stop">Stop</string>
+
+    <!-- Camera -->
     <string name="camera_record">Record</string>
+    <string name="camera_stop">Stop</string>
     <string name="camera_screen_off">Screen off</string>
-    <string name="camera_mic">Microphone</string>
-    <string name="camera_elapsed">Elapsed %1$s</string>
+    <string name="camera_mic_on">Microphone on</string>
+    <string name="camera_mic_off">Microphone off</string>
+    <string name="camera_settings">Settings</string>
+    <string name="camera_open_library">Library</string>
+    <string name="camera_auto_split">Auto-split every %1$d min</string>
+    <string name="camera_part">Part %1$d</string>
+    <string name="camera_part_free">Part %1$d · %2$s free</string>
     <string name="camera_mic_off_toast">Microphone permission denied. Recording without sound.</string>
     <string name="camera_notification_banner">Notifications are off. Recording works, but the recording notification may be hidden.</string>
-    <string name="permission_sheet_title">Camera access needed</string>
-    <string name="permission_reason_camera">Camera: needed to record video.</string>
-    <string name="permission_reason_mic">Microphone: records sound with the video. Optional.</string>
-    <string name="permission_reason_notifications">Notifications: show the recording notification with its Stop button.</string>
+    <string name="screen_off_recording">Recording · %1$s</string>
+    <string name="screen_off_hint">The screen goes dark while recording continues. Stop from the notification.</string>
+    <string name="screen_off_keep_on">Keep screen on</string>
+
+    <!-- Permission sheet -->
+    <string name="permission_sheet_title">Allow OOS Cam to record</string>
+    <string name="permission_camera">Camera</string>
+    <string name="permission_reason_camera">Needed to record video</string>
+    <string name="permission_mic">Microphone</string>
+    <string name="permission_reason_mic">For sound; you can record without it</string>
+    <string name="permission_notifications">Notifications</string>
+    <string name="permission_reason_notifications">Shows the Stop button while recording</string>
+    <string name="permission_footer">Recording always shows a notification. OOS Cam has no internet access.</string>
     <string name="permission_open_settings">Open settings</string>
-    <string name="camera_storage_pick_sd">Save to an SD card folder</string>
-    <string name="camera_storage_sd">Saving to the SD card folder (change)</string>
-    <string name="camera_open_library">Library</string>
+    <string name="permission_not_now">Not now</string>
+
+    <!-- Library -->
     <string name="library_title">Library</string>
-    <string name="library_back">Back</string>
+    <string name="library_back">Back to camera</string>
     <string name="library_cancel_selection">Cancel</string>
     <string name="library_import">Import</string>
     <string name="library_delete_damaged">Delete damaged</string>
-    <string name="library_loading">Loading…</string>
-    <string name="library_empty">No videos yet. Record one with the camera.</string>
+    <string name="library_loading">Loading videos</string>
+    <string name="library_empty_title">No videos yet</string>
+    <string name="library_empty">Videos you record appear here.</string>
+    <string name="library_open_camera">Open camera</string>
     <string name="library_share">Share</string>
     <string name="library_delete">Delete</string>
-    <string name="library_keep">Keep</string>
-    <string name="library_edit_selected">Edit selected</string>
-    <string name="library_delete_title">Delete videos?</string>
+    <string name="library_keep">Cancel</string>
+    <string name="library_edit_selected">Edit selected (%1$d)</string>
     <string name="library_damaged">Damaged</string>
     <string name="library_selected">Selected</string>
+    <string name="library_today">Today</string>
+    <string name="library_video">Video, %1$s</string>
+    <plurals name="library_delete_title">
+        <item quantity="one">Delete %1$d video?</item>
+        <item quantity="other">Delete %1$d videos?</item>
+    </plurals>
     <plurals name="library_delete_body">
-        <item quantity="one">%1$d file will be deleted from this phone. This cannot be undone.</item>
-        <item quantity="other">%1$d files will be deleted from this phone. This cannot be undone.</item>
+        <item quantity="one">%1$d file is removed from this phone. This cannot be undone.</item>
+        <item quantity="other">%1$d files are removed from this phone. This cannot be undone.</item>
     </plurals>
     <plurals name="library_parts">
         <item quantity="one">%1$d part</item>
         <item quantity="other">%1$d parts</item>
     </plurals>
-    <string name="editor_title">Editor</string>
-    <string name="editor_mute">Mute</string>
-    <string name="editor_height">%1$dp</string>
-    <string name="editor_clip">Clip %1$d (%2$s s)</string>
-    <string name="editor_move_up">Up</string>
-    <string name="editor_move_down">Down</string>
-    <string name="editor_remove">Remove</string>
+    <plurals name="library_selected_count">
+        <item quantity="one">%1$d selected</item>
+        <item quantity="other">%1$d selected</item>
+    </plurals>
+    <plurals name="library_session_summary">
+        <item quantity="one">%1$d video · %2$s</item>
+        <item quantity="other">%1$d videos · %2$s</item>
+    </plurals>
+
+    <!-- Editor -->
+    <string name="editor_untitled">Untitled project</string>
+    <string name="editor_close">Close editor</string>
+    <string name="editor_export">Export</string>
+    <string name="editor_play">Play clip %1$s</string>
+    <string name="editor_clip_desc">Clip %1$s, %2$s</string>
+    <string name="editor_trimmed">Clip %1$s trimmed %2$s s – %3$s s</string>
+    <plurals name="editor_clips_muted">
+        <item quantity="one">%1$d clip · muted</item>
+        <item quantity="other">%1$d clips · muted</item>
+    </plurals>
+    <plurals name="editor_clips_sound">
+        <item quantity="one">%1$d clip · sound</item>
+        <item quantity="other">%1$d clips · sound</item>
+    </plurals>
+    <string name="editor_output">Output %1$s</string>
+    <string name="editor_no_clips">Add videos with the Add button.</string>
+    <string name="editor_tool_trim">Trim</string>
+    <string name="editor_tool_speed">Speed</string>
+    <string name="editor_tool_muted">Muted</string>
+    <string name="editor_tool_sound">Sound</string>
+    <string name="editor_tool_order">Order</string>
+    <string name="editor_tool_add">Add</string>
+    <string name="editor_trim_title">Trim clip %1$s</string>
     <string name="editor_trim_in">Start %1$s s</string>
     <string name="editor_trim_out">End %1$s s</string>
-    <string name="editor_range">Speed range %1$s–%2$s s at %3$sx</string>
-    <string name="editor_speed">%1$sx</string>
-    <string name="editor_add_range">Add speed range</string>
+    <string name="editor_remove">Remove clip</string>
+    <string name="editor_done">Done</string>
+    <string name="editor_speed_title">Speed</string>
+    <string name="editor_range_on">Range on clip %1$s</string>
+    <string name="editor_range">%1$s s – %2$s s</string>
+    <string name="editor_range_plays">Plays in %1$s s · project %2$s</string>
+    <string name="editor_range_start">Range start</string>
+    <string name="editor_range_end">Range end</string>
+    <string name="editor_range_n">Range %1$d</string>
+    <string name="editor_new_range">New range</string>
+    <string name="editor_apply">Apply</string>
     <string name="editor_remove_range">Remove range</string>
-    <string name="editor_output">Output %1$s</string>
-    <string name="editor_export">Export</string>
+    <string name="editor_order_title">Order</string>
+    <string name="editor_move_up">Move clip %1$s up</string>
+    <string name="editor_move_down">Move clip %1$s down</string>
     <string name="editor_msg_e1">Too many clips: 10 at most.</string>
     <string name="editor_msg_e2">Trimmed clips are longer than 30 minutes.</string>
     <string name="editor_msg_e3">Speed ranges on one clip overlap.</string>
@@ -67,12 +128,60 @@
     <string name="editor_msg_w2">A clip is below 1080p, so the export is 720p.</string>
     <string name="editor_msg_unknown">This project cannot be exported.</string>
     <string name="editor_import_skipped">Some videos could not be read and were skipped.</string>
-    <string name="export_progress">Exporting… %1$d%%</string>
-    <string name="export_cancel">Cancel</string>
-    <string name="export_done">Saved to Movies/OOS Cam.</string>
+
+    <!-- Export -->
+    <string name="export_title">Export</string>
+    <string name="export_running_title">Exporting</string>
+    <string name="export_resolution">Resolution</string>
+    <string name="export_summary_muted">%1$s · no sound · Movies/OOS Cam</string>
+    <string name="export_summary_sound">%1$s · with sound · Movies/OOS Cam</string>
+    <string name="export_progress">%1$d%%</string>
+    <string name="export_cancel">Cancel export</string>
+    <string name="export_done">Saved to Movies/OOS Cam</string>
     <string name="export_open">Open</string>
     <string name="export_close">Close</string>
-    <string name="export_failed">Export failed (%1$s).</string>
-    <string name="export_retry">Retry</string>
+    <string name="export_failed">Export failed (%1$s)</string>
+    <string name="export_failed_body">The video could not be written. Try again, or remove the clip that fails.</string>
+    <string name="export_retry">Try again</string>
     <string name="export_cancelled">Export cancelled.</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_back">Back</string>
+    <string name="settings_recording">Recording</string>
+    <string name="settings_segment">Segment length</string>
+    <string name="settings_segment_sub">New file after this time</string>
+    <string name="settings_minutes">%1$d min</string>
+    <string name="settings_quality">Default quality</string>
+    <string name="settings_quality_sub">Used for new recordings</string>
+    <string name="settings_mic">Microphone on by default</string>
+    <string name="settings_storage">Storage</string>
+    <string name="settings_save_to">Save to</string>
+    <string name="settings_save_to_pick">SD card needs a folder pick</string>
+    <string name="settings_save_to_set">SD card folder picked</string>
+    <string name="settings_device">Device</string>
+    <string name="settings_sd">SD card</string>
+    <string name="settings_low_space">Stop when free space is below</string>
+    <string name="settings_display">Display</string>
+    <string name="settings_reduce_glass">Reduce glass effects</string>
+    <string name="settings_reduce_glass_sub">Solid panels, less battery</string>
+    <string name="settings_language">Language</string>
+    <string name="settings_language_system">System</string>
+    <string name="settings_about">About</string>
+    <string name="settings_version">Version</string>
+    <string name="settings_license">License</string>
+    <string name="settings_source">Source code</string>
+
+    <!-- Values that read the same in every language -->
+    <string name="quality_720" translatable="false">720p · 30</string>
+    <string name="quality_1080" translatable="false">1080p · 30</string>
+    <string name="quality_2160" translatable="false">4K · 30</string>
+    <string name="editor_height" translatable="false">%1$dp</string>
+    <string name="editor_speed" translatable="false">%1$sx</string>
+    <string name="editor_clip_label" translatable="false">%1$s · %2$s</string>
+    <string name="settings_low_space_value" translatable="false">500 MB</string>
+    <string name="settings_language_en" translatable="false">English</string>
+    <string name="settings_language_vi" translatable="false">Tiếng Việt</string>
+    <string name="settings_license_value" translatable="false">Apache-2.0</string>
+    <string name="settings_source_value" translatable="false">github.com/izark99/OOS-CAM</string>
 </resources>

@@ -1,6 +1,6 @@
 # Progress
 
-STATUS: PHASE 3 DONE, PR OPEN
+STATUS: BLOCKED
 
 ## Phase 0: Spike + scaffold (gate G0)
 
@@ -85,7 +85,7 @@ STATUS: PHASE 3 DONE, PR OPEN
 
 ## Blockers
 
-None.
+- 2026-11-26 (Phase 4, before T4.1 could be ticked): Maven Central throttles one artifact. `https://repo.maven.apache.org/maven2/org/robolectric/nativeruntime-dist-compat/1.0.20/nativeruntime-dist-compat-1.0.20.jar` answers HTTP 429 on both `repo.maven.apache.org` and `repo1.maven.org` (the Gradle plugin portal only redirects there). First seen about 00:40Z with `retry-after: 57170`; at 01:09Z it said `retry-after: 73798`, so the earliest retry is 2026-11-26T21:39Z. Every other artifact resolved (Roborazzi 1.79.0, compose ui-test, DataStore 1.3.0, android-all-instrumented 16 answered 206). Robolectric 4.18.1 needs this jar on `:app:debugUnitTestRuntimeClasspath`, so `:app:testDebugUnitTest`, `verifyRoborazziDebug` and even `lint` (it builds the unit-test lint model) fail: gates G0 (lint), G2, G3, G4 cannot run. No mirror was used. Work in progress is committed untested (see Log). Resume in a new session after 2026-11-26T21:39Z: run `./gradlew --no-parallel :app:testDebugUnitTest --tests '*TokensTest'` first, then a Roborazzi probe (one screenshot, `@GraphicsMode(NATIVE)`, `w412dp-h892dp-xhdpi`) before T4.4. Do not poll the URL: each probe seemed to extend the window.
 
 ## Log
 
@@ -128,3 +128,5 @@ None.
 - 2026-11-25: T3.8 extra view model and mapping tests: unknown targets change nothing, orders stay contiguous, trim follows a reordered clip, every offered speed passes planExport, a saved and restored project gives the same plan, snapping (now to the nearest of the 0.1 s grid and the exact source end), every core plan part boundary is a Composition item boundary, all six speed texts map exactly, mute maps to removeAudio and track types, an ok plan without parts is refused, library selection drops files deleted elsewhere; 12 tests. Written after the code, so checked with three mutations (removeAudio fixed false, clip end +1 ms, ranges not following reorder): 7 tests failed, code restored.
 - 2026-11-25: Phase 3 done; pull request https://github.com/izark99/OOS-CAM/pull/4 open into main.
 - 2026-11-25: Phase 3 follow-up: ExportPlan carries each clip's source URI (@Transient sourceUris, not in the JSON contract), so CompositionMapper.map(plan) and ExportEngine.start(plan, now) take nothing but the core plan; the project-derived URI lookup is gone; core test checks the JSON keys are unchanged; check.sh 3 passed after clean.
+- 2026-11-26: Phase 4 started (new session). Committed untested work in progress, no task ticked: Tokens.kt generator task (`:app:generateTokens`, runs before preBuild, `scripts/check_tokens.sh` 58/58 PASS) and TokensTest; Inter 4.1 Regular/Medium/SemiBold in res/font with OFL in third_party/inter and a NOTICE entry; glass modifier with solid fallback and GlassTest; components (buttons, icon button, segmented, dropdown, checkbox, switch, search, sheet, toast, progress, skeleton, badge, list row, timeline, trim handle) and ComponentsTest; DataStore settings and SettingsTest; values-vi/strings.xml for all 136 translatable strings; Roborazzi 1.79.0 plugin with outputDir app/src/test/screenshots. assembleDebug and G1 pass; no `:app` unit test could run (Blockers).
+

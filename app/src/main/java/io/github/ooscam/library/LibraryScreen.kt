@@ -71,14 +71,14 @@ fun LibraryScreen(
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 OutlinedButton(onClick = onShare) { Text(stringResource(R.string.library_share)) }
                 OutlinedButton(onClick = onDelete) { Text(stringResource(R.string.library_delete)) }
-                Button(onClick = onEditSelected, enabled = state.canEdit) { Text(stringResource(R.string.library_edit_selected)) }
+                Button(onClick = onEditSelected, enabled = state.canEdit) { Text(stringResource(R.string.library_edit_selected, state.selected.size)) }
             }
         }
     }
     state.confirmDelete?.let { pending ->
         AlertDialog(
             onDismissRequest = onCancelDelete,
-            title = { Text(stringResource(R.string.library_delete_title)) },
+            title = { Text(pluralStringResource(R.plurals.library_delete_title, pending.uris.size, pending.uris.size)) },
             text = { Text(pluralStringResource(R.plurals.library_delete_body, pending.uris.size, pending.uris.size)) },
             confirmButton = { TextButton(onClick = onConfirmDelete) { Text(stringResource(R.string.library_delete)) } },
             dismissButton = { TextButton(onClick = onCancelDelete) { Text(stringResource(R.string.library_keep)) } },

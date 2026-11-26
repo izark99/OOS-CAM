@@ -60,11 +60,11 @@ fun CameraScreen(
         ) {
             AppTitle()
             if (recording != null) {
-                Text(stringResource(R.string.camera_elapsed, formatElapsed(elapsedSince(recording.startedAtWallMs))))
+                Text(stringResource(R.string.screen_off_recording, formatElapsed(elapsedSince(recording.startedAtWallMs))))
                 Text(stringResource(R.string.capture_notification_segment, recording.segmentIndex))
             }
             Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                Text(stringResource(R.string.camera_mic))
+                Text(stringResource(R.string.permission_mic))
                 Switch(checked = state.micWanted, onCheckedChange = onMicChange, enabled = !active)
             }
             if (active) {
@@ -73,7 +73,7 @@ fun CameraScreen(
             } else {
                 Button(onClick = onRecord, enabled = !state.showPermissionSheet) { Text(stringResource(R.string.camera_record)) }
                 OutlinedButton(onClick = onPickSdFolder) {
-                    Text(stringResource(if (state.sdFolderSet) R.string.camera_storage_sd else R.string.camera_storage_pick_sd))
+                    Text(stringResource(if (state.sdFolderSet) R.string.settings_save_to_set else R.string.settings_save_to_pick))
                 }
                 OutlinedButton(onClick = onOpenLibrary) { Text(stringResource(R.string.camera_open_library)) }
             }

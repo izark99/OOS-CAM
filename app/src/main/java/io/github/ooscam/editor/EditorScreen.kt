@@ -68,12 +68,12 @@ fun EditorScreen(
         item {
             Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 TextButton(onClick = onBack) { Text(stringResource(R.string.library_back)) }
-                Text(stringResource(R.string.editor_title), style = MaterialTheme.typography.headlineSmall)
+                Text(stringResource(R.string.editor_untitled), style = MaterialTheme.typography.headlineSmall)
             }
         }
         item {
             Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                Text(stringResource(R.string.editor_mute))
+                Text(stringResource(R.string.editor_tool_muted))
                 Switch(checked = project.muted, onCheckedChange = vm::setMuted)
                 listOf(720, 1080).forEach { h ->
                     val label = stringResource(R.string.editor_height, h)
@@ -140,10 +140,10 @@ private fun ExportPanel(state: ExportState, onRetry: () -> Unit, onCancel: () ->
 private fun ClipCard(clip: ProjectClip, position: Int, count: Int, ranges: List<SpeedRange>, vm: EditorViewModel) {
     Card {
         Column(Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
-            Text(stringResource(R.string.editor_clip, position + 1, formatSeconds(clip.sourceDurationMs)), style = MaterialTheme.typography.titleSmall)
+            Text(stringResource(R.string.editor_clip_desc, (position + 1).toString(), formatSeconds(clip.sourceDurationMs) + " s"), style = MaterialTheme.typography.titleSmall)
             Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
-                TextButton(onClick = { vm.move(position, position - 1) }, enabled = position > 0) { Text(stringResource(R.string.editor_move_up)) }
-                TextButton(onClick = { vm.move(position, position + 1) }, enabled = position < count - 1) { Text(stringResource(R.string.editor_move_down)) }
+                TextButton(onClick = { vm.move(position, position - 1) }, enabled = position > 0) { Text(stringResource(R.string.editor_move_up, (position + 1).toString())) }
+                TextButton(onClick = { vm.move(position, position + 1) }, enabled = position < count - 1) { Text(stringResource(R.string.editor_move_down, (position + 1).toString())) }
                 TextButton(onClick = { vm.removeClip(clip.order) }) { Text(stringResource(R.string.editor_remove)) }
             }
             Text(stringResource(R.string.editor_trim_in, formatSeconds(clip.inMs)))
@@ -152,7 +152,7 @@ private fun ClipCard(clip: ProjectClip, position: Int, count: Int, ranges: List<
             Stepper { vm.nudgeOut(clip.order, it) }
             ranges.forEachIndexed { index, r ->
                 if (r.clipOrder != clip.order) return@forEachIndexed
-                Text(stringResource(R.string.editor_range, formatSeconds(r.startMs), formatSeconds(r.endMs), r.speed.toPlainString()))
+                Text(stringResource(R.string.editor_range, formatSeconds(r.startMs), formatSeconds(r.endMs)) + " · " + stringResource(R.string.editor_speed, r.speed.toPlainString()))
                 Stepper { vm.updateSpeedRange(index, r.startMs + it * EditorViewModel.STEP_MS, r.endMs, r.speed) }
                 Stepper { vm.updateSpeedRange(index, r.startMs, r.endMs + it * EditorViewModel.STEP_MS, r.speed) }
                 Row(horizontalArrangement = Arrangement.spacedBy(2.dp)) {
@@ -167,7 +167,7 @@ private fun ClipCard(clip: ProjectClip, position: Int, count: Int, ranges: List<
             TextButton(onClick = {
                 val third = (clip.outMs - clip.inMs) / 3
                 vm.addSpeedRange(clip.order, clip.inMs + third, clip.outMs - third, BigDecimal("2"))
-            }) { Text(stringResource(R.string.editor_add_range)) }
+            }) { Text(stringResource(R.string.editor_new_range)) }
         }
     }
 }

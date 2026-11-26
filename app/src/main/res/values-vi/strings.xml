@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">OOS Cam</string>
+
+    <string name="capture_channel_name">Đang quay</string>
+    <string name="capture_notification_title">Đang quay</string>
+    <string name="capture_notification_segment">Đoạn %1$d</string>
+    <string name="capture_notification_stop">Dừng</string>
+
+    <string name="camera_record">Quay</string>
+    <string name="camera_stop">Dừng</string>
+    <string name="camera_screen_off">Tắt màn hình</string>
+    <string name="camera_mic_on">Micrô đang bật</string>
+    <string name="camera_mic_off">Micrô đang tắt</string>
+    <string name="camera_settings">Cài đặt</string>
+    <string name="camera_open_library">Thư viện</string>
+    <string name="camera_auto_split">Tự chia file mỗi %1$d phút</string>
+    <string name="camera_part">Phần %1$d</string>
+    <string name="camera_part_free">Phần %1$d · còn trống %2$s</string>
+    <string name="camera_mic_off_toast">Chưa cấp quyền micrô. Video sẽ không có tiếng.</string>
+    <string name="camera_notification_banner">Thông báo đang tắt. Vẫn quay được, nhưng thông báo đang quay có thể bị ẩn.</string>
+    <string name="screen_off_recording">Đang quay · %1$s</string>
+    <string name="screen_off_hint">Màn hình sẽ tối trong khi vẫn quay. Dừng từ thông báo.</string>
+    <string name="screen_off_keep_on">Giữ màn hình sáng</string>
+
+    <string name="permission_sheet_title">Cho phép OOS Cam quay video</string>
+    <string name="permission_camera">Máy ảnh</string>
+    <string name="permission_reason_camera">Cần để quay video</string>
+    <string name="permission_mic">Micrô</string>
+    <string name="permission_reason_mic">Để thu tiếng; có thể quay không cần micrô</string>
+    <string name="permission_notifications">Thông báo</string>
+    <string name="permission_reason_notifications">Hiện nút Dừng trong khi quay</string>
+    <string name="permission_footer">Khi quay luôn có thông báo. OOS Cam không truy cập Internet.</string>
+    <string name="permission_open_settings">Mở cài đặt</string>
+    <string name="permission_not_now">Để sau</string>
+
+    <string name="library_title">Thư viện</string>
+    <string name="library_back">Quay lại máy ảnh</string>
+    <string name="library_cancel_selection">Hủy</string>
+    <string name="library_import">Nhập</string>
+    <string name="library_delete_damaged">Xóa file lỗi</string>
+    <string name="library_loading">Đang tải video</string>
+    <string name="library_empty_title">Chưa có video</string>
+    <string name="library_empty">Video bạn quay sẽ hiện ở đây.</string>
+    <string name="library_open_camera">Mở máy ảnh</string>
+    <string name="library_share">Chia sẻ</string>
+    <string name="library_delete">Xóa</string>
+    <string name="library_keep">Hủy</string>
+    <string name="library_edit_selected">Sửa mục đã chọn (%1$d)</string>
+    <string name="library_damaged">Bị lỗi</string>
+    <string name="library_selected">Đã chọn</string>
+    <string name="library_today">Hôm nay</string>
+    <string name="library_video">Video, %1$s</string>
+    <plurals name="library_delete_title">
+        <item quantity="other">Xóa %1$d video?</item>
+    </plurals>
+    <plurals name="library_delete_body">
+        <item quantity="other">%1$d file sẽ bị xóa khỏi điện thoại. Không thể hoàn tác.</item>
+    </plurals>
+    <plurals name="library_parts">
+        <item quantity="other">%1$d phần</item>
+    </plurals>
+    <plurals name="library_selected_count">
+        <item quantity="other">Đã chọn %1$d</item>
+    </plurals>
+    <plurals name="library_session_summary">
+        <item quantity="other">%1$d video · %2$s</item>
+    </plurals>
+
+    <string name="editor_untitled">Dự án chưa đặt tên</string>
+    <string name="editor_close">Đóng trình sửa</string>
+    <string name="editor_export">Xuất</string>
+    <string name="editor_play">Phát clip %1$s</string>
+    <string name="editor_clip_desc">Clip %1$s, %2$s</string>
+    <string name="editor_trimmed">Clip %1$s đã cắt %2$s s – %3$s s</string>
+    <plurals name="editor_clips_muted">
+        <item quantity="other">%1$d clip · tắt tiếng</item>
+    </plurals>
+    <plurals name="editor_clips_sound">
+        <item quantity="other">%1$d clip · có tiếng</item>
+    </plurals>
+    <string name="editor_output">Đầu ra %1$s</string>
+    <string name="editor_no_clips">Thêm video bằng nút Thêm.</string>
+    <string name="editor_tool_trim">Cắt</string>
+    <string name="editor_tool_speed">Tốc độ</string>
+    <string name="editor_tool_muted">Tắt tiếng</string>
+    <string name="editor_tool_sound">Có tiếng</string>
+    <string name="editor_tool_order">Thứ tự</string>
+    <string name="editor_tool_add">Thêm</string>
+    <string name="editor_trim_title">Cắt clip %1$s</string>
+    <string name="editor_trim_in">Bắt đầu %1$s s</string>
+    <string name="editor_trim_out">Kết thúc %1$s s</string>
+    <string name="editor_remove">Bỏ clip</string>
+    <string name="editor_done">Xong</string>
+    <string name="editor_speed_title">Tốc độ</string>
+    <string name="editor_range_on">Khoảng trên clip %1$s</string>
+    <string name="editor_range">%1$s s – %2$s s</string>
+    <string name="editor_range_plays">Phát trong %1$s s · dự án %2$s</string>
+    <string name="editor_range_start">Đầu khoảng</string>
+    <string name="editor_range_end">Cuối khoảng</string>
+    <string name="editor_range_n">Khoảng %1$d</string>
+    <string name="editor_new_range">Khoảng mới</string>
+    <string name="editor_apply">Áp dụng</string>
+    <string name="editor_remove_range">Bỏ khoảng</string>
+    <string name="editor_order_title">Thứ tự</string>
+    <string name="editor_move_up">Đưa clip %1$s lên</string>
+    <string name="editor_move_down">Đưa clip %1$s xuống</string>
+    <string name="editor_msg_e1">Quá nhiều clip: tối đa 10.</string>
+    <string name="editor_msg_e2">Tổng các clip đã cắt dài hơn 30 phút.</string>
+    <string name="editor_msg_e3">Các khoảng tốc độ trên một clip chồng lên nhau.</string>
+    <string name="editor_msg_e4">Tốc độ phải là 0.25x, 0.5x, 1x, 1.5x, 2x hoặc 4x.</string>
+    <string name="editor_msg_e5">Video xuất sẽ dài hơn 30 phút.</string>
+    <string name="editor_msg_e6">Mỗi clip cần ít nhất 0,5 s nằm trong video gốc.</string>
+    <string name="editor_msg_e7">Một khoảng tốc độ bị rỗng hoặc không thuộc clip nào.</string>
+    <string name="editor_msg_w1">Khoảng tốc độ nằm ngoài phần đã cắt sẽ bị bỏ qua.</string>
+    <string name="editor_msg_w2">Có clip dưới 1080p nên video xuất là 720p.</string>
+    <string name="editor_msg_unknown">Không thể xuất dự án này.</string>
+    <string name="editor_import_skipped">Một số video không đọc được và đã bị bỏ qua.</string>
+
+    <string name="export_title">Xuất video</string>
+    <string name="export_running_title">Đang xuất</string>
+    <string name="export_resolution">Độ phân giải</string>
+    <string name="export_summary_muted">%1$s · không tiếng · Movies/OOS Cam</string>
+    <string name="export_summary_sound">%1$s · có tiếng · Movies/OOS Cam</string>
+    <string name="export_progress">%1$d%%</string>
+    <string name="export_cancel">Hủy xuất</string>
+    <string name="export_done">Đã lưu vào Movies/OOS Cam</string>
+    <string name="export_open">Mở</string>
+    <string name="export_close">Đóng</string>
+    <string name="export_failed">Xuất thất bại (%1$s)</string>
+    <string name="export_failed_body">Không ghi được video. Hãy thử lại, hoặc bỏ clip bị lỗi.</string>
+    <string name="export_retry">Thử lại</string>
+    <string name="export_cancelled">Đã hủy xuất.</string>
+
+    <string name="settings_title">Cài đặt</string>
+    <string name="settings_back">Quay lại</string>
+    <string name="settings_recording">Quay video</string>
+    <string name="settings_segment">Độ dài mỗi đoạn</string>
+    <string name="settings_segment_sub">Tạo file mới sau khoảng thời gian này</string>
+    <string name="settings_minutes">%1$d phút</string>
+    <string name="settings_quality">Chất lượng mặc định</string>
+    <string name="settings_quality_sub">Dùng cho các lần quay mới</string>
+    <string name="settings_mic">Bật micrô theo mặc định</string>
+    <string name="settings_storage">Lưu trữ</string>
+    <string name="settings_save_to">Lưu vào</string>
+    <string name="settings_save_to_pick">Thẻ SD cần chọn thư mục</string>
+    <string name="settings_save_to_set">Đã chọn thư mục trên thẻ SD</string>
+    <string name="settings_device">Máy</string>
+    <string name="settings_sd">Thẻ SD</string>
+    <string name="settings_low_space">Dừng khi dung lượng trống dưới</string>
+    <string name="settings_display">Hiển thị</string>
+    <string name="settings_reduce_glass">Giảm hiệu ứng kính</string>
+    <string name="settings_reduce_glass_sub">Bảng màu đặc, tiết kiệm pin hơn</string>
+    <string name="settings_language">Ngôn ngữ</string>
+    <string name="settings_language_system">Theo hệ thống</string>
+    <string name="settings_about">Giới thiệu</string>
+    <string name="settings_version">Phiên bản</string>
+    <string name="settings_license">Giấy phép</string>
+    <string name="settings_source">Mã nguồn</string>
+</resources>
